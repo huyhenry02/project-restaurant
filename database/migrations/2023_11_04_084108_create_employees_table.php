@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->integer('employee_id')->primary();
+            $table->id('employee_id');
             $table->string('name',45);
             $table->string('address',45);
             $table->string('phone',45);
             $table->string('email',45);
-            $table->integer('is_active');
-            $table->integer('role_id');
+            $table->integer('is_active')->default(1);
+            $table->unsignedBigInteger('role_id');
             $table->timestamps();
         });
     }

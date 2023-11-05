@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->integer('reservation_id')->primary();
+            $table->id('reservation_id');
             $table->string('name',45);
-            $table->integer('customer_id');
+            $table->string('note',45);
+            $table->enum('status',['pending', 'approved', 'processing','completed'])->default('pending');
+            $table->unsignedBigInteger('customer_id');
             $table->integer('number_of_guests');
-            $table->integer('table_id');
+            $table->unsignedBigInteger('table_id');
             $table->date('reservation_date');
             $table->timestamps();
         });

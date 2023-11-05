@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->integer('order_id')->primary();
+            $table->id('order_id');
             $table->string('name',45);
-            $table->integer('customer_id');
-            $table->integer('table_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('table_id');
             $table->date('order_date');
             $table->decimal('total_amount');
-            $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });
     }
