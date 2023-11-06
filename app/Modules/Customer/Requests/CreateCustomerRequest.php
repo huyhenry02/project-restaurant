@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Example\Requests;
+namespace App\Modules\Customer\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ExampleRequest extends FormRequest
+class CreateCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
