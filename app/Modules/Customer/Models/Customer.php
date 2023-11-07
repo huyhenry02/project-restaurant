@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Customer extends Model
 {
     use HasFactory;
-    public $table = '=customers';
+    public $table = 'customers';
     public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);

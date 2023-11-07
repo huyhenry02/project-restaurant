@@ -82,18 +82,24 @@
                         <div class="form-group">
                             <form action="{{route('count_table.post')}}" method="post">
                             <dl class="row align-items-sm-center mb-3">
-                                <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Ngày: </dt>
+                                <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Lọc </dt>
                                 <dd class="col-sm-8 col-md-auto mb-0">
                                     <div id="invoiceDateFlatpickr" class="js-flatpickr flatpickr-custom input-group input-group-merge">
                                             @csrf
                                         <label>
                                             <input type="date" class="flatpickr-custom-form-control form-control" name="reservation_date">
                                         </label>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
                                     </div>
                                 </dd>
                             </dl>
                             </form>
+                            <dl class="row align-items-sm-center">
+                                <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Ngày:</dt>
+                                <span> {{$reservationDate}}</span>
+                            </dl>
                         </div>
                         <!-- End Form Group -->
                     </div>
@@ -136,7 +142,7 @@
                     </thead>
 
                     <tbody>
-                    @foreach($table as $key=>$val)
+                    @foreach($availableTableCounts as $key=>$val)
                         <tr>
                             <td class="table-column-pr-0">
                                 <div class="custom-control custom-checkbox">
@@ -144,9 +150,9 @@
                                     <label class="custom-control-label" for="usersDataCheck1"></label>
                                 </div>
                             </td>
-                            <td>{{ $val ? $val->name : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val ? $val->description : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val ? $val->amount : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $key }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $tableItems->where('name', $key)->first()->description ?? '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val }}<span class="text-hide">Code: GB</span></td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>

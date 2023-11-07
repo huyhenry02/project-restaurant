@@ -29,7 +29,7 @@ Route::get('/example', [ExampleController::class, 'example'])->name('example');
 //customer
 Route::prefix('customer')->group(function () {
     Route::get('/show_about_us', [CustomerController::class, 'show_about_us'])->name('show_about_us.index');
-    Route::get('/show_booking', [CustomerController::class, 'show_booking'])->name('show_booking.index');
+    Route::get('/show_booking/{id}', [CustomerController::class, 'show_booking'])->name('show_booking.index');
     Route::get('/show_contact', [CustomerController::class, 'show_contact'])->name('show_contact.index');
     Route::get('/show_home', [CustomerController::class, 'show_home'])->name('show_home.index');
     Route::get('/show_offer', [CustomerController::class, 'show_offer'])->name('show_offer.index');
@@ -75,6 +75,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/show_create_table', [TableController::class, 'show_create_table'])->name('show_create_table.index');
         Route::get('/show_list_table', [TableController::class, 'show_list_table'])->name('show_list_table.index');
         Route::post('/create_table', [TableController::class, 'create_table'])->name('create_table.post');
+        Route::post('/countTable', [TableController::class, 'count_table'])->name('count_table.post');
     });
 
 });

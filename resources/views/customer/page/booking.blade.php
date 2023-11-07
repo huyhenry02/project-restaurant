@@ -22,7 +22,7 @@
                                 <input placeholder="Ngày đặt" name="arival_date" type="text" class="form-control datepicker-example8">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12">
-                                <input id="phone" type="text" name="phone" placeholder="Nhập SĐT" class="form-control">
+                                <input id="phone" type="number" name="phone" placeholder="Nhập SĐT" class="form-control">
                             </div>
                         </div>
 
@@ -62,17 +62,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12">
-                                <div class="select-box">
-                                    <select name="loai" class="select-menu">
-                                        <option value="default"> Loại </option>
-                                        <option value="1">Bàn đôi</option>
-                                        <option value="2">Bàn nhóm</option>
-                                        <option value="3">Phòng riêng</option>
-                                        <option value="4">Đặt tiệc</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12">
                                 <input id="number" type="number" name="number" placeholder="Số người" class="form-control">
                             </div>
