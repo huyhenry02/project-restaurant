@@ -12,12 +12,20 @@ class Customer extends Model
 {
     use HasFactory;
     public $table = 'customers';
+    protected $primaryKey = 'customer_id';
+    protected $fillable = [
+        'name',
+        'phone',
+        'address',
+        'email',
+    ];
+
     public function reservations(): HasMany
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class,'customer_id','customer_id');
     }
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class,'customer_id','customer_id');
     }
 }

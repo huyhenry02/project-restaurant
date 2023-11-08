@@ -11,8 +11,15 @@ class OrderDetail extends Model
 {
     use HasFactory;
     public $table = 'order_details';
+    protected $primaryKey = 'order_detail_id';
+    protected $fillable = [
+        'order_id',
+        'menu_id',
+        'quantity',
+        'total',
+    ];
     public function menuItem(): BelongsTo
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class,'order_detail_id','order_detail_id');
     }
 }

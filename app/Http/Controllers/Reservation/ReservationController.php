@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reservation;
 
+use App\Modules\Reservation\Models\Reservation;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -18,6 +19,11 @@ class ReservationController extends BaseController
 
     public function show_list_reservation(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('employee.page.reservation.list');
+        $reservationCount = Reservation::count();
+        $reservation = Reservation::all();
+        return view('employee.page.reservation.list', [
+            'reservation'=>$reservation,
+            'reservationCount'=>$reservationCount
+        ]);
     }
 }

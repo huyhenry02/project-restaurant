@@ -11,9 +11,11 @@ class CategoryFood extends Model
 {
     use HasFactory;
     public $table = 'category_foods';
+    protected $primaryKey = 'category_id';
+
     public function menuItems(): HasMany
     {
-        return $this->hasMany(Menu::class);
+        return $this->hasMany(Menu::class,'category_id','category_id');
     }
 
 }

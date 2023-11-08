@@ -69,7 +69,6 @@
                 <div class="overlay">
                     <div class="border">
                         <form method="post" action="{{route('check_table.post')}}">
-                            @csrf
                             <div class="ser-in-box">
                                 <input placeholder="Ngày" type="text" class="form-control datepicker-example8 " name="reservation_date">
                             </div>
@@ -121,33 +120,7 @@
     <section class="container clearfix common-pad nasir-style">
         <div class="sec-header sec-header-pad">
             <h2>Table</h2>
-            <h3>Pick a table that best suits your taste and budget</h3>
-        </div>
-        <div class="room-slider">
-            <div class="roomsuite-slider-two">
-                @foreach($table as $tableItem)
-                    <div class="room-suite room-suite-htwo">
-                        <div class="item">
-                            <div class="ro-img"><img src="images\table\1.jpg" alt="" class="img-responsive"></div>
-                            <div class="ro-txt">
-                                <h2>{{$tableItem->name}}</h2>
-                                <p>Trong không gian nhỏ bé này, chúng ta xây dựng một thế giới riêng, nơi mà chỉ có tình
-                                    yêu và sự hiểu biết.
-                                    Bàn ăn trở thành biểu tượng của một cuộc sống hạnh phúc và an lành, nơi chúng ta
-                                    luôn đồng hành bên nhau.</p>
-                                <div class="ro-text-two">
-                                    <div class="left-p-two pull-left"><a
-                                            href="{{route('show_booking.index', ['id' => $tableItem->table_id])}}"
-                                            class="res-btn">Booking</a></div>
-                                    <div class="right-p-two pull-right">
-                                        <p>18<sup>đ</sup><span>Per time</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <h3>Sorry, We are out of available tables</h3>
         </div>
     </section>
     <!-- Counter style-->

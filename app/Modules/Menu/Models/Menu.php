@@ -13,12 +13,22 @@ class Menu extends Model
 {
     use HasFactory;
     public $table = 'menus';
+    protected $primaryKey = 'item_id';
+    protected $fillable = [
+        'item_name',
+        'description',
+        'price',
+        'category_id',
+        'is_available',
+
+    ];
+
     public function category(): BelongsTo
     {
-        return $this->belongsTo(CategoryFood::class);
+        return $this->belongsTo(CategoryFood::class,'category_id','category_id');
     }
     public function orderDetails(): HasMany
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(OrderDetail::class,'item_id','item_id');
     }
 }

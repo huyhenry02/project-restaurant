@@ -12,12 +12,18 @@ class Table extends Model
 {
     use HasFactory;
     public $table = 'tables';
+    protected $primaryKey = 'table_id';
+    protected $fillable = [
+        'name',
+        'description',
+        'amount',
+    ];
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
     public function reservations(): HasMany
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class,'table_id','table_id');
     }
 }

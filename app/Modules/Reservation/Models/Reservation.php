@@ -12,12 +12,23 @@ class Reservation extends Model
 {
     use HasFactory;
     public $table = 'reservations';
+    protected $primaryKey = 'reservation_id';
+    protected $fillable = [
+        'name',
+        'number_of_guests',
+        'reservation_date',
+        'time',
+        'note',
+        'customer_id',
+        'table_id',
+    ];
+
     public function customer(): BelongsTo
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');
     }
     public function table(): BelongsTo
     {
-        return $this->belongsTo(Table::class);
+        return $this->belongsTo(Table::class,'table_id','table_id');
     }
 }

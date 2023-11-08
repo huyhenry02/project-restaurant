@@ -69,7 +69,6 @@
                 <div class="overlay">
                     <div class="border">
                         <form method="post" action="{{route('check_table.post')}}">
-                            @csrf
                             <div class="ser-in-box">
                                 <input placeholder="Ngày" type="text" class="form-control datepicker-example8 " name="reservation_date">
                             </div>

@@ -71,7 +71,7 @@
 <nav id="main-navigation-wrapper" class="navbar navbar-default _fixed-header _light-header stricky">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" data-toggle="collapse" data-target="#main-navigation" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="index.html" class="navbar-brand"><img alt="Awesome Image" src="images\logo\den.png"></a>
+            <button type="button" data-toggle="collapse" data-target="#main-navigation" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="index.html" class="navbar-brand"><img alt="Awesome Image" src="/customer/images\logo\den.png"></a>
         </div>
         <div id="main-navigation" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
