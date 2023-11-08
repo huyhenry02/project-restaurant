@@ -20,7 +20,8 @@ class UserController extends BaseController
     }
     public function show_list_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('employee.page.user.list');
+        $employee = Employee::all():
+        return view('employee.page.user.list', ['employee'=>$employee]);
     }
 
     public function create_employee(CreateEmployeeRequest $request)
