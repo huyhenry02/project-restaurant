@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Reservation;
 
 use App\Modules\Reservation\Models\Reservation;
+use App\Modules\Table\Models\Table;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
+use PharIo\Version\Exception;
 
 class ReservationController extends BaseController
 {
@@ -32,5 +34,39 @@ class ReservationController extends BaseController
         $reservation = Reservation::find($id);
         $reservation->delete();
         return redirect()->route('show_list_reservation.index')->with('success', 'Đã được xóa thành công!');
+    }
+    public function show_update_reservation($id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $reservation = Reservation::find($id);
+        $table = Table::all();
+        $status = Reservation::all();
+        return view('employee.page.reservation.edit',['reservation'=>$reservation, 'table'=>$table,'status'=>$status]);
+    }
+    public function update_reservation(Request $request,$id): RedirectResponse
+    {
+        try {
+            DB::beginTransaction();
+            $reservation = Reservation::find($id);
+            $reservation->customer->update([
+                'name' => $request->input('name'),
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email'),
+            ]);
+
+            $reservation->update([
+                'reservation_date' => $request->input('reservation_date'),
+                'time' => $request->input('time'),
+                'number_of_guests' => $request->input('number_of_guests'),
+                'status' => $request->input('status'),
+                'table_id' => $request->input('table_id'),
+                'note' => $request->input('note'),
+            ]);
+            DB::commit();
+            return redirect()->route('show_list_reservation.index');
+        }catch (Exception $e)
+        {
+            DB::rollback();
+            dd($e->getMessage());
+        }
     }
 }

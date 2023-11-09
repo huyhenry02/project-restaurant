@@ -90,6 +90,7 @@ Route::prefix('admin')->group(function () {
         ////show
         Route::get('/show_create_order', [OrderController::class, 'show_create_order'])->name('show_create_order.index');
         Route::get('/show_list_order', [OrderController::class, 'show_list_order'])->name('show_list_order.index');
+        Route::get('/show_update_order/{order_id}', [OrderController::class, 'show_update_order'])->name('show_update_order.index');
         //action
         Route::get('/delete_order/{order_id}', [OrderController::class, 'destroy'])->name('order.delete');
     });
@@ -98,8 +99,11 @@ Route::prefix('admin')->group(function () {
         ///show
         Route::get('/show_create_reservation', [ReservationController::class, 'show_create_reservation'])->name('show_create_reservation.index');
         Route::get('/show_list_reservation', [ReservationController::class, 'show_list_reservation'])->name('show_list_reservation.index');
+        Route::get('/show_update_reservation/{reservation_id}', [ReservationController::class, 'show_update_reservation'])->name('show_update_reservation.index');
         //action
         Route::get('/delete_reservation/{reservation_id}', [ReservationController::class, 'destroy'])->name('reservation.delete');
+        Route::post('/update_reservation/{reservation_id}', [ReservationController::class, 'update_reservation'])->name('update_reservation.post');
+
     });
     //table
     Route::prefix('table')->group(function (){

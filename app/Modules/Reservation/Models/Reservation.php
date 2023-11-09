@@ -27,7 +27,7 @@ class Reservation extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');
     }
-    public function table(): BelongsTo
+    public function table_reservation(): BelongsTo
     {
         return $this->belongsTo(Table::class,'table_id','table_id');
     }

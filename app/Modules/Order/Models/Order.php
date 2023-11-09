@@ -24,10 +24,10 @@ class Order extends Model
 
     public function customer(): BelongsTo
     {
-        return $this->belongsTo(Customer::class, 'order_id','order_id');
+        return $this->belongsTo(Customer::class, 'customer_id','customer_id');
     }
-    public function table(): BelongsTo
+    public function table_reservation(): BelongsTo
     {
-        return $this->belongsTo(Table::class,'order_id','order_id');
+        return $this->belongsTo(Table::class,'table_id','table_id');
     }
 }

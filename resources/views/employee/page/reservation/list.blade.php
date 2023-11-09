@@ -123,11 +123,11 @@
                                 @endif
                             </td>
                             <td>{{ $val ? $val->number_of_guests : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->table->name ?? '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val->table_reservation->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->reservation_date : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>
                             <td>
-                                <a class="btn btn-sm btn-white" href="" >
+                                <a class="btn btn-sm btn-white" href="{{route('show_update_reservation.index',$val->reservation_id)}}" >
                                     <i class="tio-edit"></i>
                                 </a>
                                 <a class="btn btn-sm btn-white" href="{{route('reservation.delete',$val->reservation_id)}}" >
