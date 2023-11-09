@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller as BaseController;
 
 class ReservationController extends BaseController
@@ -25,5 +26,11 @@ class ReservationController extends BaseController
             'reservation'=>$reservation,
             'reservationCount'=>$reservationCount
         ]);
+    }
+    public function destroy($id): RedirectResponse
+    {
+        $reservation = Reservation::find($id);
+        $reservation->delete();
+        return redirect()->route('show_list_reservation.index')->with('success', 'Đã được xóa thành công!');
     }
 }

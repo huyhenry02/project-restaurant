@@ -14,14 +14,21 @@ use Illuminate\Support\Facades\DB;
 class UserController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
     public function show_create_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee.page.user.create');
     }
+
     public function show_list_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $employee = Employee::all():
-        return view('employee.page.user.list', ['employee'=>$employee]);
+        $employee = Employee::all();
+        $employeeCount = Employee::count();
+        return view('employee.page.user.list',
+            [
+                'employee' => $employee,
+                'employeeCount' => $employeeCount,
+            ]);
     }
 
     public function create_employee(CreateEmployeeRequest $request)
@@ -41,5 +48,11 @@ class UserController extends BaseController
             DB::rollback();
             dd($e->getMessage());
         }
+    }
+    public function destroy($id): RedirectResponse
+    {
+        $employee = Employee::find($id);
+        $employee->delete();
+        return redirect()->route('show_list_employee.index')->with('success', 'Đã được xóa thành công!');
     }
 }

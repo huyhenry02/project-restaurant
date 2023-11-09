@@ -7,6 +7,7 @@ use App\Modules\Role\Requests\CreateRoleRequest;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
@@ -41,5 +42,11 @@ class RoleController extends BaseController
             DB::rollback();
             dd($e->getMessage());
         }
+    }
+    public function destroy($id): RedirectResponse
+    {
+        $role = Role::find($id);
+        $role->delete();
+        return redirect()->route('show_list_role.index')->with('success', 'Đã được xóa thành công!');
     }
 }

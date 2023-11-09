@@ -70,200 +70,32 @@
         </div>
         <div class="our-menu-tab">
             <ul role="tablist" class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Breakfast</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lunch</a></li>
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Dinner</a></li>
+                @foreach($categories as $category)
+                    <li role="presentation">
+                        <a href="#category_{{ $category->category_id ?? '' }}" aria-controls="category_{{ $category->category_id ?? '' }}" role="tab" data-toggle="tab">{{ $category->name ?? '' }}</a>
+                    </li>
+                @endforeach
             </ul>
             <!-- Tab panes-->
             <div class="myTabContent tab-content">
-                <div id="home" role="tabpanel" class="tab-pane active">
-                    <div class="tab-inner-cont"><img src="images\restaurant\6.jpg" alt="" class="img-responsive">
-                        <p>Bữa sáng phục vụ từ 7h - 12h</p>
-                        <div class="media">
-                            <div class="media-left">
-                                <h2>BÁNH MỲ</h2>
-                                <p>Bánh mỳ, pate, thịt xá xíu, trứng, đồ chua</p>
-                            </div>
-                            <div class="media-right">
-                                <p>30<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>PHỞ BÒ</h2>
-                                <p>Phở, thịt bò, rau thơm, hành, nước dùng </p>
-                            </div>
-                            <div class="media-right">
-                                <p>60<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>BÚN CHẢ</h2>
-                                <p>Bún, chả thịt, chả miếng, cà rốt, su hào</p>
-                            </div>
-                            <div class="media-right">
-                                <p>50<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>BÚN ĐẬU</h2>
-                                <p>Bún, đậu rán, nem chả, mắm tôm, rau</p>
-                            </div>
-                            <div class="media-right">
-                                <p>60<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border media-n-border">
-                            <div class="media-left">
-                                <h2>XÔI</h2>
-                                <p>Xôi, thịt, trứng, pate, tương, dưa góp</p>
-                            </div>
-                            <div class="media-right">
-                                <p>40<sup>đ</sup></p>
-                            </div>
+              @foreach($categories as $category)
+                    <div id="category_{{ $category->category_id ?? '' }}" role="tabpanel" class="tab-pane">
+                        <div class="tab-inner-cont"><img src="images\restaurant\6.jpg" alt="" class="img-responsive">
+                            @foreach($category->menuItems as $food)
+                                <div class="media">
+                                    <div class="media-left">
+                                        <h2>{{ $food->item_name ?? '' }}</h2>
+                                        <p>{{ $food->description ?? '' }}</p>
+                                    </div>
+                                    <div class="media-right">
+                                        <p>{{ $food->price ?? '' }}<sup>VNĐ</sup></p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
-                <div id="profile" role="tabpanel" class="tab-pane fade">
-                    <div class="tab-inner-cont"><img src="images\restaurant\6.jpg" alt="" class="img-responsive">
-                        <p>Bữa trưa phục vụ từ 12h - 18h</p>
-                        <div class="media">
-                            <div class="media-left">
-                                <h2>BÁNH MỲ</h2>
-                                <p>Bánh mỳ, pate, thịt xá xíu, trứng, đồ chua</p>
-                            </div>
-                            <div class="media-right">
-                                <p>30<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>PHỞ BÒ</h2>
-                                <p>Phở, thịt bò, rau thơm, hành, nước dùng </p>
-                            </div>
-                            <div class="media-right">
-                                <p>60<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>BÚN CHẢ</h2>
-                                <p>Bún, chả thịt, chả miếng, cà rốt, su hào</p>
-                            </div>
-                            <div class="media-right">
-                                <p>50<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>BÚN ĐẬU</h2>
-                                <p>Bún, đậu rán, nem chả, mắm tôm, rau</p>
-                            </div>
-                            <div class="media-right">
-                                <p>60<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border media-n-border">
-                            <div class="media-left">
-                                <h2>XÔI</h2>
-                                <p>Xôi, thịt, trứng, pate, tương, dưa góp</p>
-                            </div>
-                            <div class="media-right">
-                                <p>40<sup>đ</sup></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="messages" role="tabpanel" class="tab-pane fade">
-                    <div class="tab-inner-cont"><img src="images\restaurant\6.jpg" alt="" class="img-responsive">
-                        <p>Bữa tối phục vụ từ 18h - 22h</p>
-                        <div class="media">
-                            <div class="media-left">
-                                <h2>BÁNH MỲ</h2>
-                                <p>Bánh mỳ, pate, thịt xá xíu, trứng, đồ chua</p>
-                            </div>
-                            <div class="media-right">
-                                <p>30<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>PHỞ BÒ</h2>
-                                <p>Phở, thịt bò, rau thơm, hành, nước dùng </p>
-                            </div>
-                            <div class="media-right">
-                                <p>60<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>BÚN CHẢ</h2>
-                                <p>Bún, chả thịt, chả miếng, cà rốt, su hào</p>
-                            </div>
-                            <div class="media-right">
-                                <p>50<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border">
-                            <div class="media-left">
-                                <h2>BÚN ĐẬU</h2>
-                                <p>Bún, đậu rán, nem chả, mắm tôm, rau</p>
-                            </div>
-                            <div class="media-right">
-                                <p>60<sup>đ</sup></p>
-                            </div>
-                        </div>
-                        <div class="media media-border media-n-border">
-                            <div class="media-left">
-                                <h2>XÔI</h2>
-                                <p>Xôi, thịt, trứng, pate, tương, dưa góp</p>
-                            </div>
-                            <div class="media-right">
-                                <p>40<sup>đ</sup></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              @endforeach
             </div>
         </div>
     </section>
-    <!-- Our Menu-->
-    <!-- Reserve a table-->
-    <!-- <section class="our-table-wrapper">
-       <div class="our-menu-wrapper container clearfix common-pad">
-         <div class="row">
-           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-             <div class="our-table-cont">
-               <h2>Đặt bàn</h2>
-               <p>Hãy đặt bàn ngay hôm nay và khám phá thế giới hương vị đa dạng tại nhà hàng của chúng tôi.</p>
-             </div>
-           </div>
-           <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12">
-             <div class="table-form input_form">
-               <form id="contactForm" action="contact_process.php" method="post">
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                   <input placeholder="Ngày đặt" type="text" class="form-control datepicker-example8">
-                 </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                   <input id="room" type="text" name="room" placeholder="Số lượng" class="form-control">
-                 </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                   <input id="yname" type="text" name="yname" placeholder="Cho chúng tôi biết tên bạn.." class="form-control">
-                 </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                   <input id="table" type="text" name="table" placeholder="Cho chúng tôi cách liên hệ với bạn" class="form-control">
-                 </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                   <button type="submit" class="res-btn">Book now</button>
-                 </div>
-               </form>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>-->
-    <!-- Reserve a table-->
-    <!-- Welcome banner  style-->
 @endsection

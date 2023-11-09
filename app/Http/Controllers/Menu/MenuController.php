@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller as BaseController;
 
 class MenuController extends BaseController
@@ -22,5 +23,11 @@ class MenuController extends BaseController
         $menu = Menu::all();
         $menuCount = Menu::count();
         return view('employee.page.menu.list',['menu'=>$menu,'menuCount'=>$menuCount]);
+    }
+    public function destroy($id): RedirectResponse
+    {
+        $menu = Menu::find($id);
+        $menu->delete();
+        return redirect()->route('show_list_menu.index')->with('success', 'Đã được xóa thành công!');
     }
 }

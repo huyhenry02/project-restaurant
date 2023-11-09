@@ -23,25 +23,25 @@ class BookTableRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|string|max:255',
-            'email'=>'required|string|max:255',
-            'phone'=>'required|numeric',
-            'number_of_guests' =>'required|numeric',
-            'table_id' =>'required',
-            'reservation_date' =>'required|date',
-            'time' =>'required',
-            'note' =>'string|max:255',
+//            'email'=>'required|string|max:255',
+//            'phone'=>'required|numeric',
+//            'number_of_guests' =>'required|numeric',
+//            'table_id' =>'required|numeric',
+//            'reservation_date' =>'required|date',
+//            'time' =>'required',
+//            'note' =>'required|string|max:255',
         ];
     }
     public function messages(): array
     {
         return [
-            'name.required' => 'Vui lòng nhập tên của bạn.',
-            'email.required' => 'Vui lòng nhập email.',
-            'phone.required' => 'Vui lòng nhập số điện thoại.',
-            'number_of_guests.required' => 'Vui lòng nhập số người.',
-            'reservation_date.required' => 'Vui lòng nhập ngày ăn.',
-            'time.required' => 'Vui lòng nhập giờ.',
+//            'email.required' => 'Vui lòng nhập email.',
+//            'phone.required' => 'Vui lòng nhập số điện thoại.',
+//            'number_of_guests.required' => 'Vui lòng nhập số người.',
+//            'table_id.required' => 'Vui lòng chọn bàn',
+//            'reservation_date.required' => 'Vui lòng nhập ngày ăn.',
+//            'time.required' => 'Vui lòng nhập giờ.',
+//            'note.required' => 'Vui lòng nhập giờ.',
         ];
     }
 }

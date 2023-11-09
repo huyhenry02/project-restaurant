@@ -137,7 +137,7 @@
                                     luôn đồng hành bên nhau.</p>
                                 <div class="ro-text-two">
                                     <div class="left-p-two pull-left"><a
-                                            href="{{route('show_booking.index', ['id' => $tableItem->table_id])}}"
+                                            href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}"
                                             class="res-btn">Booking</a></div>
                                     <div class="right-p-two pull-right">
                                         <p>18<sup>đ</sup><span>Per time</span></p>

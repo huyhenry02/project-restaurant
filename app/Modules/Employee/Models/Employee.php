@@ -23,7 +23,7 @@ class Employee extends Model
 
     public function role(): BelongsTo
     {
-        return $this->belongsTo(Role::class,'employee_id','employee_id');
+        return $this->belongsTo(Role::class,'role_id','role_id');
     }
 
 }

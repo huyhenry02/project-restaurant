@@ -111,7 +111,8 @@
                             <td>{{ $val->customer->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->customer->phone ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->note : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td> @if ($val->status === 'approved')
+                            <td>
+                                @if ($val->status === 'approved')
                                     <span class="legend-indicator bg-danger"></span>Đã xác nhận
                                 @elseif ($val->status === 'pending')
                                     <span class="legend-indicator bg-success"></span>Chờ xác nhận
@@ -119,16 +120,17 @@
                                     <span class="legend-indicator bg-success"></span>Đang ăn
                                 @elseif ($val->status === 'completed')
                                     <span class="legend-indicator bg-success"></span>Hoàn thành
-                                @endif</td>
+                                @endif
+                            </td>
                             <td>{{ $val ? $val->number_of_guests : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->table->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->reservation_date : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val ? $val->time : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-white" href="" >
+                                <a class="btn btn-sm btn-white" href="{{route('reservation.delete',$val->reservation_id)}}" >
                                     <i class="tio-delete"></i>
                                 </a>
                             </td>

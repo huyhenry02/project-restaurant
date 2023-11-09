@@ -117,7 +117,7 @@
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-white" href="" >
+                                <a class="btn btn-sm btn-white" href="{{route('menu.delete',$val->item_id)}}" >
                                     <i class="tio-delete"></i>
                                 </a>
                             </td>

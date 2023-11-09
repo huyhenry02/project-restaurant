@@ -6,6 +6,7 @@ use App\Modules\Reservation\Models\Reservation;
 use App\Modules\Table\Models\Table;
 use App\Modules\Table\Requests\CreateTableRequest;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -32,11 +33,11 @@ class TableController extends BaseController
         try {
             DB::beginTransaction();
             $validatedData = $request->validated();
-            $role = new Table();
-            $role->name = $validatedData['name'];
-            $role->description = $validatedData['description'];
-            $role->amount = $validatedData['amount'];
-            $role->save();
+            $table = new Table();
+            $table->name = $validatedData['name'];
+            $table->description = $validatedData['description'];
+            $table->amount = $validatedData['amount'];
+            $table->save();
             DB::commit();
             return redirect()->route('show_list_table.index');
         } catch (Exception $e) {
@@ -60,5 +61,11 @@ class TableController extends BaseController
             'availableTableCounts' => $availableTableCounts,
             'tableItems'=>$tableItems,
             'reservationDate' => $reservationDate]);
+    }
+    public function destroy($id): RedirectResponse
+    {
+        $table = Table::find($id);
+        $table->delete();
+        return redirect()->route('show_list_table.index')->with('success', 'Đã được xóa thành công!');
     }
 }
