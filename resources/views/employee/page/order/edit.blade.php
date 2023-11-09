@@ -106,17 +106,6 @@
                         <!-- End Form Group -->
                     </div>
                     <div class="row">
-                        <div class="col-sm-offset-6">
-                            {{--                            <!-- Form Group -->--}}
-                            {{--                            <div class="form-group">--}}
-                            {{--                                <label for="SKULabel" class="input-label">Số người </label>--}}
-
-                            {{--                                <input type="number" class="form-control" name="number_of_guests" id="SKULabel"--}}
-                            {{--                                       placeholder="eg. 348121032" aria-label="eg. 348121032"--}}
-                            {{--                                       value="{{$reservation->number_of_guests}}">--}}
-                            {{--                            </div>--}}
-                            {{--                            <!-- End Form Group -->--}}
-                        </div>
 
                         <div class="col-sm-4">
                             <!-- Form Group -->
@@ -141,30 +130,6 @@
                             </div>
                             <!-- End Form Group -->
                         </div>
-                        {{--                        <div class="col-sm-4">--}}
-                        {{--                            <!-- Form Group -->--}}
-                        {{--                            <div class="form-group">--}}
-                        {{--                                <label for="categoryLabel" class="input-label">Trạng thái</label>--}}
-
-                        {{--                                <!-- Select -->--}}
-                        {{--                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;"--}}
-                        {{--                                        id="categoryLabel" data-hs-select2-options='{--}}
-                        {{--                            "minimumResultsForSearch": "Infinity",--}}
-                        {{--                            "placeholder": "Sửa trạng thái"--}}
-                        {{--                          }' name="status">--}}
-                        {{--                                    <option label="empty"></option>--}}
-                        {{--                                    <option value="{{$reservation->status}}"--}}
-                        {{--                                            selected="">{{$reservation->status}}</option>--}}
-                        {{--                                    <option value="approved">Approved</option>--}}
-                        {{--                                    <option value="completed">Completed</option>--}}
-                        {{--                                    <option value="pending">Pending</option>--}}
-                        {{--                                    <option value="processing">Processing</option>--}}
-                        {{--                                </select>--}}
-                        {{--                                <!-- End Select -->--}}
-                        {{--                            </div>--}}
-                        {{--                            <!-- End Form Group -->--}}
-                        {{--                        </div>--}}
-                        <!-- End Form Group -->
                     </div>
                 </div>
             </div>
@@ -178,7 +143,7 @@
                 <div class="card-header">
                     <div class="row justify-content-between align-items-center flex-grow-1">
                         <div class="col-12 col-sm mb-3 mb-sm-0">
-                            <h4 class="card-header-title">Variants</h4>
+                            <h4 class="card-header-title">Món đã gọi</h4>
                         </div>
 
                         <div class="col-auto">
@@ -196,10 +161,7 @@
                                     </div>
                                 </div>
                                 <!-- End Datatable Info -->
-
-                                <a class="js-create-field btn btn-sm btn-ghost-secondary" href="javascript:;">
-                                    <i class="tio-add"></i> Add variant
-                                </a>
+                                <button type="button" id="addItemBtn" class="js-create-field btn btn-sm btn-ghost-secondary"> <i class="tio-add"></i> Thêm món</button>
                             </div>
                         </div>
                     </div>
@@ -228,632 +190,89 @@
                                 </div>
                             </th>
                             <th></th>
-                            <th class="table-column-pl-0">Size</th>
-                            <th class="table-column-pl-0">Color</th>
-                            <th class="table-column-pl-0">Price</th>
-                            <th class="table-column-pl-0">Quantity</th>
+                            <th class="table-column-pl-0">Tên món</th>
+                            <th class="table-column-pl-0">Mô tả</th>
+                            <th class="table-column-pl-0">Giá</th>
+                            <th class="table-column-pl-0">Số lượng</th>
                             <th class="table-column-pl-0"></th>
                         </tr>
                         </thead>
 
                         <tbody id="addVariantsContainer">
-                        <tr>
+                        @foreach($orderDetails as $detail)
+                            <tr>
+                                <td class="table-column-pr-0">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="productVariationsCheck1">
+                                        <label class="custom-control-label" for="productVariationsCheck1"></label>
+                                    </div>
+                                </td>
+                                <th>
+
+                                </th>
+                                <th class="table-column-pl-0">
+                                    <input type="text" class="form-control" value="{{$detail->menuItem->item_name ?? ''}}" name="item_name">
+                                </th>
+                                <th class="table-column-pl-0">
+                                    <input type="text" class="form-control" value="{{$detail->menuItem->description ?? ''}}" name="description">
+                                </th>
+                                <th class="table-column-pl-0">
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">VNĐ</div>
+                                        </div>
+                                        <input type="text" class="form-control pl-8" value="{{$detail->menuItem->price ?? ''}}" name="price">
+                                    </div>
+                                </th>
+                                <th class="table-column-pl-0">
+                                    <div class="js-quantity-counter input-group-quantity-counter">
+                                        <input type="number" class="js-result form-control input-group-quantity-counter-control" value="{{$detail->quantity ?? ''}}" name="quantity">
+                                    </div>
+                                    <!-- End Quantity Counter -->
+                                </th>
+                                <th class="table-column-pl-0">
+                                    <div class="btn-group" role="group" aria-label="Edit group">
+                                        <a class="btn btn-white" href="#">
+                                            <i class="tio-delete-outlined"></i>
+                                        </a>
+                                    </div>
+                                </th>
+                            </tr>
+
+                        @endforeach
+                        <tr id="addVariantsTemplate" style="display: none;" data-cloneable="true">
                             <td class="table-column-pr-0">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck1">
-                                    <label class="custom-control-label" for="productVariationsCheck1"></label>
+                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck13">
+                                    <label class="custom-control-label" for="productVariationsCheck13"></label>
                                 </div>
                             </td>
                             <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
+
                             </th>
                             <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="S">
+                                <input type="text" class="form-control" name="item_name">
                             </th>
                             <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="White">
+                                <input type="text" class="form-control" name="description">
                             </th>
                             <th class="table-column-pl-0">
                                 <div class="input-group input-group-merge">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
+                                        <div class="input-group-text">VNĐ</div>
                                     </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
+                                    <input type="text" class="form-control pl-8" name="price">
                                 </div>
                             </th>
                             <th class="table-column-pl-0">
                                 <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
+                                <div class="js-quantity-counter-dynamic input-group-quantity-counter">
+                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="1" name="quantity">
                                 </div>
                                 <!-- End Quantity Counter -->
                             </th>
                             <th class="table-column-pl-0">
                                 <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck2">
-                                    <label class="custom-control-label" for="productVariationsCheck2"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="M">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="White">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck3">
-                                    <label class="custom-control-label" for="productVariationsCheck3"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="L">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="White">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck4">
-                                    <label class="custom-control-label" for="productVariationsCheck4"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="XL">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="White">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck5">
-                                    <label class="custom-control-label" for="productVariationsCheck5"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="S">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Black">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck6">
-                                    <label class="custom-control-label" for="productVariationsCheck6"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="M">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Black">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck7">
-                                    <label class="custom-control-label" for="productVariationsCheck7"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="L">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Black">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck8">
-                                    <label class="custom-control-label" for="productVariationsCheck8"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="XL">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Black">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="45.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="10">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck9">
-                                    <label class="custom-control-label" for="productVariationsCheck9"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="S">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Orange">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="50.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="5">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck10">
-                                    <label class="custom-control-label" for="productVariationsCheck10"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="M">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Orange">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="50.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="5">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck11">
-                                    <label class="custom-control-label" for="productVariationsCheck11"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="L">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Orange">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="50.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="5">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-delete-outlined"></i>
-                                    </a>
-                                </div>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <td class="table-column-pr-0">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="productVariationsCheck12">
-                                    <label class="custom-control-label" for="productVariationsCheck12"></label>
-                                </div>
-                            </td>
-                            <th>
-                                <img class="avatar" src="assets\img\400x400\img7.jpg" alt="Image Description">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="XL">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <input type="text" class="form-control" value="Orange">
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="input-group input-group-merge">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">USD</div>
-                                    </div>
-                                    <input type="text" class="form-control pl-8" value="50.00">
-                                </div>
-                            </th>
-                            <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
-                                <div class="js-quantity-counter input-group-quantity-counter">
-                                    <input type="number" class="js-result form-control input-group-quantity-counter-control" value="5">
-
-                                    <div class="input-group-quantity-counter-toggle">
-                                        <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-remove"></i>
-                                        </a>
-                                        <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                            <i class="tio-add"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- End Quantity Counter -->
-                            </th>
-                            <th class="table-column-pl-0">
-                                <div class="btn-group" role="group" aria-label="Edit group">
-                                    <a class="btn btn-white" href="#">
-                                        <i class="tio-edit"></i> Edit
-                                    </a>
                                     <a class="btn btn-white" href="#">
                                         <i class="tio-delete-outlined"></i>
                                     </a>
@@ -863,82 +282,59 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- End Table -->
 
-                <!-- Footer -->
-                <div class="card-footer">
-                    <a class="js-create-field btn btn-sm btn-ghost-secondary" href="javascript:;">
-                        <i class="tio-add"></i> Add variant
-                    </a>
-                </div>
-                <!-- End Footer -->
-
-                <!-- Add Variants Field -->
-                <table style="display: none;">
-                    <tr id="addVariantsTemplate">
-                        <td class="table-column-pr-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="productVariationsCheck13">
-                                <label class="custom-control-label" for="productVariationsCheck13"></label>
-                            </div>
-                        </td>
-                        <th>
-                            <img class="avatar" src="assets\img\400x400\img2.jpg" alt="Image Description">
-                        </th>
-                        <th class="table-column-pl-0">
-                            <input type="text" class="form-control">
-                        </th>
-                        <th class="table-column-pl-0">
-                            <input type="text" class="form-control">
-                        </th>
-                        <th class="table-column-pl-0">
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">USD</div>
-                                </div>
-                                <input type="text" class="form-control pl-8">
-                            </div>
-                        </th>
-                        <th class="table-column-pl-0">
-                            <!-- Quantity Counter -->
-                            <div class="js-quantity-counter-dynamic input-group-quantity-counter">
-                                <input type="number" class="js-result form-control input-group-quantity-counter-control" value="1">
-
-                                <div class="input-group-quantity-counter-toggle">
-                                    <a class="js-minus input-group-quantity-counter-btn" href="javascript:;">
-                                        <i class="tio-remove"></i>
-                                    </a>
-                                    <a class="js-plus input-group-quantity-counter-btn" href="javascript:;">
-                                        <i class="tio-add"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- End Quantity Counter -->
-                        </th>
-                        <th class="table-column-pl-0">
-                            <div class="btn-group" role="group" aria-label="Edit group">
-                                <a class="btn btn-white" href="#">
-                                    <i class="tio-edit"></i> Edit
-                                </a>
-                                <a class="btn btn-white" href="#">
-                                    <i class="tio-delete-outlined"></i>
-                                </a>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
-                <!-- End Add Variants Field -->
             </div>
+            <hr>
+
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
             <!-- Body -->
         </div>
+        <div class="col-lg-4">
+            <!-- Card -->
+            <div class="card mb-3 mb-lg-5">
+                <!-- Header -->
+                <div class="card-header">
+                    <h4 class="card-header-title">Tổng giá trị hoá đơn</h4>
+                </div>
+                <div class="row justify-content-md-end mb-3">
+
+                        <dl class="row text-sm-center">
+                            <dt class="col-sm-6">Tổng:</dt>
+                            <dd class="col-sm-6">{{$order->total_amount}} VNĐ</dd>
+                            <dt class="col-sm-6">Giảm giá</dt>
+                            <dd class="col-sm-6">0 VNĐ</dd>
+                            <dt class="col-sm-6">Tổng tiền phải trả:</dt>
+                            <dd class="col-sm-6">{{$order->total_amount}} VNĐ</dd>
+                        </dl>
+                        <!-- End Row -->
+                </div>
+            </div>
+
+        </div>
     </div>
 </form>
 
+
+        </div>
+
         </div>
         </div>
-        </div>
+
     </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var table = document.getElementById("datatable");
+            var templateRow = document.getElementById("addVariantsTemplate");
+            var addItemBtn = document.getElementById("addItemBtn");
+            addItemBtn.addEventListener("click", function () {
+                var newRow = templateRow.cloneNode(true);
+                newRow.style.display = "table-row";
+                newRow.removeAttribute("id");
+                table.querySelector("tbody").appendChild(newRow);
+            });
+        });
+    </script>
+
 @endsection

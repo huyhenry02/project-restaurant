@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Order;
 
 use App\Modules\Order\Models\Order;
+use App\Modules\OrderDetail\Models\OrderDetail;
 use App\Modules\Table\Models\Table;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -29,16 +30,24 @@ class OrderController extends BaseController
                 'orderCount' => $orderCount,
             ]);
     }
+
     public function destroy($id): RedirectResponse
     {
         $order = Order::find($id);
         $order->delete();
         return redirect()->route('show_list_order.index')->with('success', 'Đã được xóa thành công!');
     }
+
     public function show_update_order($id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $order = Order::find($id);
+        $orderDetails = OrderDetail::where('order_id', $id)->get();
         $table = Table::all();
-        return view('employee.page.order.edit',['order'=>$order, 'table'=>$table]);
+        return view('employee.page.order.edit',
+            [
+                'order' => $order,
+                'table' => $table,
+                'orderDetails' => $orderDetails
+            ]);
     }
 }
