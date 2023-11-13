@@ -21,7 +21,7 @@ Dự án là một trang web nhà hàng được xây dựng bằng Laravel. Nó
 2. Di chuyển vào thư mục dự án:
 
     ```bash
-    cd restaurant-website
+    cd project-restaurant
     ```
 
 3. Sao chép file `.env.example` thành `.env`:
