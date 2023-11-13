@@ -7,19 +7,13 @@
 
 
                     <a class="navbar-brand" href="index.html" aria-label="Front">
-                        <img class="navbar-brand-logo" src="/frontend/assets\svg\logos\logo.svg" alt="Logo">
+                        <img class="navbar-brand-logo" src="/customer/images/logo/trang.png" alt="Logo" style="width: 70px; height: 80px">
                     </a>
-
-                    <!-- End Logo -->
-
-                    <!-- Navbar Vertical Toggle -->
                     <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-vertical-aside-toggle btn btn-icon btn-xs btn-ghost-dark">
                         <i class="tio-clear tio-lg"></i>
                     </button>
-                    <!-- End Navbar Vertical Toggle -->
                 </div>
 
-                <!-- Content -->
                 <div class="navbar-vertical-content">
                     <ul class="navbar-nav navbar-nav-lg nav-tabs">
                         <!-- Dashboards -->

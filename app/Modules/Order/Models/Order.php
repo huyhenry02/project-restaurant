@@ -22,6 +22,7 @@ class Order extends Model
         'order_date',
         'total_amount',
         'time',
+        'status',
     ];
 
     public function customer(): BelongsTo

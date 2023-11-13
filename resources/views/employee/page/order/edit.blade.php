@@ -236,7 +236,9 @@
 
                             </th>
                             <th class="table-column-pl-0">
-                                <input type="text" class="form-control" name="item_name">
+                                <select class="form-control js-example-basic-single" name="item_name" style="width: 100%;">
+                                    <option value="" selected="selected">Chọn món ăn</option>
+                                </select>
                             </th>
                             <th class="table-column-pl-0">
                                 <input type="text" class="form-control" name="description">
@@ -308,5 +310,4 @@
             });
         });
     </script>
-
 @endsection

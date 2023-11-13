@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Order;
 
-use App\Modules\Menu\Models\Menu;
 use App\Modules\Order\Models\Order;
 use App\Modules\OrderDetail\Models\OrderDetail;
 use App\Modules\Table\Models\Table;

@@ -140,7 +140,7 @@
                                             href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}"
                                             class="res-btn">Booking</a></div>
                                     <div class="right-p-two pull-right">
-                                        <p>18<sup>đ</sup><span>Per time</span></p>
+                                        <p>{{$tableItem->amount}}</p>
                                     </div>
                                 </div>
                             </div>
