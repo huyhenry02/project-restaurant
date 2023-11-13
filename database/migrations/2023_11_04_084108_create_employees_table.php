@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id('employee_id');
             $table->string('name',45);
-            $table->string('address',45);
+            $table->string('address',255);
             $table->string('phone',45);
             $table->string('email',45);
             $table->integer('is_active')->default(1);

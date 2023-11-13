@@ -54,7 +54,7 @@ class TableController extends BaseController
         foreach ($tableItems as $tableType) {
             $count = Reservation::where('reservation_date', $reservationDate)
                 ->where('table_id', $tableType->table_id)
-                ->where('status', 'approved')
+                ->whereIn('status',['approved', 'completed', 'processing'])
                 ->count();
             $availableTableCounts[$tableType->name] = $tableType->amount - $count;
         }

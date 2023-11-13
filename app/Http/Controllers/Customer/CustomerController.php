@@ -88,7 +88,7 @@ class CustomerController extends BaseController
         $tableId = $request->input('table_id');
         $allTables = Table::all();
         $bookedTables = Reservation::where('reservation_date', $reservationDate)
-            ->where('status', 'approved')
+            ->whereIn('status',['approved', 'completed', 'processing'])
             ->where('table_id', $tableId)
             ->pluck('table_id')
             ->toArray();
