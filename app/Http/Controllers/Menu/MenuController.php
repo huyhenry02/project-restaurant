@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers\Menu;
 
+use App\Modules\CategoryFood\Models\CategoryFood;
 use App\Modules\Menu\Models\Menu;
+use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends BaseController
 {
     public function show_create_menu(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('employee.page.menu.create');
+        $category = CategoryFood::all();
+        return view('employee.page.menu.create',['category'=>$category]);
     }
 
     public function show_list_menu(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -29,5 +34,23 @@ class MenuController extends BaseController
         $menu = Menu::find($id);
         $menu->delete();
         return redirect()->route('show_list_menu.index')->with('success', 'Đã được xóa thành công!');
+    }
+    public function create_menu(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $menu = new Menu();
+            $menu->item_name = $request['item_name'];
+            $menu->description = $request['description'];
+            $menu->price = $request['price'];
+            $menu->category_id = $request['category_id'];
+            $menu->is_available = 1;
+            $menu->save();
+            DB::commit();
+            return redirect()->route('show_list_menu.index');
+        } catch (Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());
+        }
     }
 }

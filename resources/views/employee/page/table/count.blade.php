@@ -62,47 +62,31 @@
             <!-- Header -->
             <div class="card-header">
                 <div class="row justify-content-between align-items-center flex-grow-1">
-                    <div class="col-sm-6 col-md-4 mb-3 mb-sm-0">
-                        <form>
-                            <!-- Search -->
-                            <div class="input-group input-group-merge input-group-flush">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="tio-search"></i>
-                                    </div>
-                                </div>
-                                <input id="datatableSearch" type="search" class="form-control" placeholder="Tìm kiếm" aria-label="Search users">
-                            </div>
-                            <!-- End Search -->
-                        </form>
+                    <div class="col-sm-6-left">
+                        <div class="form-group">
+                            <form action="{{ route('count_table.post') }}" method="post">
+                                @csrf
+                                <dl class="row align-items-sm-center mb-3">
+                                    <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Ngày: </dt>
+                                    <dd class="col-sm-8 col-md-auto mb-0">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                    </span>
+                                            </div>
+                                            <input type="date" class="form-control flatpickr-custom-form-control" name="reservation_date">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary"> <i class="tio-chevron-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </form>
+
+                        </div>
+                        <dt class="col-sm-6">Ngày: <span>{{$reservationDate}}</span></dt>
                     </div>
 
-                    <div class="col-md-7 align-self-md-end">
-                        <!-- Form Group -->
-                        <div class="form-group">
-                            <form action="{{route('count_table.post')}}" method="post">
-                            <dl class="row align-items-sm-center mb-3">
-                                <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Lọc </dt>
-                                <dd class="col-sm-8 col-md-auto mb-0">
-                                    <div id="invoiceDateFlatpickr" class="js-flatpickr flatpickr-custom input-group input-group-merge">
-                                            @csrf
-                                        <label>
-                                            <input type="date" class="flatpickr-custom-form-control form-control" name="reservation_date">
-                                        </label>
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                </dd>
-                            </dl>
-                            </form>
-                            <dl class="row align-items-sm-center">
-                                <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Ngày:</dt>
-                                <span> {{$reservationDate}}</span>
-                            </dl>
-                        </div>
-                        <!-- End Form Group -->
-                    </div>
                 </div>
                 <!-- End Row -->
             </div>

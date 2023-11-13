@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{route('show_create_role.index')}}">
+                        <a class="btn btn-primary" href="{{route('show_create_menu.index')}}">
                             <i class="tio-user-add mr-1"></i> Thêm Món ăn
                         </a>
                     </div>

@@ -1,9 +1,7 @@
 @extends('employee.layout.main')
 @section('content')
     <main id="content" role="main" class="main">
-        <!-- Content -->
         <div class="content container-fluid">
-            <!-- Page Header -->
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col-sm mb-2 mb-sm-0">
@@ -18,23 +16,16 @@
                     </div>
                 </div>
             </div>
-            <!-- End Page Header -->
-
-<form action="" method="post">
+   <form action="{{route('update_order.post',$order->order_id)}}" method="post">
     @csrf
     <div class="row">
+
         <div class="col-lg-8">
-            <!-- Card -->
             <div class="card mb-3 mb-lg-5">
-                <!-- Header -->
                 <div class="card-header">
                     <h4 class="card-header-title">Thông tin Khách hàng</h4>
                 </div>
-                <!-- End Header -->
-
-                <!-- Body -->
                 <div class="card-body">
-                    <!-- Form Group -->
                     <div class="form-group">
                         <label for="productNameLabel" class="input-label"> Họ tên <i
                                 class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
@@ -44,11 +35,8 @@
                         <input type="text" class="form-control" name="name" id="productNameLabel"
                                aria-label="Shirt, t-shirts, etc." value="{{$order->customer->name}}">
                     </div>
-                    <!-- End Form Group -->
-
                     <div class="row">
                         <div class="col-sm-6">
-                            <!-- Form Group -->
                             <div class="form-group">
                                 <label for="SKULabel" class="input-label">Số điện thoại</label>
 
@@ -56,7 +44,6 @@
                                        placeholder="eg. 348121032" aria-label="eg. 348121032"
                                        value="{{$order->customer->phone}}">
                             </div>
-                            <!-- End Form Group -->
                         </div>
 
                         <div class="col-sm-6">
@@ -68,9 +55,7 @@
                                        placeholder="eg. 348121032" aria-label="eg. 348121032"
                                        value="{{$order->customer->email}}">
                             </div>
-                            <!-- End Form Group -->
                         </div>
-                        <!-- End Form Group -->
                     </div>
                 </div>
             </div>
@@ -89,7 +74,7 @@
                             <div class="form-group">
                                 <label for="SKULabel" class="input-label">Ngày ăn</label>
 
-                                <input type="date" class="form-control" name="reservation_date" id="SKULabel"
+                                <input type="date" class="form-control" name="order_date" id="SKULabel"
                                        value="{{$order->order_date}}">
                             </div>
                             <!-- End Form Group -->
@@ -200,6 +185,7 @@
 
                         <tbody id="addVariantsContainer">
                         @foreach($orderDetails as $detail)
+                            <input type="hidden" name="order_detail_id" value="{{$detail->order_detail_id}}">
                             <tr>
                                 <td class="table-column-pr-0">
                                     <div class="custom-control custom-checkbox">
@@ -228,7 +214,6 @@
                                     <div class="js-quantity-counter input-group-quantity-counter">
                                         <input type="number" class="js-result form-control input-group-quantity-counter-control" value="{{$detail->quantity ?? ''}}" name="quantity">
                                     </div>
-                                    <!-- End Quantity Counter -->
                                 </th>
                                 <th class="table-column-pl-0">
                                     <div class="btn-group" role="group" aria-label="Edit group">
@@ -265,11 +250,9 @@
                                 </div>
                             </th>
                             <th class="table-column-pl-0">
-                                <!-- Quantity Counter -->
                                 <div class="js-quantity-counter-dynamic input-group-quantity-counter">
                                     <input type="number" class="js-result form-control input-group-quantity-counter-control" value="1" name="quantity">
                                 </div>
-                                <!-- End Quantity Counter -->
                             </th>
                             <th class="table-column-pl-0">
                                 <div class="btn-group" role="group" aria-label="Edit group">
@@ -282,24 +265,18 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
             <hr>
-
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
-            <!-- Body -->
         </div>
         <div class="col-lg-4">
-            <!-- Card -->
             <div class="card mb-3 mb-lg-5">
-                <!-- Header -->
                 <div class="card-header">
                     <h4 class="card-header-title">Tổng giá trị hoá đơn</h4>
                 </div>
                 <div class="row justify-content-md-end mb-3">
-
                         <dl class="row text-sm-center">
                             <dt class="col-sm-6">Tổng:</dt>
                             <dd class="col-sm-6">{{$order->total_amount}} VNĐ</dd>
@@ -308,20 +285,15 @@
                             <dt class="col-sm-6">Tổng tiền phải trả:</dt>
                             <dd class="col-sm-6">{{$order->total_amount}} VNĐ</dd>
                         </dl>
-                        <!-- End Row -->
                 </div>
             </div>
 
         </div>
     </div>
 </form>
-
-
-        </div>
-
         </div>
         </div>
-
+        </div>
     </main>
     <script>
         document.addEventListener("DOMContentLoaded", function () {

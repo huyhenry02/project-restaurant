@@ -69,6 +69,7 @@
                 <div class="overlay">
                     <div class="border">
                         <form method="post" action="{{route('check_table.post')}}">
+                            @csrf
                             <div class="ser-in-box">
                                 <input placeholder="Ngày" type="text" class="form-control datepicker-example8 " name="reservation_date">
                             </div>
@@ -76,7 +77,7 @@
                                 <div class="loai">
                                     <select name="table_id" class="select-menu">
                                         <option value="default"> Loại</option>
-                                        @foreach($table as $tableItem)
+                                        @foreach($allTables as $tableItem)
                                             <option value="{{ $tableItem->table_id }}">{{ $tableItem->name }}</option>
                                         @endforeach
                                     </select>
@@ -124,7 +125,7 @@
         </div>
         <div class="room-slider">
             <div class="roomsuite-slider-two">
-                @foreach($table as $tableItem)
+                @foreach($allTables as $tableItem)
                     <div class="room-suite room-suite-htwo">
                         <div class="item">
                             <div class="ro-img"><img src="images\table\1.jpg" alt="" class="img-responsive"></div>
@@ -136,10 +137,10 @@
                                     luôn đồng hành bên nhau.</p>
                                 <div class="ro-text-two">
                                     <div class="left-p-two pull-left"><a
-                                            href="{{route('show_booking.index', ['id' => $tableItem->table_id])}}"
+                                            href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}"
                                             class="res-btn">Booking</a></div>
                                     <div class="right-p-two pull-right">
-                                        <p>18<sup>đ</sup><span>Per time</span></p>
+                                        <p>{{$remainingTables[$tableItem->table_id]}}</p>
                                     </div>
                                 </div>
                             </div>

@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id('reservation_id');
             $table->string('name',45);
             $table->string('note',45);
-            $table->enum('status',['pending', 'approved', 'processing','completed'])->default('pending');
+            $table->string('status',45)->default('pending');
             $table->unsignedBigInteger('customer_id');
             $table->integer('number_of_guests');
             $table->unsignedBigInteger('table_id');
             $table->date('reservation_date');
+            $table->integer('time');
             $table->timestamps();
         });
     }

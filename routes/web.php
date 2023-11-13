@@ -83,6 +83,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/show_create_menu', [MenuController::class, 'show_create_menu'])->name('show_create_menu.index');
         Route::get('/show_list_menu', [MenuController::class, 'show_list_menu'])->name('show_list_menu.index');
         //action
+        Route::post('/create_menu', [MenuController::class, 'create_menu'])->name('create_menu.post');
         Route::get('/delete_menu/{menu_id}', [MenuController::class, 'destroy'])->name('menu.delete');
     });
     //order
@@ -93,6 +94,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/show_update_order/{order_id}', [OrderController::class, 'show_update_order'])->name('show_update_order.index');
         //action
         Route::get('/delete_order/{order_id}', [OrderController::class, 'destroy'])->name('order.delete');
+        Route::post('/update_order/{order_id}', [OrderController::class, 'update_order'])->name('update_order.post');
     });
     //reservation
     Route::prefix('reservation')->group(function (){

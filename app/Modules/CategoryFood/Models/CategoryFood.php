@@ -12,6 +12,9 @@ class CategoryFood extends Model
     use HasFactory;
     public $table = 'category_foods';
     protected $primaryKey = 'category_id';
+    protected $fillable = [
+        'name'
+    ];
 
     public function menuItems(): HasMany
     {

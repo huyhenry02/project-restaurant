@@ -8,6 +8,7 @@ use App\Modules\Table\Models\Table;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -31,8 +32,8 @@ class Order extends Model
     {
         return $this->belongsTo(Table::class,'table_id','table_id');
     }
-    public function orders(): BelongsTo
+    public function order(): HasMany
     {
-        return $this->belongsTo(OrderDetail::class,'order_id','order_id');
+        return $this->hasMany(OrderDetail::class,'order_id','order_id');
     }
 }

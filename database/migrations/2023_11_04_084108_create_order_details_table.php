@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('menu_id');
             $table->integer('quantity');
-            $table->decimal('total');
+            $table->float('total');
             $table->timestamps();
         });
     }

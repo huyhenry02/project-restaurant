@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('table_id');
             $table->date('order_date');
-            $table->decimal('total_amount');
+            $table->float('total_amount');
+            $table->integer('time');
             $table->timestamps();
         });
     }

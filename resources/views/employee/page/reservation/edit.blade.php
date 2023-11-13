@@ -134,9 +134,8 @@
                             "minimumResultsForSearch": "Infinity",
                             "placeholder": "Select options"
                           }' name="table_id">
-                                    <option label="empty"></option>
                                     <option value="{{$reservation->table_reservation->table_id ?? ''}}"
-                                            selected="">{{$reservation->table_reservation->name ?? ''}}</option>
+                                            >{{$reservation->table_reservation->name ?? ''}}</option>
                                     @foreach($table as $key=>$val)
                                         <option value="{{$val->table_id ?? ''}}">{{$val->name ?? ''}}</option>
                                     @endforeach
@@ -157,13 +156,12 @@
                             "minimumResultsForSearch": "Infinity",
                             "placeholder": "Sửa trạng thái"
                           }' name="status">
-                                    <option label="empty"></option>
                                     <option value="{{$reservation->status}}"
-                                            selected="">{{$reservation->status}}</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="completed">Completed</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="processing">Processing</option>
+                                            >{{$reservation->status}}</option>
+                                    <option value="approved">Xác nhận</option>
+                                    <option value="completed">Hoàn thành</option>
+                                    <option value="pending"> Chờ xác nhận</option>
+                                    <option value="processing">Đang diễn ra</option>
                                 </select>
                                 <!-- End Select -->
                             </div>

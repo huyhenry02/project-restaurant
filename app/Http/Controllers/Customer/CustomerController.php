@@ -85,42 +85,34 @@ class CustomerController extends BaseController
     public function check_table(Request $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $reservationDate = $request->input('reservation_date');
-        $time = $request->input('time');
         $tableId = $request->input('table_id');
-
-        $availableTables = Reservation::where('reservation_date', $reservationDate)
-            ->where('table_id', $tableId)
-            ->where('time', $time)
+        $allTables = Table::all();
+        $bookedTables = Reservation::where('reservation_date', $reservationDate)
             ->where('status', 'approved')
-            ->count();
-        if ($availableTables > 0) {
-            $table = Table::where('table_id', $tableId)->first();
+            ->where('table_id', $tableId)
+            ->pluck('table_id')
+            ->toArray();
+        $bookedTablesCount = array_count_values($bookedTables);
+        $remainingTables = [];
+        foreach ($allTables as $table) {
+            $tableId = $table->table_id;
+            $totalTables = $table->amount;
+            $bookedCount = $bookedTablesCount[$tableId] ?? 0;
+            $remainingTables[$tableId] = $totalTables - $bookedCount;
+        }
             $countCustomer = Customer::count();
             $countTable = Table::count();
             $countReservation = Reservation::count();
             $countFood = Menu::count();
+
             return view('customer.page.available', [
-                'table' => $table,
+                'remainingTables' => $remainingTables,
                 'countCustomer' => $countCustomer,
                 'countTable' => $countTable,
                 'countReservation' => $countReservation,
                 'countFood' => $countFood,
+                'allTables' => $allTables,
             ]);
-        }
-        $table = Table::all();
-        $countCustomer = Customer::count();
-        $countTable = Table::count();
-        $countReservation = Reservation::count();
-        $countFood = Menu::count();
-        return view('customer.page.no_available', [
-            'table' => $table,
-            'reservationDate' => $reservationDate,
-            'time' => $time,
-            'countCustomer' => $countCustomer,
-            'countTable' => $countTable,
-            'countReservation' => $countReservation,
-            'countFood' => $countFood,
-        ]);
     }
 
     public function book_table(Request $request): string

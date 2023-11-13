@@ -49,10 +49,11 @@ class TableController extends BaseController
     public function count_table(Request $request): \Illuminate\Contracts\Foundation\Application|Factory|View|Application
     {
         $reservationDate = $request->input('reservation_date');
-        $tableItems = Table::with('reservations')->get();
+        $tableItems = Table::all();
         $availableTableCounts = [];
         foreach ($tableItems as $tableType) {
             $count = Reservation::where('reservation_date', $reservationDate)
+                ->where('table_id', $tableType->table_id)
                 ->where('status', 'approved')
                 ->count();
             $availableTableCounts[$tableType->name] = $tableType->amount - $count;
