@@ -85,7 +85,7 @@
                                 <label class="custom-control-label" for="datatableCheckAll"></label>
                             </div>
                         </th>
-                        <th>Tên Bàn đã đặt</th>
+                        <th>Mã bàn</th>
                         <th>Tên Khách hàng</th>
                         <th>Số điện thoại</th>
                         <th>Ghi chú</th>
