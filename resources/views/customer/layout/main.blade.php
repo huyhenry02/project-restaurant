@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <title>Délicat</title>
     <!-- reponsive meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap-->

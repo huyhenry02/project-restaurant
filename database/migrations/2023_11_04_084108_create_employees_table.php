@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('address',255);
             $table->string('phone',45);
             $table->string('email',45);
-            $table->integer('is_active')->default(1);
             $table->unsignedBigInteger('role_id');
             $table->timestamps();
         });

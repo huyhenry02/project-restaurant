@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('description',45);
             $table->float('price');
             $table->unsignedBigInteger('category_id');
-            $table->integer('is_available');
             $table->timestamps();
         });
     }

@@ -10,17 +10,17 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-no-gutter">
                                 <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Trang</a></li>
-                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Quyền</a></li>
+                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Nhân viên</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
 
-                        <h1 class="page-header-title">Quyền</h1>
+                        <h1 class="page-header-title">Nhân viên</h1>
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{route('show_create_role.index')}}">
-                            <i class="tio-user-add mr-1"></i> Thêm Quyền
+                        <a class="btn btn-primary" href="{{route('show_create_employee.index')}}">
+                            <i class="tio-user-add mr-1"></i> Thêm Nhân viên
                         </a>
                     </div>
                 </div>
@@ -33,18 +33,12 @@
                     <!-- Card -->
                     <div class="card h-100">
                         <div class="card-body">
-                            <h6 class="card-subtitle mb-2">Tổng số Quyền</h6>
+                            <h6 class="card-subtitle mb-2">Tổng số Nhân viên</h6>
 
                             <div class="row align-items-center gx-2">
                                 <div class="col">
                                     <span class="js-counter display-4 text-dark">{{$employeeCount}}</span>
 
-                                </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
                                 </div>
                             </div>
                             <!-- End Row -->
@@ -89,7 +83,6 @@
                         <th>Địa chỉ</th>
                         <th>Số Điện thoại</th>
                         <th>Email</th>
-                        <th>Trạng thái</th>
                         <th>Quyền</th>
                         <th></th>
                     </tr>
@@ -108,13 +101,6 @@
                             <td>{{ $val ? $val->address : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->phone : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->email : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>
-                                @if ($val->is_active == 1)
-                                    <span class="legend-indicator bg-danger"></span>Đã kích hoạt
-                                @elseif ($val->is_active == 0)
-                                    <span class="legend-indicator bg-success"></span> Chưa kích hoạt
-                                @endif
-                            </td>
                             <td>{{ $val->role->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="" >

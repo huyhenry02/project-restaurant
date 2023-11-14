@@ -40,12 +40,6 @@
                                     <span class="js-counter display-4 text-dark">{{$reservationCount}}</span>
 
                                 </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
-                                </div>
                             </div>
                             <!-- End Row -->
                         </div>
@@ -117,9 +111,9 @@
                                 @elseif ($val->status === 'pending')
                                     <span class="legend-indicator bg-success"></span>Chờ xác nhận
                                 @elseif ($val->status === 'processing')
-                                    <span class="legend-indicator bg-success"></span>Đang ăn
+                                    <span class="legend-indicator bg-warning"></span>Đang ăn
                                 @elseif ($val->status === 'completed')
-                                    <span class="legend-indicator bg-success"></span>Hoàn thành
+                                    <span class="legend-indicator bg-info"></span>Hoàn thành
                                 @endif
                             </td>
                             <td>{{ $val ? $val->number_of_guests : '' }}<span class="text-hide">Code: GB</span></td>

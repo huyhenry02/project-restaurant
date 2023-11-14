@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Order;
 
+use App\Modules\Menu\Models\Menu;
 use App\Modules\Order\Models\Order;
 use App\Modules\OrderDetail\Models\OrderDetail;
 use App\Modules\Table\Models\Table;
@@ -49,11 +50,13 @@ class OrderController extends BaseController
         $order = Order::find($id);
         $orderDetails = OrderDetail::where('order_id', $id)->get();
         $table = Table::all();
+        $menu = Menu::all();
         return view('employee.page.order.edit',
             [
                 'order' => $order,
                 'table' => $table,
-                'orderDetails' => $orderDetails
+                'orderDetails' => $orderDetails,
+                'menu' => $menu,
             ]);
     }
     public function update_order(Request $request,$id): RedirectResponse

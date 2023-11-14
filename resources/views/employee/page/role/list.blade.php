@@ -40,12 +40,6 @@
                                     <span class="js-counter display-4 text-dark">{{$roleCount}}</span>
 
                                 </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
-                                </div>
                             </div>
                             <!-- End Row -->
                         </div>

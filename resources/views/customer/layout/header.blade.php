@@ -81,7 +81,7 @@
                 <!--<li><a href="gallery1.html">Gallery</a></li>-->
                 <li><a href="{{route('show_our_restaurant.index')}}">Dinning</a></li>
                 <li><a href="{{route('show_offer.index')}}">offers</a></li>
-
+                <li><a href="{{route('show_book.index')}}">booking</a></li>
                 <li><a href="{{route('show_about_us.index')}}">Contact </a></li>
             </ul>
             <ul class="nav navbar-nav right-side-nav">

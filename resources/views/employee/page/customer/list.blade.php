@@ -17,12 +17,6 @@
 
                         <h1 class="page-header-title">Khách hàng</h1>
                     </div>
-
-                    <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{route('show_create_role.index')}}">
-                            <i class="tio-user-add mr-1"></i> Thêm Khách hàng
-                        </a>
-                    </div>
                 </div>
                 <!-- End Row -->
             </div>
@@ -39,12 +33,6 @@
                                 <div class="col">
                                     <span class="js-counter display-4 text-dark">{{$customerCount}}</span>
 
-                                </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
                                 </div>
                             </div>
                             <!-- End Row -->
@@ -86,7 +74,6 @@
                             </div>
                         </th>
                         <th>Tên Khách hàng</th>
-                        <th>Địa chỉ</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
                         <th></th>
@@ -103,7 +90,6 @@
                                 </div>
                             </td>
                             <td>{{ $val ? $val->name : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val ? $val->address : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->email : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->phone : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>

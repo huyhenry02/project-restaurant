@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Example\ExampleController;
 use App\Http\Controllers\Facility\FacilityController;
@@ -26,11 +27,13 @@ Route::get('/', function () {
     return redirect()->route('show_home.index');
 });
 Route::get('/example', [ExampleController::class, 'example'])->name('example');
+Route::get('/show_login', [AuthController::class, 'show_login'])->name('show_login.index');
 //customer
 Route::prefix('customer')->group(function () {
 
     Route::get('/show_about_us', [CustomerController::class, 'show_about_us'])->name('show_about_us.index');
     Route::get('/show_booking/{table_id}', [CustomerController::class, 'show_booking_customer'])->name('show_booking.index');
+    Route::get('/show_book', [CustomerController::class, 'show_book'])->name('show_book.index');
     Route::get('/show_contact', [CustomerController::class, 'show_contact'])->name('show_contact.index');
     Route::get('/show_home', [CustomerController::class, 'show_home'])->name('show_home.index');
     Route::get('/show_offer', [CustomerController::class, 'show_offer'])->name('show_offer.index');

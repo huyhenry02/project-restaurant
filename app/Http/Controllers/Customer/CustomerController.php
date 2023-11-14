@@ -29,7 +29,11 @@ class CustomerController extends BaseController
         $table = Table::find($table_id);
         return view('customer.page.booking_customer',['table'=>$table]);
     }
-
+    public function show_book(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $table = Table::all();
+        return view('customer.page.booking',['table'=>$table]);
+    }
     public function show_contact(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('customer.page.contact');

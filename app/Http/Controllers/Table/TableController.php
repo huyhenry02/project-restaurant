@@ -25,7 +25,12 @@ class TableController extends BaseController
     public function show_list_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $table = Table::all();
-        return view('employee.page.table.list', ['table' => $table]);
+        $tableCount = Table::count();
+        return view('employee.page.table.list',
+            [
+                'table' => $table,
+                'tableCount' => $tableCount,
+            ]);
     }
 
     public function create_table(CreateTableRequest $request)

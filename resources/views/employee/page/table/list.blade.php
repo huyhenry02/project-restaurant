@@ -33,18 +33,11 @@
                     <!-- Card -->
                     <div class="card h-100">
                         <div class="card-body">
-                            <h6 class="card-subtitle mb-2">Tổng số Bàn</h6>
+                            <h6 class="card-subtitle mb-2">Tổng số Loại bàn</h6>
 
                             <div class="row align-items-center gx-2">
                                 <div class="col">
-                                    <span class="js-counter display-4 text-dark"></span>
-
-                                </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
+                                    <span class="js-counter display-4 text-dark">{{$tableCount}}</span>
                                 </div>
                             </div>
                             <!-- End Row -->

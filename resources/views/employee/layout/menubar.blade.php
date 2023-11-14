@@ -65,12 +65,6 @@
                                         <span class="text-truncate">Danh sách</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Thêm Khách hàng</span>
-                                    </a>
-                                </li>
                                 {{--                                <li class="nav-item">--}}
                                 {{--                                    <a class="nav-link " href="" title="Referrals">--}}
                                 {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}

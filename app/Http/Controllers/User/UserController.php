@@ -4,12 +4,15 @@ namespace App\Http\Controllers\User;
 
 use App\Modules\Employee\Models\Employee;
 use App\Modules\Employee\Requests\CreateEmployeeRequest;
+use App\Modules\Role\Models\Role;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends BaseController
 {
@@ -17,7 +20,8 @@ class UserController extends BaseController
 
     public function show_create_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('employee.page.user.create');
+        $role = Role::all();
+        return view('employee.page.user.create',['role'=>$role]);
     }
 
     public function show_list_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
@@ -31,16 +35,21 @@ class UserController extends BaseController
             ]);
     }
 
-    public function create_employee(CreateEmployeeRequest $request)
+    public function create_employee(Request $request)
     {
         try {
             DB::beginTransaction();
-            $validatedData = $request->validated();
             $employee = new Employee();
-            $employee->name = $validatedData['name'];
-            $employee->address = $validatedData['address'];
-            $employee->email = $validatedData['email'];
-            $employee->phone = $validatedData['phone'];
+            $employee->name = $request['name'];
+            $employee->address = $request['address'];
+            $employee->email = $request['email'];
+            $employee->phone = $request['phone'];
+            $employee->role_id = $request['role_id'];
+            if ($employee->role_id == 1 || $employee->role_id == 4) {
+                $employee->password = Hash::make('admin1234');
+            } else {
+                $employee->password = null;
+            }
             $employee->save();
             DB::commit();
             return redirect()->route('show_list_employee.index');

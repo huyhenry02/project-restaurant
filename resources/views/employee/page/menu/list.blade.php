@@ -40,12 +40,6 @@
                                     <span class="js-counter display-4 text-dark">{{$menuCount}}</span>
 
                                 </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
-                                </div>
                             </div>
                             <!-- End Row -->
                         </div>
@@ -89,7 +83,6 @@
                         <th>Mô tả</th>
                         <th>Giá</th>
                         <th>Loại món ăn</th>
-                        <th>Tình trạng</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -107,12 +100,6 @@
                             <td>{{ $val ? $val->description : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->price : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->category->name ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>
-                                @if ($val->is_available == 0)
-                                    <span class="legend-indicator bg-danger"></span>Đã hết
-                                @elseif ($val->is_available == 1)
-                                    <span class="legend-indicator bg-success"></span>Còn
-                                @endif</td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>
