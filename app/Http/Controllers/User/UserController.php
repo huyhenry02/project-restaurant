@@ -23,6 +23,10 @@ class UserController extends BaseController
         $role = Role::all();
         return view('employee.page.user.create',['role'=>$role]);
     }
+    public function show_index_admin(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('employee.index');
+    }
 
     public function show_list_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {

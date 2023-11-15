@@ -50,23 +50,6 @@
                         <!-- Form -->
                         <form class="js-validate" action="{{route('login.post')}}" method="post">
                             @csrf
-                            <div class="text-center">
-                                <div class="mb-5">
-                                    <h1 class="display-4">Sign in</h1>
-                                    <p>Don't have an account yet? <a href="authentication-signup-basic.html">Sign up here</a></p>
-                                </div>
-
-                                <a class="btn btn-lg btn-block btn-white mb-4" href="#">
-                                        <span class="d-flex justify-content-center align-items-center">
-                            <img class="avatar avatar-xss mr-2" src="/frontend/assets\svg\brands\google.svg" alt="Image Description">
-                            Sign in with Google
-                          </span>
-                                </a>
-
-                                <span class="divider text-muted mb-4">OR</span>
-                            </div>
-
-                            <!-- Form Group -->
                             <div class="js-form-message form-group">
                                 <label class="input-label" for="signinSrEmail">Your email</label>
 
@@ -79,7 +62,6 @@
                                 <label class="input-label" for="signupSrPassword" tabindex="0">
                           <span class="d-flex justify-content-between align-items-center">
                             Password
-                            <a class="input-label-secondary" href="authentication-reset-password-basic.html">Forgot Password?</a>
                           </span>
                                 </label>
 
@@ -98,17 +80,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Form Group -->
-
-                            <!-- Checkbox -->
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="termsCheckbox">
-                                    <label class="custom-control-label text-muted" for="termsCheckbox"> Remember me</label>
-                                </div>
-                            </div>
-                            <!-- End Checkbox -->
-
                             <button type="submit" class="btn btn-lg btn-block btn-primary">Sign in</button>
                         </form>
                         <!-- End Form -->

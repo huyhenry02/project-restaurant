@@ -157,11 +157,22 @@
                             "placeholder": "Sửa trạng thái"
                           }' name="status">
                                     <option value="{{$reservation->status}}"
-                                            >{{$reservation->status}}</option>
+                                            >  @if ($reservation->status === 'approved')
+                                           Đã xác nhận
+                                        @elseif ($reservation->status === 'pending')
+                                            Chờ xác nhận
+                                        @elseif ($reservation->status === 'processing')
+                                            Đang ăn
+                                        @elseif ($reservation->status === 'completed')
+                                            Hoàn thành
+                                        @elseif ($reservation->status === 'rejected')
+                                            Đã hủy
+                                        @endif</option>
                                     <option value="approved">Xác nhận</option>
                                     <option value="completed">Hoàn thành</option>
                                     <option value="pending"> Chờ xác nhận</option>
                                     <option value="processing">Đang diễn ra</option>
+                                    <option value="rejected">Đã hủy</option>
                                 </select>
                                 <!-- End Select -->
                             </div>

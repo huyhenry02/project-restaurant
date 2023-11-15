@@ -21,8 +21,9 @@ class AuthController extends BaseController
     {
         try {
             $credentials = $request->only('email', 'password');
+            dd(Auth::attempt($credentials));
             if (Auth::attempt($credentials)) {
-                return redirect()->route('show_list_order.index');
+                return redirect()->route('show_index_admin.index');
             } else {
                 return redirect()->route('show_login.index')->with('error', 'Invalid credentials');
             }

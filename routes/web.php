@@ -48,6 +48,7 @@ Route::prefix('customer')->group(function () {
 });
 //admin
 Route::prefix('admin')->group(function () {
+    Route::get('/', [UserController::class, 'show_index_admin'])->name('show_index_admin.index');
     //role
     Route::prefix('role')->group(function (){
         //show

@@ -114,6 +114,8 @@
                                     <span class="legend-indicator bg-warning"></span>Đang ăn
                                 @elseif ($val->status === 'completed')
                                     <span class="legend-indicator bg-info"></span>Hoàn thành
+                                @elseif ($val->status === 'rejected')
+                                    <span class="legend-indicator bg-danger"></span>Đã hủy
                                 @endif
                             </td>
                             <td>{{ $val ? $val->number_of_guests : '' }}<span class="text-hide">Code: GB</span></td>

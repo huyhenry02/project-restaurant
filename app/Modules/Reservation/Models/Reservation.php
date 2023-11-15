@@ -18,6 +18,7 @@ class Reservation extends Model
         'number_of_guests',
         'reservation_date',
         'time',
+        'time_out',
         'note',
         'status',
         'customer_id',
