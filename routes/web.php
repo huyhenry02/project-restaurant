@@ -27,7 +27,10 @@ Route::get('/', function () {
     return redirect()->route('show_home.index');
 });
 Route::get('/example', [ExampleController::class, 'example'])->name('example');
-Route::get('/show_login', [AuthController::class, 'show_login'])->name('show_login.index');
+Route::prefix('auth')->group(function (){
+    Route::get('/show_login', [AuthController::class, 'show_login'])->name('show_login.index');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+});
 //customer
 Route::prefix('customer')->group(function () {
 

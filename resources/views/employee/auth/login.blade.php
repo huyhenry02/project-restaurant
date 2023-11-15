@@ -48,8 +48,8 @@
                 <div class="card card-lg mb-5">
                     <div class="card-body">
                         <!-- Form -->
-                        <form class="js-validate" action="" method="post">
-{{--                            @csrf--}}
+                        <form class="js-validate" action="{{route('login.post')}}" method="post">
+                            @csrf
                             <div class="text-center">
                                 <div class="mb-5">
                                     <h1 class="display-4">Sign in</h1>

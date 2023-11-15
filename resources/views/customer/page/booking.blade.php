@@ -1,5 +1,16 @@
 @extends('customer.layout.main')
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <section class="container clearfix common-pad-inner booknow">
         <div class="sec-header">
             <h2>Booking</h2>

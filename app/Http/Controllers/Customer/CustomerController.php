@@ -92,7 +92,7 @@ class CustomerController extends BaseController
         $tableId = $request->input('table_id');
         $allTables = Table::all();
         $bookedTables = Reservation::where('reservation_date', $reservationDate)
-            ->whereIn('status',['approved', 'completed', 'processing'])
+            ->whereIn('status',['approved', 'processing'])
             ->where('table_id', $tableId)
             ->pluck('table_id')
             ->toArray();
@@ -137,10 +137,10 @@ class CustomerController extends BaseController
             $reservation->name = 'D' . $reservationId;
             $reservation->save();
             DB::commit();
-            return redirect()->route('show_home.index');
+            return redirect()->back()->with('success', 'Đặt bàn thành công!');
         } catch (Exception $e) {
             DB::rollback();
-            dd($e->getMessage());
+            return redirect()->back()->with('error', 'Có lỗi xảy ra khi đặt bàn. Vui lòng thử lại sau.');
         }
     }
     public function destroy($id): RedirectResponse
