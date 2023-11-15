@@ -74,17 +74,6 @@
                                 <input placeholder="Ngày" type="text" class="form-control datepicker-example8 " name="reservation_date">
                             </div>
                             <div class="ser-in-box">
-                                <div class="loai">
-                                    <select name="table_id" class="select-menu">
-                                        <option value="default"> Loại</option>
-                                        @foreach($table as $tableItem)
-                                            <option value="{{ $tableItem->table_id }}">{{ $tableItem->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="ser-in-box">
                                 <div class="select-box">
                                     <select name="time" class="select-menu">
                                         <option value="default"> Giờ</option>
@@ -134,13 +123,14 @@
                                 <p>Trong không gian nhỏ bé này, chúng ta xây dựng một thế giới riêng, nơi mà chỉ có tình
                                     yêu và sự hiểu biết.
                                     Bàn ăn trở thành biểu tượng của một cuộc sống hạnh phúc và an lành, nơi chúng ta
-                                    luôn đồng hành bên nhau.</p>
+                                    luôn đồng hành bên nhau.
+                                </p>
                                 <div class="ro-text-two">
-                                    <div class="left-p-two pull-left"><a
+                                    <div class="left-p-two pull-left">
+                                        <a
                                             href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}"
-                                            class="res-btn">Booking</a></div>
-                                    <div class="right-p-two pull-right">
-                                        <p></p>
+                                            class="res-btn">Booking
+                                        </a>
                                     </div>
                                 </div>
                             </div>

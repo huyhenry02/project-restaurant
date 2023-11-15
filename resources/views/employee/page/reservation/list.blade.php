@@ -88,6 +88,7 @@
                         <th>Loại bàn</th>
                         <th>Ngày đặt</th>
                         <th>Giờ</th>
+                        <th>Giờ dự kiến trả bàn</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -107,13 +108,13 @@
                             <td>{{ $val ? $val->note : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>
                                 @if ($val->status === 'approved')
-                                    <span class="legend-indicator bg-danger"></span>Đã xác nhận
+                                    <span class="legend-indicator bg-primary "></span>Đã xác nhận
                                 @elseif ($val->status === 'pending')
-                                    <span class="legend-indicator bg-success"></span>Chờ xác nhận
+                                    <span class="legend-indicator bg-warning "></span>Chờ xác nhận
                                 @elseif ($val->status === 'processing')
-                                    <span class="legend-indicator bg-warning"></span>Đang ăn
+                                    <span class="legend-indicator bg-info"></span>Đang ăn
                                 @elseif ($val->status === 'completed')
-                                    <span class="legend-indicator bg-info"></span>Hoàn thành
+                                    <span class="legend-indicator bg-success "></span>Hoàn thành
                                 @elseif ($val->status === 'rejected')
                                     <span class="legend-indicator bg-danger"></span>Đã hủy
                                 @endif
@@ -122,6 +123,7 @@
                             <td>{{ $val->table_reservation->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->reservation_date : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->time_out : '' }} giờ<span class="text-hide">Code: GB</span></td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="{{route('show_update_reservation.index',$val->reservation_id)}}" >
                                     <i class="tio-edit"></i>

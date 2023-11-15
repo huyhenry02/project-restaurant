@@ -47,8 +47,9 @@ Route::prefix('customer')->group(function () {
     Route::post('/book_table', [CustomerController::class, 'book_table'])->name('book_table.post');
 });
 //admin
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [UserController::class, 'show_index_admin'])->name('show_index_admin.index');
+    Route::get('logout',[AuthController::class, 'logout'])->name('logout.admin');
     //role
     Route::prefix('role')->group(function (){
         //show

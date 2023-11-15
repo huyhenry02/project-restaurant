@@ -89,11 +89,9 @@ class CustomerController extends BaseController
     public function check_table(Request $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $reservationDate = $request->input('reservation_date');
-        $tableId = $request->input('table_id');
         $allTables = Table::all();
         $bookedTables = Reservation::where('reservation_date', $reservationDate)
-            ->whereIn('status',['approved', 'processing'])
-            ->where('table_id', $tableId)
+            ->whereIn('status',['approved', 'processing','pending'])
             ->pluck('table_id')
             ->toArray();
         $bookedTablesCount = array_count_values($bookedTables);

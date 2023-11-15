@@ -74,17 +74,6 @@
                                 <input placeholder="Ngày" type="text" class="form-control datepicker-example8 " name="reservation_date">
                             </div>
                             <div class="ser-in-box">
-                                <div class="loai">
-                                    <select name="table_id" class="select-menu">
-                                        <option value="default"> Loại</option>
-                                        @foreach($allTables as $tableItem)
-                                            <option value="{{ $tableItem->table_id }}">{{ $tableItem->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="ser-in-box">
                                 <div class="select-box">
                                     <select name="time" class="select-menu">
                                         <option value="default"> Giờ</option>
@@ -116,8 +105,6 @@
             </div>
         </section>
     </div>
-    <!-- Search style-->
-    <!-- Rooms And Suits style-->
     <section class="container clearfix common-pad nasir-style">
         <div class="sec-header sec-header-pad">
             <h2>Table</h2>
@@ -135,14 +122,23 @@
                                     yêu và sự hiểu biết.
                                     Bàn ăn trở thành biểu tượng của một cuộc sống hạnh phúc và an lành, nơi chúng ta
                                     luôn đồng hành bên nhau.</p>
-                                <div class="ro-text-two">
-                                    <div class="left-p-two pull-left"><a
-                                            href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}"
-                                            class="res-btn">Booking</a></div>
-                                    <div class="right-p-two pull-right">
-                                        <p>{{$remainingTables[$tableItem->table_id]}}</p>
+                                @if($remainingTables[$tableItem->table_id] > 0)
+                                    <div class="ro-text-two">
+                                        <div class="left-p-two pull-left">
+                                            <a href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}" class="res-btn">Booking</a>
+                                        </div>
+                                        <div class="right-p-two pull-right">
+                                            <p>{{$remainingTables[$tableItem->table_id]}}</p>
+                                        </div>
                                     </div>
-                                </div>
+
+                                @else
+                                    <div class="ro-text-two">
+                                        <div class="left-p-two pull-left">
+                                            <span>Xin lỗi chúng tôi đã hết bàn này</span>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

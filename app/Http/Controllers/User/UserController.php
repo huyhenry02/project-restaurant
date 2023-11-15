@@ -6,6 +6,9 @@ use App\Modules\Employee\Models\Employee;
 use App\Modules\Employee\Requests\CreateEmployeeRequest;
 use App\Modules\Role\Models\Role;
 use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -18,17 +21,17 @@ class UserController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function show_create_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function show_create_employee(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $role = Role::all();
         return view('employee.page.user.create',['role'=>$role]);
     }
-    public function show_index_admin(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function show_index_admin(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee.index');
     }
 
-    public function show_list_employee(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function show_list_employee(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $employee = Employee::all();
         $employeeCount = Employee::count();
@@ -50,7 +53,7 @@ class UserController extends BaseController
             $employee->phone = $request['phone'];
             $employee->role_id = $request['role_id'];
             if ($employee->role_id == 1 || $employee->role_id == 4) {
-                $employee->password = Hash::make('admin1234');
+                $employee->password = bcrypt('admin1234');
             } else {
                 $employee->password = null;
             }

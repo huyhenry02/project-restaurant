@@ -22,7 +22,6 @@ class Menu extends Model
         'is_available',
 
     ];
-
     public function category(): BelongsTo
     {
         return $this->belongsTo(CategoryFood::class,'category_id','category_id');
