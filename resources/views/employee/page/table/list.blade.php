@@ -10,17 +10,17 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-no-gutter">
                                 <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Trang</a></li>
-                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Bàn</a></li>
+                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Loại Bàn</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
 
-                        <h1 class="page-header-title">Bàn</h1>
+                        <h1 class="page-header-title"> Loại Bàn</h1>
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{route('show_create_table.index')}}">
-                            <i class="tio-user-add mr-1"></i> Thêm Bàn
+                        <a class="btn btn-primary" href="{{route('show_create_table_type.index')}}">
+                            <i class="tio-user-add mr-1"></i> Thêm Loại Bàn
                         </a>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="row justify-content-between align-items-center flex-grow-1">
                     <div class="col-sm-6-left">
                         <div class="form-group">
-                            <form action="{{ route('count_table.post') }}" method="post">
+                            <form action="{{ route('count_table_type.post') }}" method="post">
                                 @csrf
                                 <dl class="row align-items-sm-center mb-3">
                                     <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Ngày: </dt>
@@ -110,7 +110,7 @@
                                 <label class="custom-control-label" for="datatableCheckAll"></label>
                             </div>
                         </th>
-                        <th>Tên Bàn</th>
+                        <th>Tên Loại Bàn</th>
                         <th>Mô tả</th>
                         <th>Số lượng</th>
                         <th></th>
@@ -118,7 +118,7 @@
                     </thead>
 
                     <tbody>
-                    @foreach($table as $key=>$val)
+                    @foreach($table_type as $key=>$val)
                         <tr>
                             <td class="table-column-pr-0">
                                 <div class="custom-control custom-checkbox">
@@ -133,7 +133,7 @@
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-white" href="{{route('table.delete',$val->table_id)}}" >
+                                <a class="btn btn-sm btn-white" href="{{route('table_type.delete',$val->table_type_id)}}" >
                                     <i class="tio-delete"></i>
                                 </a>
                             </td>

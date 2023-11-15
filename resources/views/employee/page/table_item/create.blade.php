@@ -16,7 +16,7 @@
                 <!-- Card -->
                 <div class="card">
                     <!-- Body -->
-                    <form method="post" action="{{route('create_table_type.post')}}">
+                    <form method="post" action="{{route('create_table.post')}}">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">

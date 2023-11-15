@@ -82,7 +82,8 @@
                         <th>Tên Hóa đơn</th>
                         <th>Tên Khách hàng</th>
                         <th>Số điện thoại</th>
-                        <th>Loại bàn</th>
+                        <th>Loại Bàn</th>
+                        <th>Bàn</th>
                         <th>Ngày</th>
                         <th>Giờ</th>
                         <th>Tổng tiền</th>
@@ -98,11 +99,12 @@
                                     <input type="checkbox" class="custom-control-input" id="usersDataCheck1">
                                     <label class="custom-control-label" for="usersDataCheck1"></label>
                                 </div>
-                            </td>
+                            </td> x
                             <td>{{ $val ? $val->name : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->customer->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->customer->phone ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->table_reservation->name ?? '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val->table_type_order->name ?? '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val->table_order->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->order_date : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->total_amount : '' }} VNĐ<span class="text-hide">Code: GB</span></td>

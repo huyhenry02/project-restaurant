@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('table_types', function (Blueprint $table) {
-            $table->integer('amount');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->unsignedBigInteger('table_type_id')->nullable();
+            $table->foreign('table_type_id')->references('table_type_id')->on('table_types');
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn(['amount']);
+            $table->dropForeign(['table_type_id']);
+            $table->dropColumn('table_type_id');
         });
     }
 };

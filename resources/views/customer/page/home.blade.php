@@ -114,7 +114,7 @@
         </div>
         <div class="room-slider">
             <div class="roomsuite-slider-two">
-                @foreach($table as $tableItem)
+                @foreach($table_type as $tableItem)
                     <div class="room-suite room-suite-htwo">
                         <div class="item">
                             <div class="ro-img"><img src="images\table\1.jpg" alt="" class="img-responsive"></div>
@@ -128,7 +128,7 @@
                                 <div class="ro-text-two">
                                     <div class="left-p-two pull-left">
                                         <a
-                                            href="{{route('show_booking.index', ['table_id' => $tableItem->table_id])}}"
+                                            href="{{route('show_booking.index', ['table_type_id' => $tableItem->table_type_id])}}"
                                             class="res-btn">Booking
                                         </a>
                                     </div>

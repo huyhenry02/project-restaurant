@@ -30,14 +30,6 @@
     </div>
     <!-- /.side-menu-widget-->
     <div class="side-menu-widget subscribe-widget">
-        <div class="title-box">
-            <h4>Đăng kí để nhận ưu đãi</h4><span class="decor-line inline"></span>
-        </div>
-        <!-- /.title-box-->
-        <form action="#" class="clearfix">
-            <input type="text" placeholder="Enter email address">
-            <button type="submit" class="res-btn">Đăng kí</button>
-        </form>
     </div>
 </section>
 <!-- /.side-menu-->
@@ -56,12 +48,6 @@
         </div>
         <!-- /.pull-left left-infos-->
         <div class="pull-right right-infos link-list">
-            <ul class="list-inline">
-                <li><a href="#">đăng nhập</a></li>
-                <!--comment for inline hack
-                -->
-                <li><a href="#">đăng kí</a></li>
-            </ul>
         </div>
         <!-- /.pull-right right-infos link-list-->
     </div>

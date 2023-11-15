@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{route('show_create_table_type.index')}}">
+                        <a class="btn btn-primary" href="{{route('show_create_table.index')}}">
                             <i class="tio-user-add mr-1"></i> Thêm Bàn
                         </a>
                     </div>
@@ -33,18 +33,11 @@
                     <!-- Card -->
                     <div class="card h-100">
                         <div class="card-body">
-                            <h6 class="card-subtitle mb-2">Tổng số Bàn</h6>
+                            <h6 class="card-subtitle mb-2">Tổng số bàn</h6>
 
                             <div class="row align-items-center gx-2">
                                 <div class="col">
-                                    <span class="js-counter display-4 text-dark"></span>
-
-                                </div>
-
-                                <div class="col-auto">
-                                    <span class="badge badge-soft-success p-1">
-                      <i class="tio-trending-up"></i> 5.0%
-                    </span>
+                                    <span class="js-counter display-4 text-dark">{{$tableCount}}</span>
                                 </div>
                             </div>
                             <!-- End Row -->
@@ -72,24 +65,23 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                     <span class="input-group-text">
+                                        <i class="tio-calendar"></i>
                                     </span>
                                             </div>
                                             <input type="date" class="form-control flatpickr-custom-form-control" name="reservation_date">
                                             <div class="input-group-append">
-                                                <button type="submit" class="btn btn-primary"> <i class="tio-chevron-right"></i></button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </dd>
                                 </dl>
                             </form>
-
                         </div>
-                        <dt class="col-sm-6">Ngày: <span>{{$reservationDate}}</span></dt>
                     </div>
-
                 </div>
                 <!-- End Row -->
             </div>
+
             <!-- End Header -->
 
             <!-- Table -->
@@ -119,14 +111,13 @@
                             </div>
                         </th>
                         <th>Tên Bàn</th>
-                        <th>Mô tả</th>
-                        <th>Số lượng</th>
+                        <th>Loại bàn</th>
                         <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    @foreach($availableTableCounts as $key=>$val)
+                    @foreach($table as $key=>$val)
                         <tr>
                             <td class="table-column-pr-0">
                                 <div class="custom-control custom-checkbox">
@@ -134,14 +125,13 @@
                                     <label class="custom-control-label" for="usersDataCheck1"></label>
                                 </div>
                             </td>
-                            <td>{{ $key }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $tableItems->where('name', $key)->first()->description ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->name : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val->table_item->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>
                                 </a>
-                                <a class="btn btn-sm btn-white" href="" >
+                                <a class="btn btn-sm btn-white" href="{{route('table_type.delete',$val->table_type_id)}}" >
                                     <i class="tio-delete"></i>
                                 </a>
                             </td>

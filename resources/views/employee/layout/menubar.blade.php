@@ -42,12 +42,6 @@
                                         <span class="text-truncate">Thêm Nhân viên</span>
                                     </a>
                                 </li>
-{{--                                <li class="nav-item">--}}
-{{--                                    <a class="nav-link " href="" title="Referrals">--}}
-{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-{{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- Customer -->
@@ -65,12 +59,6 @@
                                         <span class="text-truncate">Danh sách</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- role -->
@@ -94,12 +82,6 @@
                                         <span class="text-truncate">Thêm Quyền</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- facility -->
@@ -123,12 +105,6 @@
                                         <span class="text-truncate">Thêm Cơ sở vật chất</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- menu -->
@@ -152,12 +128,6 @@
                                         <span class="text-truncate">Thêm món ăn</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- order -->
@@ -181,12 +151,6 @@
                                         <span class="text-truncate">Thêm Hóa đơn</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- reservation -->
@@ -210,15 +174,34 @@
                                         <span class="text-truncate">Thêm Đơn đặt bàn</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
                         <!-- table -->
+                        <li class="navbar-vertical-aside-has-menu ">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                                <i class="tio-pages-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Loại Bàn</span>
+                            </a>
+
+                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
+
+                                <li class="nav-item">
+                                    <a class="nav-link " href="{{route('show_list_table_type.index')}}" title="Referrals">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">Danh sách</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="{{route('show_create_table_type.index')}}" title="Referrals">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">Thêm Loại Bàn</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <!-- table item -->
                         <li class="navbar-vertical-aside-has-menu ">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
@@ -239,12 +222,6 @@
                                         <span class="text-truncate">Thêm Bàn</span>
                                     </a>
                                 </li>
-                                {{--                                <li class="nav-item">--}}
-                                {{--                                    <a class="nav-link " href="" title="Referrals">--}}
-                                {{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
-                                {{--                                        <span class="text-truncate">Cập nhật Nhân viên</span>--}}
-                                {{--                                    </a>--}}
-                                {{--                                </li>--}}
                             </ul>
                         </li>
 

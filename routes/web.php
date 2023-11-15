@@ -9,6 +9,7 @@ use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Table\TableController;
+use App\Http\Controllers\Table\TableItemController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,7 @@ Route::prefix('auth')->group(function (){
 Route::prefix('customer')->group(function () {
 
     Route::get('/show_about_us', [CustomerController::class, 'show_about_us'])->name('show_about_us.index');
-    Route::get('/show_booking/{table_id}', [CustomerController::class, 'show_booking_customer'])->name('show_booking.index');
+    Route::get('/show_booking/{table_type_id}', [CustomerController::class, 'show_booking_customer'])->name('show_booking.index');
     Route::get('/show_book', [CustomerController::class, 'show_book'])->name('show_book.index');
     Route::get('/show_contact', [CustomerController::class, 'show_contact'])->name('show_contact.index');
     Route::get('/show_home', [CustomerController::class, 'show_home'])->name('show_home.index');
@@ -58,7 +59,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         //action
         Route::post('/create_role', [RoleController::class, 'create_role'])->name('create_role.post');
         Route::get('/delete_role/{role_id}', [RoleController::class, 'destroy'])->name('role.delete');
-
     });
     //employee
     Route::prefix('employee')->group(function (){
@@ -89,9 +89,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('menu')->group(function (){
        //show
         Route::get('/show_create_menu', [MenuController::class, 'show_create_menu'])->name('show_create_menu.index');
+        Route::get('/show_edit_menu/{menu_id}', [MenuController::class, 'show_edit_menu'])->name('show_edit_menu.index');
         Route::get('/show_list_menu', [MenuController::class, 'show_list_menu'])->name('show_list_menu.index');
         //action
         Route::post('/create_menu', [MenuController::class, 'create_menu'])->name('create_menu.post');
+        Route::post('/update_menu/{menu_id}', [MenuController::class, 'update_menu'])->name('update_menu.post');
         Route::get('/delete_menu/{menu_id}', [MenuController::class, 'destroy'])->name('menu.delete');
     });
     //order
@@ -115,15 +117,24 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         Route::post('/update_reservation/{reservation_id}', [ReservationController::class, 'update_reservation'])->name('update_reservation.post');
 
     });
-    //table
-    Route::prefix('table')->group(function (){
+    //table_type
+    Route::prefix('table_type')->group(function (){
         //show
-        Route::get('/show_create_table', [TableController::class, 'show_create_table'])->name('show_create_table.index');
-        Route::get('/show_list_table', [TableController::class, 'show_list_table'])->name('show_list_table.index');
+        Route::get('/show_create_table_type', [TableController::class, 'show_create_table_type'])->name('show_create_table_type.index');
+        Route::get('/show_list_table_type', [TableController::class, 'show_list_table_type'])->name('show_list_table_type.index');
         //action
-        Route::post('/create_table', [TableController::class, 'create_table'])->name('create_table.post');
-        Route::post('/countTable', [TableController::class, 'count_table'])->name('count_table.post');
-        Route::get('/delete_table/{table_id}', [TableController::class, 'destroy'])->name('table.delete');
+        Route::post('/create_table_type', [TableController::class, 'create_table_type'])->name('create_table_type.post');
+        Route::post('/countTable_type', [TableController::class, 'count_table_type'])->name('count_table_type.post');
+        Route::get('/delete_table_type/{table_type_id}', [TableController::class, 'destroy'])->name('table_type.delete');
+    });
+    //tableItem
+    Route::prefix('tableItem')->group(function (){
+        //show
+        Route::get('/show_create_table', [TableItemController::class, 'show_create_table'])->name('show_create_table.index');
+        Route::get('/show_list_table', [TableItemController::class, 'show_list_table'])->name('show_list_table.index');
+        //action
+        Route::post('/create_table', [TableItemController::class, 'create_table'])->name('create_table.post');
+        Route::get('/delete_table/{table_id}', [TableItemController::class, 'destroy'])->name('table_type.delete');
     });
 
 });

@@ -69,8 +69,8 @@
                                 <div class="select-box">
                                     <select name="table_id" class="select-menu">
                                         <option value="default"> Bàn</option>
-                                        @foreach($table as $tableItem)
-                                            <option value="{{$tableItem->table_id}}">{{$tableItem->name}}</option>
+                                        @foreach($table_type as $tableItem)
+                                            <option value="{{$tableItem->table_type_id}}">{{$tableItem->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

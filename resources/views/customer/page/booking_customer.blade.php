@@ -22,7 +22,7 @@
                     <form id="contactBooking" action="{{route('book_table.post')}}" method="post">
                         @csrf
                         <div class="row">
-                            <input type="hidden" name="table_id" value="{{$table->table_id ?? ''}}">
+                            <input type="hidden" name="table_id" value="{{$table_type->table_type_id ?? ''}}">
                             <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12">
                                 <input id="name" type="text" name="name" placeholder="Cho chúng tôi biết tên bạn"
                                        class="form-control">

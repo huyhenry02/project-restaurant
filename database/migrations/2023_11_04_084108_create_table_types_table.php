@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('table_types', function (Blueprint $table) {
-            $table->integer('amount');
+        Schema::create('table_types', function (Blueprint $table) {
+            $table->id('table_type_id');
+            $table->string('name',45);
+            $table->string('description',45);
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn(['amount']);
-        });
+        Schema::dropIfExists('tables');
     }
 };

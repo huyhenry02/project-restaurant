@@ -8,6 +8,7 @@ use App\Modules\Customer\Requests\BookTableRequest;
 use App\Modules\Menu\Models\Menu;
 use App\Modules\Reservation\Models\Reservation;
 use App\Modules\Table\Models\Table;
+use App\Modules\Table\Models\TableType;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -24,15 +25,15 @@ class CustomerController extends BaseController
         return view('customer.page.aboutUs');
     }
 
-    public function show_booking_customer($table_id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function show_booking_customer($table_type_id): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $table = Table::find($table_id);
-        return view('customer.page.booking_customer',['table'=>$table]);
+        $table_type = TableType::find($table_type_id);
+        return view('customer.page.booking_customer',['table_type'=>$table_type]);
     }
     public function show_book(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $table = Table::all();
-        return view('customer.page.booking',['table'=>$table]);
+        $table_type = TableType::all();
+        return view('customer.page.booking',['table_type'=>$table_type]);
     }
     public function show_contact(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
@@ -51,13 +52,13 @@ class CustomerController extends BaseController
 
     public function show_home(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $table = Table::all();
+        $table_type = TableType::all();
         $countCustomer = Customer::count();
-        $countTable = Table::count();
+        $countTable = TableType::count();
         $countReservation = Reservation::count();
         $countFood = Menu::count();
         return view('customer.page.home', [
-            'table' => $table,
+            'table_type' => $table_type,
             'countCustomer' => $countCustomer,
             'countTable' => $countTable,
             'countReservation' => $countReservation,
@@ -120,11 +121,11 @@ class CustomerController extends BaseController
     public function book_table(Request $request): string
     {
         try {
-            $tableId = $request->input('table_id');
-            $table = Table::find($tableId);
+            $tableTypeId = $request->input('table_type_id');
+            $table_type = TableType::find($tableTypeId);
             $availableTables = Reservation::where('reservation_date', $request->input('reservation_date'))
                 ->count();
-            $totalTables = $table->amount;
+            $totalTables = $table_type->amount;
             if ($availableTables >= $totalTables) {
                 return redirect()->back()->with('error', 'Không còn bàn trống cho thời gian này.');
             }

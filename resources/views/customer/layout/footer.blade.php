@@ -12,8 +12,6 @@
         </div>
     </div>
 </div>
-<!-- Welcome banner  style-->
-<!-- footer  style-->
 <footer>
     <section class="clearfix footer-wrapper">
         <section class="container clearfix footer-pad">
@@ -31,10 +29,8 @@
                 <h4 class="widget_title">Explore</h4>
                 <div class="widget-contact-list">
                     <ul>
-
-
-                        <li><a href="our-restaurant.html">Dinning</a></li>
-                        <li><a href="offers.html">offers</a></li>
+                        <li><a href="{{route('show_our_restaurant.index')}}">Dinning</a></li>
+                        <li><a href="{{route('show_offer.index')}}">Offers</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,12 +38,12 @@
                 <h4 class="widget_title">Quick Links</h4>
                 <div class="widget-contact-list">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="aboutus.html">About Us</a></li>
-                        <li><a href="suite-room.html">table</a></li>
+                        <li><a href="{{route('show_home.index')}}"> Home </a></li>
+                        <li><a href="{{route('show_about_us.index')}}" > About Us </a></li>
+                        <li><a href="{{route('show_our_table.index')}}"> Table </a></li>
+                        <li><a href="{{route('show_book.index')}}">Booking</a></li>
+                        <li><a href="{{route('show_about_us.index')}}">Contact </a></li>
 
-                        <li><a href="contact.html">Contact </a></li>
-                        <li><a href="booking.html">Booking</a></li>
                     </ul>
                 </div>
             </div>

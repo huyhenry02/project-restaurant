@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Reservation;
 
 use App\Modules\Reservation\Models\Reservation;
 use App\Modules\Table\Models\Table;
+use App\Modules\Table\Models\TableType;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -39,8 +40,14 @@ class ReservationController extends BaseController
     {
         $reservation = Reservation::find($id);
         $table = Table::all();
+        $table_type = TableType::all();
         $status = Reservation::all();
-        return view('employee.page.reservation.edit',['reservation'=>$reservation, 'table'=>$table,'status'=>$status]);
+        return view('employee.page.reservation.edit',[
+            'reservation'=>$reservation,
+            'table'=>$table,
+            'table_type'=>$table_type,
+            'status'=>$status
+        ]);
     }
     public function update_reservation(Request $request,$id): RedirectResponse
     {

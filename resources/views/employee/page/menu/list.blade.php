@@ -101,7 +101,7 @@
                             <td>{{ $val ? $val->price : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->category->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>
-                                <a class="btn btn-sm btn-white" href="" >
+                                <a class="btn btn-sm btn-white" href="{{route('show_edit_menu.index',$val->item_id)}}" >
                                     <i class="tio-edit"></i>
                                 </a>
                                 <a class="btn btn-sm btn-white" href="{{route('menu.delete',$val->item_id)}}" >

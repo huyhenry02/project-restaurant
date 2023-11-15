@@ -86,6 +86,7 @@
                         <th>Trạng thái</th>
                         <th>Số người</th>
                         <th>Loại bàn</th>
+                        <th>Bàn</th>
                         <th>Ngày đặt</th>
                         <th>Giờ</th>
                         <th>Giờ dự kiến trả bàn</th>
@@ -120,6 +121,7 @@
                                 @endif
                             </td>
                             <td>{{ $val ? $val->number_of_guests : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val->table_type_reservation->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->table_reservation->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->reservation_date : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>

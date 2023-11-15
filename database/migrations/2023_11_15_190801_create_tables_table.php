@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('table_types', function (Blueprint $table) {
-            $table->integer('amount');
+        Schema::create('tables', function (Blueprint $table) {
+            $table->id('table_id');
+            $table->string('name',255);
+            $table->unsignedBigInteger('table_type_id');
+            $table->foreign('table_type_id')->references('table_type_id')->on('table_types');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn(['amount']);
-        });
+        Schema::dropIfExists('tables');
     }
 };

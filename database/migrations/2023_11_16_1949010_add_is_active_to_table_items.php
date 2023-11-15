@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tables', function (Blueprint $table) {
-            $table->id('table_id');
-            $table->string('name',45);
-            $table->string('description',45);
-            $table->timestamps();
+        Schema::table('tables', function (Blueprint $table) {
+            $table->integer('is_active')->nullable();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('tables');
+        Schema::table('tables', function (Blueprint $table) {
+            $table->dropColumn('is_active');
+        });
     }
 };

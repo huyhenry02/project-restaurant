@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Table;
 
 use App\Modules\Reservation\Models\Reservation;
 use App\Modules\Table\Models\Table;
+use App\Modules\Table\Models\TableType;
 use App\Modules\Table\Requests\CreateTableRequest;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -17,41 +18,40 @@ use Illuminate\Support\Facades\DB;
 class TableController extends BaseController
 {
 
-    public function show_create_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function show_create_table_type(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('employee.page.table.create');
     }
 
-    public function show_list_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function show_list_table_type(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $table = Table::all();
-        $tableCount = Table::count();
+        $table_type = TableType::all();
+        $tableCount = TableType::count();
         return view('employee.page.table.list',
             [
-                'table' => $table,
+                'table_type' => $table_type,
                 'tableCount' => $tableCount,
             ]);
     }
 
-    public function create_table(CreateTableRequest $request)
+    public function create_table_type(Request $request)
     {
         try {
             DB::beginTransaction();
-            $validatedData = $request->validated();
-            $table = new Table();
-            $table->name = $validatedData['name'];
-            $table->description = $validatedData['description'];
-            $table->amount = $validatedData['amount'];
-            $table->save();
+            $table_type = new TableType();
+            $table_type->name = $request['name'];
+            $table_type->description = $request['description'];
+            $table_type->amount = $request['amount'];
+            $table_type->save();
             DB::commit();
-            return redirect()->route('show_list_table.index');
+            return redirect()->route('show_list_table_type.index');
         } catch (Exception $e) {
             DB::rollback();
             dd($e->getMessage());
         }
     }
 
-    public function count_table(Request $request): \Illuminate\Contracts\Foundation\Application|Factory|View|Application
+    public function count_table_type(Request $request): \Illuminate\Contracts\Foundation\Application|Factory|View|Application
     {
         $reservationDate = $request->input('reservation_date');
         $tableItems = Table::all();
@@ -70,8 +70,8 @@ class TableController extends BaseController
     }
     public function destroy($id): RedirectResponse
     {
-        $table = Table::find($id);
+        $table = TableType::find($id);
         $table->delete();
-        return redirect()->route('show_list_table.index')->with('success', 'Đã được xóa thành công!');
+        return redirect()->route('show_list_table_type.index')->with('success', 'Đã được xóa thành công!');
     }
 }

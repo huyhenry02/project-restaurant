@@ -6,6 +6,7 @@ use App\Modules\Menu\Models\Menu;
 use App\Modules\Order\Models\Order;
 use App\Modules\OrderDetail\Models\OrderDetail;
 use App\Modules\Table\Models\Table;
+use App\Modules\Table\Models\TableType;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,11 +20,11 @@ class OrderController extends BaseController
 {
     public function show_create_order(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $table_type = TableType::all();
         $table = Table::all();
         return view('employee.page.order.create', [
-
+            'table_type' => $table_type,
             'table' => $table,
-
         ]);
     }
 
@@ -50,10 +51,12 @@ class OrderController extends BaseController
         $order = Order::find($id);
         $orderDetails = OrderDetail::where('order_id', $id)->get();
         $table = Table::all();
+        $table_type = TableType::all();
         $menu = Menu::all();
         return view('employee.page.order.edit',
             [
                 'order' => $order,
+                'table_type' => $table_type,
                 'table' => $table,
                 'orderDetails' => $orderDetails,
                 'menu' => $menu,
