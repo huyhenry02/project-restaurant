@@ -111,7 +111,7 @@
                         <!-- End Form Group -->
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <!-- Form Group -->
                             <div class="form-group">
                                 <label for="SKULabel" class="input-label">Số người </label>
@@ -122,30 +122,7 @@
                             </div>
                             <!-- End Form Group -->
                         </div>
-
-                        <div class="col-sm-4">
-                            <!-- Form Group -->
-                            <div class="form-group">
-                                <label for="collectionsLabel" class="input-label">Loại bàn</label>
-
-                                <!-- Select -->
-                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;"
-                                        id="collectionsLabel" data-hs-select2-options='{
-                            "minimumResultsForSearch": "Infinity",
-                            "placeholder": "Select options"
-                          }' name="table_id">
-                                    <option value="{{$reservation->table_reservation->table_id ?? ''}}"
-                                            >{{$reservation->table_reservation->name ?? ''}}</option>
-                                    @foreach($table as $key=>$val)
-                                        <option value="{{$val->table_id ?? ''}}">{{$val->name ?? ''}}</option>
-                                    @endforeach
-                                </select>
-                                <!-- End Select -->
-
-                            </div>
-                            <!-- End Form Group -->
-                        </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <!-- Form Group -->
                             <div class="form-group">
                                 <label for="categoryLabel" class="input-label">Trạng thái</label>
@@ -179,6 +156,52 @@
                             <!-- End Form Group -->
                         </div>
                         <!-- End Form Group -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!-- Form Group -->
+                            <div class="form-group">
+                                <label for="collectionsLabel" class="input-label">Bàn</label>
+
+                                <!-- Select -->
+                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;"
+                                        id="collectionsLabel" data-hs-select2-options='{
+                            "minimumResultsForSearch": "Infinity",
+                            "placeholder": "Select options"
+                          }' name="table_id">
+                                    <option value="{{$reservation->table_reservation->table_id ?? ''}}"
+                                    >{{$reservation->table_reservation->name ?? ''}}</option>
+                                    @foreach($table as $key=>$val)
+                                        <option value="{{$val->table_id ?? ''}}">{{$val->name ?? ''}}</option>
+                                    @endforeach
+                                </select>
+                                <!-- End Select -->
+
+                            </div>
+                            <!-- End Form Group -->
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Form Group -->
+                            <div class="form-group">
+                                <label for="tablesLabel" class="input-label">Loại bàn</label>
+
+                                <!-- Select -->
+                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;"
+                                        id="tablesLabel" data-hs-select2-options='{
+                            "minimumResultsForSearch": "Infinity",
+                            "placeholder": "Select options"
+                          }' name="table_type_id">
+                                    <option value="{{$reservation->table_type_reservation->table_type_id ?? ''}}"
+                                    >{{$reservation->table_type_reservation->name ?? ''}}</option>
+                                    @foreach($table_type as $key=>$val)
+                                        <option value="{{$val->table_type_id ?? ''}}">{{$val->name ?? ''}}</option>
+                                    @endforeach
+                                </select>
+                                <!-- End Select -->
+
+                            </div>
+                            <!-- End Form Group -->
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="productNameLabel" class="input-label"> Ghi chú</label>

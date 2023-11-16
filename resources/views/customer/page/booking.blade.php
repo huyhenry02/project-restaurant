@@ -67,8 +67,8 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12">
                                 <div class="select-box">
-                                    <select name="table_id" class="select-menu">
-                                        <option value="default"> Bàn</option>
+                                    <select name="table_type_id" class="select-menu">
+                                        <option value="default"> Loại bàn</option>
                                         @foreach($table_type as $tableItem)
                                             <option value="{{$tableItem->table_type_id}}">{{$tableItem->name}}</option>
                                         @endforeach

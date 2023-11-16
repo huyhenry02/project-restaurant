@@ -10,18 +10,12 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-no-gutter">
                                 <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Trang</a></li>
-                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Hóa đơn</a></li>
+                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Tin nhắn phản hồi</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
 
-                        <h1 class="page-header-title">Hóa đơn</h1>
-                    </div>
-
-                    <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{route('show_create_role.index')}}">
-                            <i class="tio-user-add mr-1"></i> Thêm Hóa đơn
-                        </a>
+                        <h1 class="page-header-title">Tin nhắn phản hồi</h1>
                     </div>
                 </div>
                 <!-- End Row -->
@@ -33,11 +27,11 @@
                     <!-- Card -->
                     <div class="card h-100">
                         <div class="card-body">
-                            <h6 class="card-subtitle mb-2">Tổng số Hóa đơn</h6>
+                            <h6 class="card-subtitle mb-2">Tổng số Tin nhắn phản hồi</h6>
 
                             <div class="row align-items-center gx-2">
                                 <div class="col">
-                                    <span class="js-counter display-4 text-dark">{{$orderCount}}</span>
+                                    <span class="js-counter display-4 text-dark">{{$messageCount}}</span>
 
                                 </div>
                             </div>
@@ -79,46 +73,28 @@
                                 <label class="custom-control-label" for="datatableCheckAll"></label>
                             </div>
                         </th>
-                        <th>Tên Hóa đơn</th>
                         <th>Tên Khách hàng</th>
-                        <th>Số điện thoại</th>
-                        <th>Loại Bàn</th>
-                        <th>Bàn</th>
-                        <th>Ngày</th>
-                        <th>Giờ</th>
-                        <th>Tổng tiền</th>
-                        <th></th>
+                        <th>Email</th>
+                        <th>Chủ đề</th>
+                        <th>Nội dung</th>
+                        <th>Thời gian</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    @foreach($order as $key=>$val)
+                    @foreach($message as $key=>$val)
                         <tr>
                             <td class="table-column-pr-0">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="usersDataCheck1">
                                     <label class="custom-control-label" for="usersDataCheck1"></label>
                                 </div>
-                            </td> x
-                            <td>{{ $val ? $val->name : '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->customer->name ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->customer->phone ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->table_type_order->name ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->table_order->name ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>
-                                {{ $val && $val->created_at ? $val->created_at->setTimezone('Asia/Ho_Chi_Minh')->format('H:i d/m/Y') : '' }}
-                                <span class="text-hide">Code: GB</span>
                             </td>
-                            <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val ? $val->total_amount : '' }} VNĐ<span class="text-hide">Code: GB</span></td>
-                            <td>
-                                <a class="btn btn-sm btn-white" href="{{route('show_update_order.index',$val->order_id)}}" >
-                                    <i class="tio-edit"></i>
-                                </a>
-                                <a class="btn btn-sm btn-white" href="{{route('order.delete',$val->order_id)}}" >
-                                    <i class="tio-delete"></i>
-                                </a>
-                            </td>
+                            <td>{{ $val ? $val->name_customer : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->email : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->subject : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->message : '' }}<span class="text-hide">Code: GB</span></td>
+                            <td>{{ $val ? $val->created_at->setTimezone('Asia/Ho_Chi_Minh')->format('H:i d/m/Y') : '' }}<span class="text-hide">Code: GB</span></td>
                         </tr>
                     @endforeach
 
@@ -136,7 +112,6 @@
                             <span class="mr-2">Trang:</span>
 
                             <!-- Select -->
-                            <label for="datatableEntries"></label>
                             <select id="datatableEntries" class="js-select2-custom" data-hs-select2-options='{
                             "minimumResultsForSearch": "Infinity",
                             "customClass": "custom-select custom-select-sm custom-select-borderless",
@@ -167,7 +142,11 @@
             </div>
             <!-- End Footer -->
         </div>
+        <!-- End Card -->
+        </div>
+        <!-- End Content -->
 
+        <!-- Footer -->
 
     </main>
 

@@ -27,18 +27,16 @@
                          }'>
                             </div>
                             <div class="form-group">
-                                <label for="addresszipCodeLabel" class="input-label">Mô tả <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="You can find your code in a postal address."></i></label>
-
-                                <input type="text" class="js-masked-input form-control" name="description" id="addresszipCodeLabel" p aria-label="Your zip code" data-hs-mask-options='{
-                           "template": "AA0 0AA"
-                         }'>
-                            </div>
-                            <div class="form-group">
-                                <label for="addresszipCodeLabel" class="input-label">Số lượng <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="You can find your code in a postal address."></i></label>
-
-                                <input type="number" class="js-masked-input form-control" name="amount" id="addresszipCodeLabel" p aria-label="Your zip code" data-hs-mask-options='{
-                           "template": "AA0 0AA"
-                         }'>
+                                <select class="js-select2-custom custom-select" size="1" style="opacity: 0;"
+                                        id="collectionsLabel" data-hs-select2-options='{
+                            "minimumResultsForSearch": "Infinity",
+                            "placeholder": "Chọn loại bàn"
+                          }' name="role_id">
+                                    <option label="empty"></option>
+                                    @foreach($table_type as $key=>$val)
+                                        <option value="{{$val->table_type_id ?? ''}}">{{$val->name ?? ''}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <!-- End Form Group -->
                             <div class="d-flex justify-content-end">

@@ -23,27 +23,6 @@
                 <!-- End Row -->
             </div>
             <!-- End Page Header -->
-            <!-- Stats -->
-            <div class="row gx-2 gx-lg-3">
-                <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-                    <!-- Card -->
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2">Tổng số Bàn đã đặt</h6>
-
-                            <div class="row align-items-center gx-2">
-                                <div class="col">
-                                    <span class="js-counter display-4 text-dark">{{$reservationCount}}</span>
-
-                                </div>
-                            </div>
-                            <!-- End Row -->
-                        </div>
-                    </div>
-                    <!-- End Card -->
-                </div>
-
-            </div>
         </div>
         <!-- End Stats -->
 
@@ -117,7 +96,7 @@
                     </thead>
 
                     <tbody>
-                    @foreach($reservation as $key=>$val)
+                    @foreach($reservations as $key=>$val)
                         <tr>
                             <td class="table-column-pr-0">
                                 <div class="custom-control custom-checkbox">
@@ -153,7 +132,6 @@
                                 {{ $val && $val->created_at ? $val->created_at->setTimezone('Asia/Ho_Chi_Minh')->format('H:i d/m/Y') : '' }}
                                 <span class="text-hide">Code: GB</span>
                             </td>
-
                             <td>
                                 <a class="btn btn-sm btn-white"
                                    href="{{route('show_update_reservation.index',$val->reservation_id)}}">
@@ -222,6 +200,7 @@
         <div class="card card-lg sidebar-card sidebar-footer-fixed">
             <div class="card-header">
                 <h4 class="card-header-title">Lọc</h4>
+
                 <!-- Toggle Button -->
                 <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-dark ml-2" href="javascript:;"
                    data-hs-unfold-options='{
@@ -239,15 +218,14 @@
 
             <form action="{{route('filterReservations.post')}}" method="post">
                 @csrf
-                <div class="card-body sidebar-body">
+                <div class="card-body sidebar-body ">
                     <small class="text-cap mb-3">Loại bàn</small>
 
                     @foreach($table_type as $val)
                         <div class="custom-control custom-radio mb-2">
                             <input type="radio" id="productTypeFilterRadio{{$val->table_type_id}}" name="table_type_id"
                                    class="custom-control-input table-type-radio"
-                                   data-table-type="{{$val->_table_type_id}}"
-                                   value="{{$val->table_type_id}}">
+                                   data-table-type="{{$val->_table_type_id}}" value="{{$val->_table_type_id}}">
                             <label class="custom-control-label"
                                    for="productTypeFilterRadio{{$val->table_type_id}}">{{$val->name}}</label>
                         </div>
@@ -259,15 +237,12 @@
                         <select class="js-select2-custom custom-select" size="1" style="opacity: 0;"
                                 id="collectionsLabel" data-hs-select2-options='{
                             "minimumResultsForSearch": "Infinity",
-                            "placeholder": "Chọn mã bàn "
+                            "placeholder": "Chọn bàn"
                           }' name="table_id">
                             <option label="empty"></option>
                             @foreach($table as $key=>$val)
                                 <option class="table-option" value="{{$val->table_id ?? ''}} "
-                                        data-table-type="{{$val->table_item->table_type_id}}"
-                                >
-                                    {{$val->name ?? ''}}
-                                </option>
+                                        data-table-type="{{$val->table_item->table_type_id}}">{{$val->name ?? ''}}</option>
                             @endforeach
                         </select>
                     </div>

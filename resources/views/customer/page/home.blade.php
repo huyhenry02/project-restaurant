@@ -1,5 +1,10 @@
 @extends('customer.layout.main')
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div id="minimal-bootstrap-carousel" data-ride="carousel"
          class="carousel default-home-slider slide carousel-fade shop-slider">
         <!-- Wrapper for slides-->
@@ -16,8 +21,8 @@
                                     khám phá một thế giới ẩm thực đa dạng và tinh tế. Với không gian sang trọng, dịch vụ
                                     chuyên nghiệp và các món ăn ngon miệng, chúng tôi cam kết mang đến cho bạn một trải
                                     nghiệm ẩm thực đáng nhớ.</p>
-                                <a data-animation="animated fadeInLeft" href="#" class="nhs-btn3">Book now</a><a
-                                    data-animation="animated fadeInRight" href="#" class="nhs-btn">Know more</a>
+                                <a data-animation="animated fadeInLeft" href="{{route('show_book.index')}}" class="nhs-btn3">Book now</a><a
+                                    data-animation="animated fadeInRight" href="{{route('show_about_us.index')}}" class="nhs-btn">Know more</a>
                             </div>
                         </div>
                     </div>
@@ -34,8 +39,8 @@
                                     tạo ra một không gian ấm cúng và thú vị. Âm nhạc có thể tạo ra một không khí thoải
                                     mái và tăng cường trải nghiệm ẩm thực của bạn. Khi âm nhạc nhẹ nhàng tràn ngập không
                                     gian, nó có thể giúp thư giãn và tạo ra một bầu không khí thư thái cho bữa ăn.</p>
-                                <a data-animation="animated fadeInLeft" href="#" class="nhs-btn3">Book now</a><a
-                                    data-animation="animated fadeInRight" href="#" class="nhs-btn">know more</a>
+                                <a data-animation="animated fadeInLeft" href="{{route('show_book.index')}}" class="nhs-btn3">Book now</a><a
+                                    data-animation="animated fadeInRight" href="{{route('show_about_us.index')}}" class="nhs-btn">know more</a>
                             </div>
                         </div>
                     </div>
@@ -62,51 +67,6 @@
                                                       class="right carousel-control"><i
                 class="fa fa-angle-right"></i><span class="sr-only">Next</span></a>
     </div>
-    <!-- Search style-->
-    <div class="search-wrapper">
-        <section class="container clearfix">
-            <div class="search-sec search-sec-homet">
-                <div class="overlay">
-                    <div class="border">
-                        <form method="post" action="{{route('check_table.post')}}">
-                            @csrf
-                            <div class="ser-in-box">
-                                <input placeholder="Ngày" type="text" class="form-control datepicker-example8 " name="reservation_date">
-                            </div>
-                            <div class="ser-in-box">
-                                <div class="select-box">
-                                    <select name="time" class="select-menu">
-                                        <option value="default"> Giờ</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="ser-in-box chk-button">
-                                <button type="submit" class="res-btn">Check Availability</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <!-- Search style-->
-    <!-- Rooms And Suits style-->
     <section class="container clearfix common-pad nasir-style">
         <div class="sec-header sec-header-pad">
             <h2>Table</h2>
@@ -531,10 +491,11 @@
                         <h2>Drop a Message</h2>
                     </div>
                     <div class="drop-wrapper input_form">
-                        <form id="contactForm" action="sendemail.php" method="post">
+                        <form id="contactForm" action="{{route('create_message.post')}}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input id="name" type="text" name="name" placeholder="Your name"
+                                    <input id="name" type="text" name="name_customer" placeholder="Your name"
                                            class="form-control">
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

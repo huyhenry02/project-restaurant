@@ -39,9 +39,17 @@ Dự án là một trang web nhà hàng được xây dựng bằng Laravel. Nó
     ```
 
 6. Chạy các migrations và seed dữ liệu mẫu:
-
+    Tạo 1 database trong  CSDL
+     ```bash
+   create database restaurants
+    ```
+   Chạy migrate tạo các bảng
     ```bash
-    php artisan migrate --seed
+    php artisan migrate
+    ```
+   Chạy file query seed_data.sql trong CSDL của bạn để insert dữ liệu. Sau đó chạy câu lệnh sau để có tài khoản login
+    ```bash
+   php artisan db:seed
     ```
 
 7. Chạy máy chủ phát triển:
@@ -65,8 +73,8 @@ Nếu bạn muốn đóng góp vào dự án, hãy tạo pull request và chúng
 
 ## Bản Quyền 
 
-Trang web này được thực hiện bới Nhóm 4
+Trang web này được thực hiện bới Nhóm 4 lớp K57SD Trường Đại học Thương Mại
 
 ---
 
-Cảm ơn bạn đã quan tâm đến dự án của chúng tôi! Nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào, vui lòng liên hệ [tên của bạn hoặc địa chỉ email của bạn].
+Cảm ơn bạn đã quan tâm đến dự án của chúng tôi! Nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào, vui lòng liên hệ  nhom04@gmail.com.

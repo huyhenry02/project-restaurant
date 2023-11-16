@@ -20,7 +20,8 @@ class TableItemController extends BaseController
 
     public function show_create_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('employee.page.table_item.create');
+        $table_type = TableType::all();
+        return view('employee.page.table_item.create',['table_type'=>$table_type]);
     }
 
     public function show_list_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -38,7 +39,7 @@ class TableItemController extends BaseController
     {
         try {
             DB::beginTransaction();
-            $table = new TableType();
+            $table = new Table();
             $table->name = $request['name'];
             $table->table_type_id = $request['table_type_id'];
             $table->save();

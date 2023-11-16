@@ -5,6 +5,7 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Example\ExampleController;
 use App\Http\Controllers\Facility\FacilityController;
 use App\Http\Controllers\Menu\MenuController;
+use App\Http\Controllers\Message\MessageController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Role\RoleController;
@@ -44,8 +45,9 @@ Route::prefix('customer')->group(function () {
     Route::get('/show_our_restaurant', [CustomerController::class, 'show_our_restaurant'])->name('show_our_restaurant.index');
     Route::get('/show_our_table', [CustomerController::class, 'show_our_table'])->name('show_our_table.index');
 
-    Route::post('/check_table', [CustomerController::class, 'check_table'])->name('check_table.post');
     Route::post('/book_table', [CustomerController::class, 'book_table'])->name('book_table.post');
+    Route::post('/create_message', [MessageController::class, 'create_message'])->name('create_message.post');
+
 });
 //admin
 Route::prefix('admin')->middleware(['auth'])->group(function () {
@@ -59,6 +61,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         //action
         Route::post('/create_role', [RoleController::class, 'create_role'])->name('create_role.post');
         Route::get('/delete_role/{role_id}', [RoleController::class, 'destroy'])->name('role.delete');
+    });
+    //message
+    Route::prefix('message')->group(function (){
+        //show
+        Route::get('/show_list_message', [MessageController::class, 'show_list_message'])->name('show_list_message.index');
     });
     //employee
     Route::prefix('employee')->group(function (){
@@ -115,6 +122,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         //action
         Route::get('/delete_reservation/{reservation_id}', [ReservationController::class, 'destroy'])->name('reservation.delete');
         Route::post('/update_reservation/{reservation_id}', [ReservationController::class, 'update_reservation'])->name('update_reservation.post');
+        Route::post('/filterReservations', [ReservationController::class, 'filterReservations'])->name('filterReservations.post');
 
     });
     //table_type

@@ -86,38 +86,6 @@ class CustomerController extends BaseController
     {
         return view('customer.page.table');
     }
-
-    public function check_table(Request $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        $reservationDate = $request->input('reservation_date');
-        $allTables = Table::all();
-        $bookedTables = Reservation::where('reservation_date', $reservationDate)
-            ->whereIn('status',['approved', 'processing','pending'])
-            ->pluck('table_id')
-            ->toArray();
-        $bookedTablesCount = array_count_values($bookedTables);
-        $remainingTables = [];
-        foreach ($allTables as $table) {
-            $tableId = $table->table_id;
-            $totalTables = $table->amount;
-            $bookedCount = $bookedTablesCount[$tableId] ?? 0;
-            $remainingTables[$tableId] = $totalTables - $bookedCount;
-        }
-            $countCustomer = Customer::count();
-            $countTable = Table::count();
-            $countReservation = Reservation::count();
-            $countFood = Menu::count();
-
-            return view('customer.page.available', [
-                'remainingTables' => $remainingTables,
-                'countCustomer' => $countCustomer,
-                'countTable' => $countTable,
-                'countReservation' => $countReservation,
-                'countFood' => $countFood,
-                'allTables' => $allTables,
-            ]);
-    }
-
     public function book_table(Request $request): string
     {
         try {
