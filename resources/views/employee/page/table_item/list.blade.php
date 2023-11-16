@@ -52,38 +52,6 @@
 
         <!-- Card -->
         <div class="card">
-            <!-- Header -->
-            <div class="card-header">
-                <div class="row justify-content-between align-items-center flex-grow-1">
-                    <div class="col-sm-6-left">
-                        <div class="form-group">
-                            <form action="{{ route('count_table_type.post') }}" method="post">
-                                @csrf
-                                <dl class="row align-items-sm-center mb-3">
-                                    <dt class="col-sm-4 col-md text-sm-right mb-2 mb-sm-0">Ngày: </dt>
-                                    <dd class="col-sm-8 col-md-auto mb-0">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="tio-calendar"></i>
-                                    </span>
-                                            </div>
-                                            <input type="date" class="form-control flatpickr-custom-form-control" name="reservation_date">
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Row -->
-            </div>
-
-            <!-- End Header -->
-
             <!-- Table -->
             <div class="table-responsive datatable-custom">
                 <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
