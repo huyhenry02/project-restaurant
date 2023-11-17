@@ -89,14 +89,6 @@ class CustomerController extends BaseController
     public function book_table(Request $request): string
     {
         try {
-            $tableTypeId = $request->input('table_type_id');
-            $table_type = TableType::find($tableTypeId);
-            $availableTables = Reservation::where('reservation_date', $request->input('reservation_date'))
-                ->count();
-            $totalTables = $table_type->amount;
-            if ($availableTables >= $totalTables) {
-                return redirect()->back()->with('error', 'Không còn bàn trống cho thời gian này.');
-            }
             DB::beginTransaction();
             $customer = new Customer();
             $customer->fill($request->input());

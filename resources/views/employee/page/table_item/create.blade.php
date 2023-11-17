@@ -31,7 +31,7 @@
                                         id="collectionsLabel" data-hs-select2-options='{
                             "minimumResultsForSearch": "Infinity",
                             "placeholder": "Chọn loại bàn"
-                          }' name="role_id">
+                          }' name="table_type_id">
                                     <option label="empty"></option>
                                     @foreach($table_type as $key=>$val)
                                         <option value="{{$val->table_type_id ?? ''}}">{{$val->name ?? ''}}</option>

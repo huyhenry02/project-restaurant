@@ -26,6 +26,6 @@ class Menu extends Model
     }
     public function orderDetails(): HasMany
     {
-        return $this->hasMany(OrderDetail::class,'item_id','item_id');
+        return $this->hasMany(OrderDetail::class,'menu_id','item_id');
     }
 }
