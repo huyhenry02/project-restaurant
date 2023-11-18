@@ -1,76 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Title -->
-    <title>Délicat</title>
-    <!-- Favicon -->
+    <title>Délicat Admin</title>
     <link rel="shortcut icon" href="favicon.ico">
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="/frontend/assets\css\vendor.min.css">
     <link rel="stylesheet" href="/frontend/assets\vendor\icon-set\style.css">
-    <!-- CSS Front Template -->
     <link rel="stylesheet" href="/frontend/assets\css\theme.min.css?v=1.0">
 </head>
-
 <body class="footer-offset">
-
 <script src="{{asset('/frontend/assets\vendor\hs-navbar-vertical-aside\hs-navbar-vertical-aside-mini-cache.js')}}"></script>
-
-
-<!-- ONLY DEV -->
-
-<!-- Builder -->
 @include('employee.layout.builder')
-<!-- End Builder -->
-
-<!-- Header -->
 @include('employee.layout.header')
-
-<!-- End Header -->
 @include('employee.layout.menubar')
 <script src="{{asset('/frontend/assets\js\demo.js')}}"></script>
-<!-- END ONLY DEV -->
-<!-- Search Form -->
 @include('employee.layout.search')
-<!-- End Search Form -->
-<!-- ========== HEADER ========== -->
-<!-- ========== END HEADER ========== -->
-<!-- ========== MAIN CONTENT ========== -->
-<!-- Nvbar Vertical -->
-<!-- End Nabar Vertical -->
-
 @yield('content')
-<!-- ========== END MAIN CONTENT ========== -->
-
-<!-- ========== SECONDARY CONTENTS ========== -->
-<!-- Keyboard Shortcuts -->
 @include('employee.layout.keyboard')
-<!-- End Keyboard Shortcuts -->
-<!-- JS Implementing Plugins -->
 <script src="{{asset('/frontend/assets\js\vendor.min.js')}}"></script>
 <script src="{{asset('/frontend/assets\vendor\chart.js\dist\Chart.min.js')}}"></script>
 <script src="{{assert('/frontend/assets\vendor\chart.js.extensions\chartjs-extensions.js')}}"></script>
 <script src="{{asset('/frontend/assets\vendor\chartjs-plugin-datalabels\dist\chartjs-plugin-datalabels.min.js')}}"></script>
-
-
-
-<!-- JS Front -->
 <script src="{{asset('/frontend/assets\js\theme.min.js')}}"></script>
-
-<!-- JS Plugins Init. -->
 <script>
     $(document).on('ready', function() {
-        // ONLY DEV
-        // =======================================================
-
         if (window.localStorage.getItem('hs-builder-popover') === null) {
             $('#builderPopover').popover('show')
                 .on('shown.bs.popover', function() {
@@ -87,34 +43,16 @@
             });
         }
 
-        // END ONLY DEV
-        // =======================================================
-
-
-        // BUILDER TOGGLE INVOKER
-        // =======================================================
         $('.js-navbar-vertical-aside-toggle-invoker').click(function() {
             $('.js-navbar-vertical-aside-toggle-invoker i').tooltip('hide');
         });
-
-
-        // INITIALIZATION OF MEGA MENU
-        // =======================================================
         var megaMenu = new HSMegaMenu($('.js-mega-menu'), {
             desktop: {
                 position: 'left'
             }
         }).init();
 
-
-
-        // INITIALIZATION OF NAVBAR VERTICAL NAVIGATION
-        // =======================================================
         var sidebar = $('.js-navbar-vertical-aside').hsSideNav();
-
-
-        // INITIALIZATION OF TOOLTIP IN NAVBAR VERTICAL MENU
-        // =======================================================
         $('.js-nav-tooltip-link').tooltip({
             boundary: 'window'
         })
@@ -124,31 +62,17 @@
                 return false;
             }
         });
-
-
-        // INITIALIZATION OF UNFOLD
-        // =======================================================
         $('.js-hs-unfold-invoker').each(function() {
             var unfold = new HSUnfold($(this)).init();
         });
 
-
-        // INITIALIZATION OF FORM SEARCH
-        // =======================================================
         $('.js-form-search').each(function() {
             new HSFormSearch($(this)).init()
         });
-
-
-        // INITIALIZATION OF SELECT2
-        // =======================================================
         $('.js-select2-custom').each(function() {
             var select2 = $.HSCore.components.HSSelect2.init($(this));
         });
 
-
-        // INITIALIZATION OF CHARTJS
-        // =======================================================
         Chart.plugins.unregister(ChartDataLabels);
 
         $('.js-chart').each(function() {
@@ -157,8 +81,6 @@
 
         var updatingChart = $.HSCore.components.HSChartJS.init($('#updatingData'));
 
-        // CALL WHEN TAB IS CLICKED
-        // =======================================================
         $('[data-toggle="chart-bar"]').click(function(e) {
             let keyDataset = $(e.currentTarget).attr('data-datasets')
 
@@ -190,10 +112,6 @@
                 updatingChart.update();
             }
         })
-
-
-        // INITIALIZATION OF BUBBLE CHARTJS WITH DATALABELS PLUGIN
-        // =======================================================
         $('.js-chart-datalabels').each(function() {
             $.HSCore.components.HSChartJS.init($(this), {
                 plugins: [ChartDataLabels],
@@ -236,10 +154,6 @@
                 },
             });
         });
-
-
-        // INITIALIZATION OF DATERANGEPICKER
-        // =======================================================
         $('.js-daterangepicker').daterangepicker();
 
         $('.js-daterangepicker-times').daterangepicker({
@@ -312,22 +226,15 @@
                 var newValue = $input.val();
 
                 if (newValue == "") {
-                    // Gotcha
                     datatable.search('').draw();
                 }
             }, 1);
         });
-
-
-        // INITIALIZATION OF CLIPBOARD
-        // =======================================================
         $('.js-clipboard').each(function() {
             var clipboard = $.HSCore.components.HSClipboard.init(this);
         });
     });
 </script>
-
-<!-- IE Support -->
 <script>
     if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('/frontend/assets/vendor/babel-polyfill/polyfill.min.js')}}"><\/script>');
 </script>

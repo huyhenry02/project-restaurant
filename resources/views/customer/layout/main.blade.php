@@ -23,7 +23,7 @@
 </head>
 <body>
 
-@include('customer.layout.header');
+@include('customer.layout.header')
 @yield('content')
 @include('customer.layout.footer')
 <script src="/customer/js\jquery-2.2.4.min.js"></script>

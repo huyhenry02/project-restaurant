@@ -4,13 +4,16 @@ namespace App\Modules\Customer\Models;
 
 use App\Modules\Order\Models\Order;
 use App\Modules\Reservation\Models\Reservation;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Customer extends Model
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class Customer extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
     public $table = 'customers';
     protected $primaryKey = 'customer_id';
     protected $fillable = [
@@ -18,8 +21,11 @@ class Customer extends Model
         'phone',
         'address',
         'email',
+        'password',
     ];
-
+    protected $hidden = [
+        'password',
+    ];
     public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class,'customer_id','customer_id');

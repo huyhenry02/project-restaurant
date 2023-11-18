@@ -6,6 +6,7 @@ use App\Modules\CategoryFood\Models\CategoryFood;
 use App\Modules\Customer\Models\Customer;
 use App\Modules\Customer\Requests\BookTableRequest;
 use App\Modules\Menu\Models\Menu;
+use App\Modules\Order\Models\Order;
 use App\Modules\Reservation\Models\Reservation;
 use App\Modules\Table\Models\Table;
 use App\Modules\Table\Models\TableType;
@@ -16,6 +17,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CustomerController extends BaseController
@@ -39,6 +41,16 @@ class CustomerController extends BaseController
     {
         return view('customer.page.contact');
     }
+    public function show_history_reservation(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $customerId = Auth::guard('customer')->user()->customer_id;
+        $reservation = Reservation::where('customer_id',$customerId)->get();
+        $order = Order::where('customer_id',$customerId)->get();
+        return view('customer.page.history_reservation',[
+            'reservation'=>$reservation,
+            'order'=>$order,
+        ]);
+    }
 
     public function show_list_customer(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
@@ -49,7 +61,17 @@ class CustomerController extends BaseController
             'customerCount' => $customerCount
         ]);
     }
-
+    public function show_history_customer($customerId): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $customer = Customer::find($customerId);
+        $reservation = Reservation::where('customer_id',$customerId)->get();
+        $order = Order::where('customer_id',$customerId)->get();
+        return view('employee.page.customer.history', [
+            'reservation'=>$reservation,
+            'order'=>$order,
+            'customer'=>$customer,
+        ]);
+    }
     public function show_home(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $table_type = TableType::all();
@@ -107,6 +129,26 @@ class CustomerController extends BaseController
             return redirect()->back()->with('success', 'Đặt bàn thành công!');
         } catch (Exception $e) {
             DB::rollback();
+            return redirect()->back()->with('error', 'Có lỗi xảy ra khi đặt bàn. Vui lòng thử lại sau.');
+        }
+    }
+    public function book_table_customer(Request $request): string
+    {
+        try {
+            DB::beginTransaction();
+            $reservation = new Reservation();
+            $reservation->fill($request->input());
+            $reservation->time_out = $request->input('time') + 2;
+            $reservation->save();
+
+            $reservationId = $reservation->reservation_id;
+            $reservation->name = 'D' . $reservationId;
+            $reservation->save();
+            DB::commit();
+            return redirect()->back()->with('success', 'Đặt bàn thành công!');
+        } catch (Exception $e) {
+            DB::rollback();
+//            dd($e->getMessage());
             return redirect()->back()->with('error', 'Có lỗi xảy ra khi đặt bàn. Vui lòng thử lại sau.');
         }
     }

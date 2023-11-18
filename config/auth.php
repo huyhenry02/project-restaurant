@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Customer\Models\Customer;
 use App\Modules\Employee\Models\Employee;
 
 return [
@@ -42,6 +43,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+        ],
     ],
 
     /*
@@ -65,6 +70,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => Employee::class,
+        ],
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => Customer::class,
         ],
 
         // 'users' => [
@@ -94,6 +103,12 @@ return [
 
     'passwords' => [
         'users' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'customers' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,

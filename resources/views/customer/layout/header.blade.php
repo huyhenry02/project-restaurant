@@ -48,6 +48,17 @@
         </div>
         <!-- /.pull-left left-infos-->
         <div class="pull-right right-infos link-list">
+           @if(Auth::guard('customer')->check())
+                <ul class="list-inline">
+                    <li><a href="{{route('show_history_reservation.index')}}">{{Auth::guard('customer')->user()->name}}</a></li>
+                    <li><a href="{{route('logout_customer.post')}}">Đăng xuất</a></li>
+                </ul>
+            @else
+                <ul class="list-inline">
+                    <li><a href="{{route('show_login_customer.index')}}">đăng nhập</a></li>
+                    <li><a href="{{route('show_register_customer.index')}}">đăng kí</a></li>
+                </ul>
+           @endif
         </div>
         <!-- /.pull-right right-infos link-list-->
     </div>

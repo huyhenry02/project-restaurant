@@ -93,6 +93,9 @@
                             <td>{{ $val ? $val->email : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->phone : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>
+                                <a class="btn btn-sm btn-white" href="{{route('show_history_customer.index',$val->customer_id)}}" >
+                                    <i class="tio-history"></i>
+                                </a>
                                 <a class="btn btn-sm btn-white" href="" >
                                     <i class="tio-edit"></i>
                                 </a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\AuthCustomerController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Example\ExampleController;
 use App\Http\Controllers\Facility\FacilityController;
@@ -29,9 +30,18 @@ Route::get('/', function () {
     return redirect()->route('show_home.index');
 });
 Route::get('/example', [ExampleController::class, 'example'])->name('example');
-Route::prefix('auth')->group(function (){
-    Route::get('/show_login', [AuthController::class, 'show_login'])->name('show_login.index');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+//auth admin
+Route::prefix('auth_admin')->group(function (){
+    Route::get('/show_login', [AuthController::class, 'show_login_admin'])->name('show_login.index');
+    Route::post('/login', [AuthController::class, 'login_admin'])->name('login.post');
+});
+//auth customer
+Route::prefix('auth_customer')->group(function (){
+    Route::get('/show_login', [AuthCustomerController::class, 'show_login_customer'])->name('show_login_customer.index');
+    Route::get('/show_register', [AuthCustomerController::class, 'show_register_customer'])->name('show_register_customer.index');
+    Route::get('/logout_customer', [AuthCustomerController::class, 'logout_customer'])->name('logout_customer.post');
+    Route::post('/login', [AuthCustomerController::class, 'login_customer'])->name('login_customer.post');
+    Route::post('/register_customer', [AuthCustomerController::class, 'register_customer'])->name('register_customer.post');
 });
 //customer
 Route::prefix('customer')->group(function () {
@@ -40,19 +50,21 @@ Route::prefix('customer')->group(function () {
     Route::get('/show_booking/{table_type_id}', [CustomerController::class, 'show_booking_customer'])->name('show_booking.index');
     Route::get('/show_book', [CustomerController::class, 'show_book'])->name('show_book.index');
     Route::get('/show_contact', [CustomerController::class, 'show_contact'])->name('show_contact.index');
+    Route::get('/show_history_reservation', [CustomerController::class, 'show_history_reservation'])->name('show_history_reservation.index')->middleware('auth:customer');
     Route::get('/show_home', [CustomerController::class, 'show_home'])->name('show_home.index');
     Route::get('/show_offer', [CustomerController::class, 'show_offer'])->name('show_offer.index');
     Route::get('/show_our_restaurant', [CustomerController::class, 'show_our_restaurant'])->name('show_our_restaurant.index');
     Route::get('/show_our_table', [CustomerController::class, 'show_our_table'])->name('show_our_table.index');
 
     Route::post('/book_table', [CustomerController::class, 'book_table'])->name('book_table.post');
+    Route::post('/book_table_customer', [CustomerController::class, 'book_table_customer'])->name('book_table_customer.post')->middleware('auth:customer');
     Route::post('/create_message', [MessageController::class, 'create_message'])->name('create_message.post');
 
 });
 //admin
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [UserController::class, 'show_index_admin'])->name('show_index_admin.index');
-    Route::get('logout',[AuthController::class, 'logout'])->name('logout.admin');
+    Route::get('logout',[AuthController::class, 'logout_admin'])->name('logout.admin');
     //role
     Route::prefix('role')->group(function (){
         //show
@@ -80,6 +92,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::prefix('customer')->group(function (){
         //show
         Route::get('/show_list_customer', [CustomerController::class, 'show_list_customer'])->name('show_list_customer.index');
+        Route::get('/show_history_customer/{customer_id}', [CustomerController::class, 'show_history_customer'])->name('show_history_customer.index');
         //action
         Route::get('/delete_customer/{customer_id}', [CustomerController::class, 'destroy'])->name('customer.delete');
 
