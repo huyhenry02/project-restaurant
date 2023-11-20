@@ -10,6 +10,28 @@
     <link rel="stylesheet" href="/frontend/assets\css\vendor.min.css">
     <link rel="stylesheet" href="/frontend/assets\vendor\icon-set\style.css">
     <link rel="stylesheet" href="/frontend/assets\css\theme.min.css?v=1.0">
+{{--    <style>--}}
+{{--        /* Thêm CSS để tùy chỉnh sơ đồ bàn của bạn */--}}
+{{--        .table-container {--}}
+{{--            display: flex;--}}
+{{--            flex-wrap: wrap;--}}
+{{--        }--}}
+
+{{--        .table {--}}
+{{--            width: 50px;--}}
+{{--            height: 50px;--}}
+{{--            border: 1px solid #000;--}}
+{{--            margin: 5px;--}}
+{{--            text-align: center;--}}
+{{--            line-height: 50px;--}}
+{{--            font-weight: bold;--}}
+{{--        }--}}
+
+{{--        .occupied {--}}
+{{--            background-color: #FF0000; /* Đổi màu cho bàn đã có người */--}}
+{{--            color: #FFF;--}}
+{{--        }--}}
+{{--    </style>--}}
 </head>
 <body class="footer-offset">
 <script src="{{asset('/frontend/assets\vendor\hs-navbar-vertical-aside\hs-navbar-vertical-aside-mini-cache.js')}}"></script>
