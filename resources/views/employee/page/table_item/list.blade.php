@@ -1,5 +1,42 @@
 @extends('employee.layout.main')
 @section('content')
+    <style>
+        .table-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .table {
+            width: 150px;
+            height: 50px;
+            border: 1px solid #000;
+            margin: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+        }
+
+        .processing {
+            background-color: #087561;
+            color: #FFF;
+        }
+
+        .approved {
+            background-color: #a8a85b;
+            color: #FFF;
+        }
+
+        .table-status {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 70px;
+        }
+
+        .table-status .table {
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
     <main id="content" role="main" class="main">
         <!-- Content -->
         <div class="content container-fluid">
@@ -9,7 +46,8 @@
                     <div class="col-sm mb-2 mb-sm-0">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-no-gutter">
-                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Trang</a></li>
+                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Trang</a>
+                                </li>
                                 <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Bàn</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
@@ -48,17 +86,50 @@
 
             </div>
         </div>
-        <!-- End Stats -->
-
-
-            <div class="table-container">
-                @foreach($table as $table_item)
-                    <div class="table">{{ $table_item->name }}</div>
-                @endforeach
+        <div class="content container-fluid">
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <form>
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-3">
+                                    <!-- Ngày -->
+                                    <label for="date" class="form-label">Ngày:</label>
+                                    <input type="date" id="date" class="form-control" name="date">
+                                </div>
+                                <div class="col-3">
+                                    <!-- Giờ bắt đầu -->
+                                    <label for="start-time" class="form-label">Giờ bắt đầu:</label>
+                                    <input type="number" id="start-time" class="form-control" name="start-time"
+                                           placeholder="Nhập giờ">
+                                </div>
+                                <div class="col-3">
+                                    <!-- Giờ kết thúc -->
+                                    <label for="end-time" class="form-label">Giờ kết thúc:</label>
+                                    <input type="number" id="end-time" class="form-control" name="end-time"
+                                           placeholder="Nhập giờ">
+                                </div>
+                                <div class="col-3">
+                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="table-status mt-3">
+                            <div class="table">Bàn trống</div>
+                            <div class="table processing" >Bàn ăn</div>
+                            <div class="table approved">Bàn đặt</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-container">
+                        @foreach($table as $table_item)
+                            <div class="table">{{ $table_item->name }}</div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
-
-
+        </div>
     </main>
-
 
 @endsection

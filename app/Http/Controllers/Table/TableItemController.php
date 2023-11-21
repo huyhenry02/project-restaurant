@@ -26,8 +26,7 @@ class TableItemController extends BaseController
 
     public function show_list_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $table = Table::whereLogIn();
-//        dd($table);
+        $table = Table::all();
         $tableCount = Table::count();
         return view('employee.page.table_item.list',
             [
