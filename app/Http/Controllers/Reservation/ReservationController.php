@@ -95,6 +95,7 @@ class ReservationController extends BaseController
             $reservation->update([
                 'reservation_date' => $request->input('reservation_date'),
                 'time' => $request->input('time'),
+                'time_out' => $request->input('time') + 2,
                 'number_of_guests' => $request->input('number_of_guests'),
                 'status' => $request->input('status'),
                 'table_id' => $request->input('table_id'),

@@ -23,12 +23,12 @@
                         <form id="contactBooking" action="{{route('book_table_customer.post')}}" method="post">
                             @csrf
                             <div class="row">
-                                <input type="hidden" name="table_id" value="{{$table_type->table_type_id ?? ''}}">
+                                <input type="hidden" name="table_type_id" value="{{$table_type->table_type_id ?? ''}}">
                                 <input type="hidden" name="customer_id"
                                        value="{{Auth::guard('customer')->user()->customer_id}}">
                                 <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12">
                                     <div class="select-box">
-                                        <select name="time" class="select-menu">
+                                        <select name="time" class="select-menu  ">
                                             <option value="default"> Giờ</option>
                                             <option value="7">7h</option>
                                             <option value="8">8h</option>

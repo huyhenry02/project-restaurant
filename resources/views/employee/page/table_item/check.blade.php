@@ -98,19 +98,19 @@
                                 <div class="col-3">
                                     <!-- Ngày -->
                                     <label for="date" class="form-label">Ngày:</label>
-                                    <input type="date" id="date" class="form-control" name="reservation_date">
+                                    <input type="date" id="date" class="form-control" name="reservation_date" value="{{$reservationDate}}">
                                 </div>
                                 <div class="col-3">
                                     <!-- Giờ bắt đầu -->
                                     <label for="start-time" class="form-label">Giờ bắt đầu:</label>
                                     <input type="number" id="start-time" class="form-control" name="time"
-                                           placeholder="Nhập giờ">
+                                           placeholder="Nhập giờ" value="{{$startTime}}">
                                 </div>
                                 <div class="col-3">
                                     <!-- Giờ kết thúc -->
                                     <label for="end-time" class="form-label">Giờ kết thúc:</label>
                                     <input type="number" id="end-time" class="form-control" name="time_out"
-                                           placeholder="Nhập giờ">
+                                           placeholder="Nhập giờ" value="{{$endTime}}">
                                 </div>
                                 <div class="col-3">
                                     <button type="submit" class="btn btn-primary">Xác nhận</button>
@@ -127,7 +127,7 @@
                 <div class="card-body">
                     <div class="table-container">
                         @foreach($table as $table_item)
-                            <div class="table">{{ $table_item->name }}</div>
+                            <div class="table @if(isset($tableStatuses[$table_item->table_id]) && $tableStatuses[$table_item->table_id] == 'approved') approved @elseif(isset($tableStatuses[$table_item->table_id]) && $tableStatuses[$table_item->table_id] == 'processing') processing @else table @endif">{{ $table_item->name }}</div>
                         @endforeach
                     </div>
                 </div>

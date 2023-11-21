@@ -21,7 +21,7 @@ class TableItemController extends BaseController
     public function show_create_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $table_type = TableType::all();
-        return view('employee.page.table_item.create',['table_type'=>$table_type]);
+        return view('employee.page.table_item.create', ['table_type' => $table_type]);
     }
 
     public function show_list_table(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -56,5 +56,74 @@ class TableItemController extends BaseController
         $table = TableType::find($id);
         $table->delete();
         return redirect()->route('show_list_table.index')->with('success', 'Đã được xóa thành công!');
+    }
+    private function getReservedTables($reservationDate, $startTime, $endTime)
+    {
+        return Reservation::where('reservation_date', $reservationDate)
+            ->when(!empty($startTime) && !empty($endTime), function ($query) use ($startTime, $endTime) {
+                $query->where(function ($query) use ($startTime, $endTime) {
+                    $query->whereBetween('time', [$startTime, $endTime])
+                        ->orWhereBetween('time_out', [$startTime, $endTime])
+                        ->orWhere(function ($query) use ($startTime, $endTime) {
+                            $query->where('time', '<=', $startTime)
+                                ->where('time_out', '>=', $endTime);
+                        });
+                });
+            })->whereIn('status', ['approved', 'processing'])
+            ->pluck('table_id');
+    }
+
+    private function getReservationStatus($tableId, $reservationDate, $startTime, $endTime, $reservedTables)
+    {
+        if ($reservedTables->contains($tableId)) {
+            return Reservation::where('table_id', $tableId)
+                ->where('reservation_date', $reservationDate)
+                ->when(!empty($startTime) && !empty($endTime), function ($query) use ($startTime, $endTime) {
+                    $query->where(function ($query) use ($startTime, $endTime) {
+                        $query->whereBetween('time', [$startTime, $endTime])
+                            ->orWhereBetween('time_out', [$startTime, $endTime])
+                            ->orWhere(function ($query) use ($startTime, $endTime) {
+                                $query->where('time', '<=', $startTime)
+                                    ->where('time_out', '>=', $endTime);
+                            });
+                    });
+                })
+                ->value('status');
+        }
+
+        return null;
+    }
+
+    public function check_table(Request $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        $reservationDate = $request->input('reservation_date');
+        $startTime = $request->input('time');
+        $endTime = $request->input('time_out');
+        $tableCount = Table::count();
+
+        $reservedTables = $this->getReservedTables($reservationDate, $startTime, $endTime);
+        $checkedTable = Table::all();
+        $tableStatuses = [];
+
+        foreach ($checkedTable as $table) {
+            $reservationStatus = $this->getReservationStatus($table->table_id, $reservationDate, $startTime, $endTime, $reservedTables);
+
+            if ($reservationStatus == 'approved') {
+                $tableStatuses[$table->table_id] = 'approved';
+            } elseif ($reservationStatus == 'processing') {
+                $tableStatuses[$table->table_id] = 'processing';
+            } else {
+                $tableStatuses[$table->table_id] = 'table';
+            }
+        }
+
+        return view('employee.page.table_item.check', [
+            'table' => $checkedTable,
+            'tableCount' => $tableCount,
+            'tableStatuses' => $tableStatuses,
+            'reservationDate' => $reservationDate,
+            'startTime' => $startTime,
+            'endTime' => $endTime,
+        ]);
     }
 }
