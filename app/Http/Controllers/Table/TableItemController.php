@@ -109,16 +109,14 @@ class TableItemController extends BaseController
 
         foreach ($checkedTable as $table) {
             $reservationInfo = $this->getReservationInfo($table->table_id, $reservationDate, $startTime, $endTime, $reservedTables);
-
             if ($reservationInfo['status'] == 'approved') {
-                $tableStatuses[$table->table_id] = 'approved';
+                $tableStatuses[$table->table_id] = ['status' => 'approved', 'time' => $reservationInfo['time']];
             } elseif ($reservationInfo['status'] == 'processing') {
-                $tableStatuses[$table->table_id] = 'processing';
+                $tableStatuses[$table->table_id] = ['status' => 'processing', 'time' => $reservationInfo['time']];
             } else {
-                $tableStatuses[$table->table_id] = 'table';
+                $tableStatuses[$table->table_id] = ['status' => 'table', 'time' => null];
             }
         }
-
         return view('employee.page.table_item.check', [
             'table' => $checkedTable,
             'tableCount' => $tableCount,
@@ -128,4 +126,5 @@ class TableItemController extends BaseController
             'endTime' => $endTime,
         ]);
     }
+
 }

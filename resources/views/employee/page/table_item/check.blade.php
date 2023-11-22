@@ -8,6 +8,18 @@
             width: 1120px;
         }
 
+        .table-container-item {
+            position: relative;
+        }
+
+        .table-time {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+        }
+
         .table {
             width: 150px;
             height: 50px;
@@ -128,13 +140,16 @@
                 <div class="card-body">
                     <div class="table-container">
                         @foreach($table as $table_item)
-                            <div class="table
-                            @if(isset($tableStatuses[$table_item->table_id]) &&
-$tableStatuses[$table_item->table_id] == 'approved') approved
-@elseif(isset($tableStatuses[$table_item->table_id]) &&
-$tableStatuses[$table_item->table_id] == 'processing') processing
-@else table @endif">
-                                {{ $table_item->name }}
+                            <div class="table-container-item">
+                                <div class="table
+                    @if(isset($tableStatuses[$table_item->table_id]) && $tableStatuses[$table_item->table_id]['status'] == 'approved') approved
+                    @elseif(isset($tableStatuses[$table_item->table_id]) && $tableStatuses[$table_item->table_id]['status'] == 'processing') processing
+                    @else table @endif">
+                                    {{ $table_item->name }}
+                                </div>
+                                @if(isset($tableStatuses[$table_item->table_id]) && isset($tableStatuses[$table_item->table_id]['time']) && !empty($tableStatuses[$table_item->table_id]['time']))
+                                    <div class="table-time">{{ $tableStatuses[$table_item->table_id]['time'] }} giờ</div>
+                                @endif
                             </div>
                         @endforeach
                     </div>
