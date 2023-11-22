@@ -148,7 +148,6 @@ class CustomerController extends BaseController
             return redirect()->back()->with('success', 'Đặt bàn thành công!');
         } catch (Exception $e) {
             DB::rollback();
-//            dd($e->getMessage());
             return redirect()->back()->with('error', 'Có lỗi xảy ra khi đặt bàn. Vui lòng thử lại sau.');
         }
     }

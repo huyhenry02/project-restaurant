@@ -148,7 +148,7 @@
                                     {{ $table_item->name }}
                                 </div>
                                 @if(isset($tableStatuses[$table_item->table_id]) && isset($tableStatuses[$table_item->table_id]['time']) && !empty($tableStatuses[$table_item->table_id]['time']))
-                                    <div class="table-time">{{ $tableStatuses[$table_item->table_id]['time'] }} giờ</div>
+                                    <div class="table-time">{{ $tableStatuses[$table_item->table_id]['time'] }} giờ đến {{ $tableStatuses[$table_item->table_id]['time_out'] }} giờ</div>
                                 @endif
                             </div>
                         @endforeach

@@ -110,9 +110,15 @@ class TableItemController extends BaseController
         foreach ($checkedTable as $table) {
             $reservationInfo = $this->getReservationInfo($table->table_id, $reservationDate, $startTime, $endTime, $reservedTables);
             if ($reservationInfo['status'] == 'approved') {
-                $tableStatuses[$table->table_id] = ['status' => 'approved', 'time' => $reservationInfo['time']];
+                $tableStatuses[$table->table_id] = [
+                    'status' => 'approved',
+                    'time' => $reservationInfo['time'],
+                    'time_out' => $reservationInfo['time_out']];
             } elseif ($reservationInfo['status'] == 'processing') {
-                $tableStatuses[$table->table_id] = ['status' => 'processing', 'time' => $reservationInfo['time']];
+                $tableStatuses[$table->table_id] = [
+                    'status' => 'processing',
+                    'time' => $reservationInfo['time'],
+                    'time_out' => $reservationInfo['time_out']];
             } else {
                 $tableStatuses[$table->table_id] = ['status' => 'table', 'time' => null];
             }
