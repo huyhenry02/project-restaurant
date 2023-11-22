@@ -5,7 +5,7 @@
             display: flex;
             flex-wrap: wrap;
             background-color: #c2c4c7;
-            width: 1000px;
+            width: 1120px;
         }
 
         .table {

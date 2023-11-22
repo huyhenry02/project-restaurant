@@ -73,7 +73,7 @@ class TableItemController extends BaseController
             ->pluck('table_id');
     }
 
-    private function getReservationStatus($tableId, $reservationDate, $startTime, $endTime, $reservedTables)
+    private function getReservationInfo($tableId, $reservationDate, $startTime, $endTime, $reservedTables)
     {
         if ($reservedTables->contains($tableId)) {
             return Reservation::where('table_id', $tableId)
@@ -88,10 +88,12 @@ class TableItemController extends BaseController
                             });
                     });
                 })
-                ->value('status');
+                ->select('status', 'time', 'time_out')
+                ->first()
+                ->toArray();
         }
 
-        return null;
+        return ['status' => null, 'time' => null, 'time_out' => null];
     }
 
     public function check_table(Request $request): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
@@ -106,11 +108,11 @@ class TableItemController extends BaseController
         $tableStatuses = [];
 
         foreach ($checkedTable as $table) {
-            $reservationStatus = $this->getReservationStatus($table->table_id, $reservationDate, $startTime, $endTime, $reservedTables);
+            $reservationInfo = $this->getReservationInfo($table->table_id, $reservationDate, $startTime, $endTime, $reservedTables);
 
-            if ($reservationStatus == 'approved') {
+            if ($reservationInfo['status'] == 'approved') {
                 $tableStatuses[$table->table_id] = 'approved';
-            } elseif ($reservationStatus == 'processing') {
+            } elseif ($reservationInfo['status'] == 'processing') {
                 $tableStatuses[$table->table_id] = 'processing';
             } else {
                 $tableStatuses[$table->table_id] = 'table';

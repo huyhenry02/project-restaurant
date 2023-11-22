@@ -5,7 +5,7 @@
             display: flex;
             flex-wrap: wrap;
             background-color: #c2c4c7;
-            width: 1000px;
+            width: 1120px;
         }
 
         .table {
@@ -98,7 +98,8 @@
                                 <div class="col-3">
                                     <!-- Ngày -->
                                     <label for="date" class="form-label">Ngày:</label>
-                                    <input type="date" id="date" class="form-control" name="reservation_date" value="{{$reservationDate}}">
+                                    <input type="date" id="date" class="form-control" name="reservation_date"
+                                           value="{{$reservationDate}}">
                                 </div>
                                 <div class="col-3">
                                     <!-- Giờ bắt đầu -->
@@ -119,7 +120,7 @@
                         </form>
                         <div class="table-status mt-3">
                             <div class="table">Bàn trống</div>
-                            <div class="table processing" >Bàn ăn</div>
+                            <div class="table processing">Bàn ăn</div>
                             <div class="table approved">Bàn đặt</div>
                         </div>
                     </div>
@@ -127,7 +128,14 @@
                 <div class="card-body">
                     <div class="table-container">
                         @foreach($table as $table_item)
-                            <div class="table @if(isset($tableStatuses[$table_item->table_id]) && $tableStatuses[$table_item->table_id] == 'approved') approved @elseif(isset($tableStatuses[$table_item->table_id]) && $tableStatuses[$table_item->table_id] == 'processing') processing @else table @endif">{{ $table_item->name }}</div>
+                            <div class="table
+                            @if(isset($tableStatuses[$table_item->table_id]) &&
+$tableStatuses[$table_item->table_id] == 'approved') approved
+@elseif(isset($tableStatuses[$table_item->table_id]) &&
+$tableStatuses[$table_item->table_id] == 'processing') processing
+@else table @endif">
+                                {{ $table_item->name }}
+                            </div>
                         @endforeach
                     </div>
                 </div>
