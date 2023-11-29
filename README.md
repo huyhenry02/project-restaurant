@@ -73,8 +73,8 @@ Nếu bạn muốn đóng góp vào dự án, hãy tạo pull request và chúng
 
 ## Bản Quyền 
 
-Trang web này được thực hiện bới Nhóm 4 lớp K57SD Trường Đại học Thương Mại
+Trang web này được thực hiện bởi Developer Đức Huy
 
 ---
 
-Cảm ơn bạn đã quan tâm đến dự án của chúng tôi! Nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào, vui lòng liên hệ  nhom04@gmail.com.
+Cảm ơn bạn đã quan tâm đến dự án của chúng tôi! Nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào, vui lòng liên hệ  sandbox.duchuy02@gmail.con
