@@ -140,7 +140,6 @@ class CustomerController extends BaseController
             $reservation->fill($request->input());
             $reservation->time_out = intval($request->input('time')) + 2;
             $reservation->save();
-
             $reservationId = $reservation->reservation_id;
             $reservation->name = 'D' . $reservationId;
             $reservation->save();
