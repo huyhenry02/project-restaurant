@@ -39,9 +39,7 @@ class TableController extends BaseController
         try {
             DB::beginTransaction();
             $table_type = new TableType();
-            $table_type->name = $request['name'];
-            $table_type->description = $request['description'];
-            $table_type->amount = $request['amount'];
+            $table_type->fill($request->all());
             $table_type->save();
             DB::commit();
             return redirect()->route('show_list_table_type.index');

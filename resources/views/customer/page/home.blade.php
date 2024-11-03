@@ -21,8 +21,10 @@
                                     khám phá một thế giới ẩm thực đa dạng và tinh tế. Với không gian sang trọng, dịch vụ
                                     chuyên nghiệp và các món ăn ngon miệng, chúng tôi cam kết mang đến cho bạn một trải
                                     nghiệm ẩm thực đáng nhớ.</p>
-                                <a data-animation="animated fadeInLeft" href="{{route('show_book.index')}}" class="nhs-btn3">Book now</a><a
-                                    data-animation="animated fadeInRight" href="{{route('show_about_us.index')}}" class="nhs-btn">Know more</a>
+                                <a data-animation="animated fadeInLeft" href="{{route('show_book.index')}}"
+                                   class="nhs-btn3">Đặt bàn ngay</a><a
+                                    data-animation="animated fadeInRight" href="{{route('show_about_us.index')}}"
+                                    class="nhs-btn">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -39,8 +41,10 @@
                                     tạo ra một không gian ấm cúng và thú vị. Âm nhạc có thể tạo ra một không khí thoải
                                     mái và tăng cường trải nghiệm ẩm thực của bạn. Khi âm nhạc nhẹ nhàng tràn ngập không
                                     gian, nó có thể giúp thư giãn và tạo ra một bầu không khí thư thái cho bữa ăn.</p>
-                                <a data-animation="animated fadeInLeft" href="{{route('show_book.index')}}" class="nhs-btn3">Book now</a><a
-                                    data-animation="animated fadeInRight" href="{{route('show_about_us.index')}}" class="nhs-btn">know more</a>
+                                <a data-animation="animated fadeInLeft" href="{{route('show_book.index')}}"
+                                   class="nhs-btn3">Đặt bàn ngay</a><a
+                                    data-animation="animated fadeInRight" href="{{route('show_about_us.index')}}"
+                                    class="nhs-btn">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -65,12 +69,12 @@
                            class="left carousel-control"><i class="fa fa-angle-left"></i><span
                 class="sr-only">Previous</span></a><a href="#minimal-bootstrap-carousel" role="button" data-slide="next"
                                                       class="right carousel-control"><i
-                class="fa fa-angle-right"></i><span class="sr-only">Next</span></a>
+                class="fa fa-angle-right"></i><span class="sr-only">Tiếp</span></a>
     </div>
     <section class="container clearfix common-pad nasir-style">
         <div class="sec-header sec-header-pad">
-            <h2>Table</h2>
-            <h3>Pick a table that best suits your taste and budget</h3>
+            <h2>Bàn</h2>
+            <h3>Chọn một chiếc bàn phù hợp nhất với sở thích và ngân sách của bạn</h3>
         </div>
         <div class="room-slider">
             <div class="roomsuite-slider-two">
@@ -89,7 +93,7 @@
                                     <div class="left-p-two pull-left">
                                         <a
                                             href="{{route('show_booking.index', ['table_type_id' => $tableItem->table_type_id])}}"
-                                            class="res-btn">Booking
+                                            class="res-btn">Đặt bàn
                                         </a>
                                     </div>
                                 </div>
@@ -110,7 +114,7 @@
                             <h4 data-from="0" data-to="{{$countReservation}}" class="timer"></h4>
                         </div>
                         <div class="text-box2">
-                            <p>Table<span>Reservations</span></p>
+                            <p>Table<span>Đơn đặt bàn</span></p>
                         </div>
                     </div>
                 </div>
@@ -120,7 +124,7 @@
                             <h4 data-from="0" data-to="{{$countTable}}" class="timer"></h4>
                         </div>
                         <div class="text-box2">
-                            <p>Dining<span>Space</span></p>
+                            <p>Không gian<span>Ăn uống </span></p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +134,7 @@
                             <h4 data-from="0" data-to="{{$countFood}}" class="timer"></h4>
                         </div>
                         <div class="text-box2">
-                            <p>Menu<span>Foods</span></p>
+                            <p>Món ăn<span></span></p>
                         </div>
                     </div>
                 </div>
@@ -140,7 +144,7 @@
                             <h4 data-from="0" data-to="{{$countCustomer}}" class="timer"></h4>
                         </div>
                         <div class="text-box2">
-                            <p>Familiar <span>Customer</span></p>
+                            <p>Khách hàng <span>thân thiết</span></p>
                         </div>
                     </div>
                 </div>
@@ -153,7 +157,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 activities-cont">
                     <div class="sec-header3">
-                        <h2>Activities of Restaurant</h2>
+                        <h2>Các hoạt động của nhà hàng</h2>
                         <h3>Bữa cơm yêu thương</h3>
                     </div>
                     <p>Vào ngày 15 hàng tháng, chúng tôi trích 20% doanh thu của ngày 14 để nấu những bưa cơm từ thiện
@@ -177,16 +181,14 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
     <!-- Our Offer style-->
     <section class="our-offer-htwo clearfix">
         <div class="container clearfix common-pad">
             <div class="row">
                 <div class="col-md-4 our-offer-left">
                     <div class="sec-header3">
-                        <h2>Our Offers</h2>
-                        <h3>Pick a table that best suits</h3>
+                        <h2>Ưu đãi của chúng tôi</h2>
+                        <h3>Chọn bàn phù hợp nhất</h3>
                     </div>
                     <p><i>Chương trình khuyến mãi đặc biệt, cơ hội không thể bỏ qua</i></p>
                     <p>Với sứ mệnh nâng cao chất lượng cuộc sống, chúng tôi luôn mang đến những ưu đãi bất ngờ</p>
@@ -199,7 +201,7 @@
                                     <div class="room-ad-cont">
                                         <h2>25% <span>off</span></h2>
                                         <h3>Thứ 4 hàng tuần</h3>
-                                        <p>Tận hưởng bữa ăn snag trọng với giá siêu hời</p><a href="booking.html">Xem
+                                        <p>Tận hưởng bữa ăn snag trọng với giá siêu hời</p><a href="#">Xem
                                             thêm</a>
                                     </div>
                                 </div>
@@ -208,10 +210,9 @@
                     </div>
                     <div class="offer-img-box2">
                         <div class="box1">
-                            <div class="img_holder"><a href="booking.html"><img src="images\offer\chay.jpg" width="300"
-                                                                                height="300" class="img-responsive">
+                            <div class="img_holder"><a href="#"><img src="images\offer\chay.jpg" width="300"
+                                                                     height="300" class="img-responsive">
                                     <div class="overlay">
-                                        <div class="text1">* condition apply</div>
                                         <div class="offertext1">
                                             <p>15% <span class="off-txt">off</span><span class="winter-txt">15 Âm<br>hàng tháng</span>
                                             </p>
@@ -220,12 +221,11 @@
                                 </a></div>
                         </div>
                         <div class="box2">
-                            <div class="img_holder"><a href="booking.html"><img src="images\offer\hn.jpg" width="300"
-                                                                                height="300" class="img-responsive">
+                            <div class="img_holder"><a href="#"><img src="images\offer\hn.jpg" width="300"
+                                                                     height="300" class="img-responsive">
                                     <div class="overlay">
                                         <p>Honeymoon <span>Offer</span></p>
                                         <h2>25% <span>off</span></h2>
-                                        <h6>* condition apply</h6>
                                     </div>
                                 </a></div>
                         </div>
@@ -238,8 +238,7 @@
     <section class="our-galler-htwo clearfix common-pad">
         <div class="container clearfix">
             <div class="sec-header sec-w-header">
-                <h2>Our Gallery</h2>
-                <h3>Pick a table that best suits your taste and budget</h3>
+                <h2>Phòng trưng bày của chúng tôi</h2>
             </div>
         </div>
         <div class="fullwidth-silder">
@@ -248,7 +247,7 @@
                     <div class="this-overlay">
                         <div class="this-texts"><a href="images/gallery-home/1.jpg" rel="help" class="fancybox"><i
                                     class="icon icon-Search"></i></a>
-                            <h4 class="this-title">our staff</h4>
+                            <h4 class="this-title">Nhân viên của chúng tôi</h4>
                         </div>
                     </div>
                 </div>
@@ -256,7 +255,7 @@
                     <div class="this-overlay">
                         <div class="this-texts"><a href="images\gallery-home\viu.jpg" rel="help" class="fancybox"><i
                                     class="icon icon-Search"></i></a>
-                            <h4 class="this-title">exterior view</h4>
+                            <h4 class="this-title">nhìn bên ngoài</h4>
                         </div>
                     </div>
                 </div>
@@ -264,7 +263,7 @@
                     <div class="this-overlay">
                         <div class="this-texts"><a href="images\gallery-home\table.jpg" rel="help" class="fancybox"><i
                                     class="icon icon-Search"></i></a>
-                            <h4 class="this-title">Table</h4>
+                            <h4 class="this-title">Bàn</h4>
                         </div>
                     </div>
                 </div>
@@ -272,7 +271,7 @@
                     <div class="this-overlay">
                         <div class="this-texts"><a href="images\gallery-home\meal1.jpg" rel="help" height="400"
                                                    class="fancybox"><i class="icon icon-Search"></i></a>
-                            <h4 class="this-title">meal</h4>
+                            <h4 class="this-title">Món ăn</h4>
                         </div>
                     </div>
                 </div>
@@ -280,7 +279,7 @@
                     <div class="this-overlay">
                         <div class="this-texts"><a href="images/gallery-home/5.jpg" rel="help" class="fancybox"><i
                                     class="icon icon-Search"></i></a>
-                            <h4 class="this-title">our restaurant</h4>
+                            <h4 class="this-title">Nhà hàng của chúng tôi</h4>
                         </div>
                     </div>
                 </div>
@@ -292,7 +291,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="sec-header-two">
-                    <h2>Testimonials</h2>
+                    <h2>Lời chứng thực</h2>
                 </div>
                 <div class="testimonials-wrapper">
                     <div class="testimonial-sliders-two">
@@ -478,7 +477,7 @@
                         <div class="touch-img"><img src="images\footer\1.jpg" alt="" class="img-responsive"></div>
                         <div class="touch-txt">
                             <div class="sec-header-touch">
-                                <h2>Get in Touch</h2>
+                                <h2>Liên hệ</h2>
                             </div>
                             <h3>Mr.Nguyen Ngoc Huy<span>(CEO)</span></h3>
                             <p>Phone : 999-101010-99</p>
@@ -488,45 +487,45 @@
                 </div>
                 <div class="col-lg-6 col-md-5 home-two-msgwrapper">
                     <div class="sec-header-touch">
-                        <h2>Drop a Message</h2>
+                        <h2>Để lại lời nhắn</h2>
                     </div>
                     <div class="drop-wrapper input_form">
                         <form id="contactForm" action="{{route('create_message.post')}}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input id="name" type="text" name="name_customer" placeholder="Your name"
+                                    <input id="name" type="text" name="name_customer" placeholder="Tên của bạn"
                                            class="form-control">
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input id="email" type="email" name="email" placeholder="Your Email"
-                                           class="form-control">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input id="subject" type="text" name="subject" placeholder="Subject"
+                                    <input id="email" type="email" name="email" placeholder="Email của bạn"
                                            class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <textarea id="message" rows="6" name="message" placeholder="Message"
+                                    <input id="subject" type="text" name="subject" placeholder="Chủ đề"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <textarea id="message" rows="6" name="message" placeholder="Nội dung"
                                               class="form-control"></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <button type="submit" class="res-btn">Submit Now <i class="fa fa-arrow-right"></i>
+                                    <button type="submit" class="res-btn">Gửi ngay <i class="fa fa-arrow-right"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
                         <div id="success">
-                            <p>Your message sent successfully.</p>
+                            <p>Tin nhắn đã được gửi thành công.</p>
                         </div>
                         <div id="error">
-                            <p>Something is wrong. Message cant be sent!</p>
+                            <p>Có gì đó lỗi. Tin nhắn không thể gửi!</p>
                         </div>
                     </div>
                 </div>

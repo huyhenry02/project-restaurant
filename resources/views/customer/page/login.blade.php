@@ -9,8 +9,8 @@
     <section class="row final-breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Login</li>
+                <li><a href="{{ route('show_home.index') }}">Trang chủ</a></li>
+                <li class="active">Đăng nhâp</li>
             </ol>
         </div>
     </section>
@@ -18,8 +18,8 @@
     <!-- Booking style-->
     <section class="container clearfix common-pad booknow">
         <div class="sec-header">
-            <h2>Login</h2>
-            <h3>Please log in to receive more offers</h3>
+            <h2>Đăng nhập</h2>
+            <h3>Đăng nhập để nhận nhiều ưu đãi hơn</h3>
         </div>
         <div class="row nasir-contact">
             <div class="col-md-8">
@@ -43,10 +43,10 @@
                         </div>
                     </form>
                     <div id="success">
-                        <p>Your message sent successfully.</p>
+                        <p>Tin nhắn đã được gửi thành công.</p>
                     </div>
                     <div id="error">
-                        <p>Something is wrong. Message cant be sent!</p>
+                        <p>Có gì đó lỗi. Tin nhắn không thể gửi!</p>
                     </div>
                 </div>
             </div>

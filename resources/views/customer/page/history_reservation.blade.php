@@ -9,8 +9,8 @@
     <section class="row final-breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">History</li>
+                <li><a href="{{route('show_home.index')}}">Trang chủ</a></li>
+                <li class="active">Lịch sử</li>
             </ol>
         </div>
     </section>

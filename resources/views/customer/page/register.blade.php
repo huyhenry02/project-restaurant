@@ -18,8 +18,8 @@
     <!-- Booking style-->
     <section class="container clearfix common-pad booknow">
         <div class="sec-header">
-            <h2>Register</h2>
-            <h3>Please Register to receive more offers</h3>
+            <h2>Đăng ký</h2>
+            <h3>Đăng ký để nhận nhiều ưu đãi hơn</h3>
         </div>
         <div class="row nasir-contact">
             <div class="col-md-8">
@@ -53,16 +53,16 @@
                         </div>
                     </form>
                     <div id="success">
-                        <p>Your message sent successfully.</p>
+                        <p>Tin nhắn đã được gửi thành công.</p>
                     </div>
                     <div id="error">
-                        <p>Something is wrong. Message cant be sent!</p>
+                        <p>Có gì đó lỗi. Tin nhắn không thể gửi!</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="contact-info">
-                    <h2>Contact Info</h2>
+                    <h2>Thông tin liên lạc</h2>
                     <div class="media-contact clearfix">
                         <div class="media-contact-icon"><i aria-hidden="true" class="fa fa-map-marker"></i></div>
                         <div class="media-contact-info">

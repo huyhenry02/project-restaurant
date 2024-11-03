@@ -112,14 +112,15 @@ class CustomerController extends BaseController
     {
         try {
             DB::beginTransaction();
+            $input = $request->all();
             $customer = new Customer();
-            $customer->fill($request->input());
+            $customer->fill($input);
             $customer->save();
 
             $reservation = new Reservation();
-            $reservation->fill($request->input());
+            $reservation->fill($input);
             $reservation->customer_id = $customer->customer_id;
-            $reservation->time_out = intval($request->input('time')) + 2;
+            $reservation->time_out = (int)$input['time'] + 2;
             $reservation->save();
 
             $reservationId = $reservation->reservation_id;
@@ -129,6 +130,7 @@ class CustomerController extends BaseController
             return redirect()->back()->with('success', 'Đặt bàn thành công!');
         } catch (Exception $e) {
             DB::rollback();
+            dd($e->getMessage());
             return redirect()->back()->with('error', 'Có lỗi xảy ra khi đặt bàn. Vui lòng thử lại sau.');
         }
     }

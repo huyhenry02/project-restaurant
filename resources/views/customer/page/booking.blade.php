@@ -13,8 +13,8 @@
     @endif
     <section class="container clearfix common-pad-inner booknow">
         <div class="sec-header">
-            <h2>Booking</h2>
-            <h3>Please tell us your personal information</h3>
+            <h2>Đặt chỗ</h2>
+            <h3>Vui lòng cho chúng tôi biết thông tin cá nhân của bạn</h3>
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-left">
@@ -153,7 +153,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <button type="submit" class="res-btn">subscribe<i class="fa fa-arrow-right"></i></button>
+                                    <button type="submit" class="res-btn">Xác nhận thông tin<i class="fa fa-arrow-right"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -162,7 +162,7 @@
             </div>
             <div class="col-sm-4 pull-right">
                 <div class="book-right"><span><img src="images\gallery-home\bk.jpg" alt=""></span>
-                    <h2>About Restaurant</h2>
+                    <h2>Về nhà hàng</h2>
                     <p>Khám phá hương vị tinh tế và không gian sang trọng tại nhà hàng chúng tôi. Đến với chúng tôi, bạn
                         sẽ được trải nghiệm ẩm thực đa dạng, từ món ăn truyền thống đến những sáng tạo mới đầy bất ngờ.
                         Đặt bàn ngay hôm nay để thưởng thức một bữa ăn tuyệt vời và dịch vụ chuyên nghiệp.</p>

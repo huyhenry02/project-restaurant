@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
                 <div class="sec-header3">
-                    <h2>Table</h2>
-                    <h3>Pick a table that best suits your taste and budget</h3>
+                    <h2>Bàn</h2>
+                    <h3>Chọn một chiếc bàn phù hợp nhất với sở thích và ngân sách của bạn</h3>
                 </div>
                 <p>Hãy đặt bàn ngay hôm nay để tận hưởng một trải nghiệm ẩm thực tuyệt vời và thưởng thức những món ăn độc đáo, chất lượng cao tại nhà hàng của chúng tôi. Với không gian sang trọng, dịch vụ chuyên nghiệp và đội ngũ nhân viên tận tâm, chúng tôi cam kết mang đến cho bạn một bữa ăn đáng nhớ và thoải mái.
                     Đừng bỏ lỡ cơ hội này!</p>

@@ -3,27 +3,22 @@
     <!-- Header  Inner style-->
     <section class="row final-inner-header">
         <div class="container">
-            <h2 class="this-title">Our Restaurant</h2>
+            <h2 class="this-title">Nhà hàng của chúng tôi</h2>
         </div>
     </section>
     <section class="row final-breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Dinning</li>
+                <li><a href="{{ route('show_home.index') }}">Trang chủ</a></li>
+                <li class="active">Bữa ăn</li>
             </ol>
         </div>
     </section>
-    <!-- Header  Slider style-->
-    <!-- Our Restaurant style-->
-
-    <!-- Our Restaurant style-->
-    <!-- Our Special Dinning-->
     <section class="our-special-wrapper">
         <section class="container clearfix common-pad">
             <div class="sec-header3">
-                <h2>Our Special Dinning</h2>
-                <h3>Pick a room that best suits your taste and budget</h3>
+                <h2>Bữa tối đặc biệt của chúng tôi</h2>
+                <h3>Chọn một căn phòng phù hợp nhất với sở thích và ngân sách của bạn</h3>
             </div>
             <p> Hãy thưởng thức món ăn ngon độc đáo tại nhà hàng chúng tôi. Chúng tôi tự hào mang đến cho bạn những hương vị tinh tế và sự kết hợp hoàn hảo của các thành phần chất lượng,
                 đem đến một trải nghiệm ẩm thực đặc biệt và đáng nhớ  </p>
@@ -65,8 +60,8 @@
     <!-- Our Menu-->
     <section class="our-menu-wrapper container clearfix common-pad">
         <div class="sec-header">
-            <h2>Our Menu</h2>
-            <h3>Pick a table that best suits your taste and budget</h3>
+            <h2>Thực đơn của chúng tôi</h2>
+            <h3>Chọn một căn phòng phù hợp nhất với sở thích và ngân sách của bạn</h3>
         </div>
         <div class="our-menu-tab">
             <ul role="tablist" class="nav nav-tabs">

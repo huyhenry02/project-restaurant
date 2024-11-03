@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('show_home.index');
+    return redirect()->route('show_login.index');
 });
 Route::get('/example', [ExampleController::class, 'example'])->name('example');
 //auth admin

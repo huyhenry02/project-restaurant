@@ -2,8 +2,8 @@
 @section('content')
     <section class="container clearfix common-pad offer-main">
         <div class="sec-header">
-            <h2>Offers & Deals</h2>
-            <h3>Pick a table that best suits your taste and budget</h3>
+            <h2>Ưu đãi & Ưu đãi</h2>
+            <h3>Chọn một chiếc bàn phù hợp nhất với sở thích và ngân sách của bạn</h3>
         </div>
         <p>Hãy nhanh tay nhận những ưu đãi của chúng tôi.</p>
     </section>

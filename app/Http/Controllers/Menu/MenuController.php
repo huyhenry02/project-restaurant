@@ -46,10 +46,7 @@ class MenuController extends BaseController
         try {
             DB::beginTransaction();
             $menu = new Menu();
-            $menu->item_name = $request['item_name'];
-            $menu->description = $request['description'];
-            $menu->price = $request['price'];
-            $menu->category_id = $request['category_id'];
+            $menu->fill($request->all());
             $menu->save();
             DB::commit();
             return redirect()->route('show_list_menu.index');

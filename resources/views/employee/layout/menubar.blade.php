@@ -21,29 +21,29 @@
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
 
-                        <!-- User -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
-                                <i class="tio-pages-outlined nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Nhân viên</span>
-                            </a>
+{{--                        <!-- User -->--}}
+{{--                        <li class="navbar-vertical-aside-has-menu ">--}}
+{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:" title="Pages">--}}
+{{--                                <i class="tio-pages-outlined nav-icon"></i>--}}
+{{--                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Nhân viên</span>--}}
+{{--                            </a>--}}
 
-                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
+{{--                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">--}}
 
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{route('show_list_employee.index')}}" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Danh sách</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{route('show_create_employee.index')}}" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Thêm Nhân viên</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link " href="{{route('show_list_employee.index')}}" title="Referrals">--}}
+{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                        <span class="text-truncate">Danh sách</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link " href="{{route('show_create_employee.index')}}" title="Referrals">--}}
+{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                        <span class="text-truncate">Thêm Nhân viên</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
                         <!-- Customer -->
                         <li class="navbar-vertical-aside-has-menu ">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
@@ -78,52 +78,52 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- role -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
-                                <i class="tio-pages-outlined nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Quyền</span>
-                            </a>
+{{--                        <!-- role -->--}}
+{{--                        <li class="navbar-vertical-aside-has-menu ">--}}
+{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">--}}
+{{--                                <i class="tio-pages-outlined nav-icon"></i>--}}
+{{--                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Quyền</span>--}}
+{{--                            </a>--}}
 
-                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
+{{--                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">--}}
 
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{route('show_list_role.index')}}" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Danh sách</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{route('show_create_role.index')}}" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Thêm Quyền</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- facility -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
-                                <i class="tio-pages-outlined nav-icon"></i>
-                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Cơ sở vật chất</span>
-                            </a>
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link " href="{{route('show_list_role.index')}}" title="Referrals">--}}
+{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                        <span class="text-truncate">Danh sách</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link " href="{{route('show_create_role.index')}}" title="Referrals">--}}
+{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                        <span class="text-truncate">Thêm Quyền</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+{{--                        <!-- facility -->--}}
+{{--                        <li class="navbar-vertical-aside-has-menu ">--}}
+{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">--}}
+{{--                                <i class="tio-pages-outlined nav-icon"></i>--}}
+{{--                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Cơ sở vật chất</span>--}}
+{{--                            </a>--}}
 
-                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
+{{--                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub">--}}
 
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{route('show_list_facility.index')}}" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Danh sách</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="{{route('show_create_facility.index')}}" title="Referrals">
-                                        <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">Thêm Cơ sở vật chất</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link " href="{{route('show_list_facility.index')}}" title="Referrals">--}}
+{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                        <span class="text-truncate">Danh sách</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link " href="{{route('show_create_facility.index')}}" title="Referrals">--}}
+{{--                                        <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                        <span class="text-truncate">Thêm Cơ sở vật chất</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
                         <!-- menu -->
                         <li class="navbar-vertical-aside-has-menu ">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">

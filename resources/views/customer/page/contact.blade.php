@@ -9,8 +9,8 @@
     <section class="row final-breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Contact us</li>
+                <li><a href="{{route('show_home.index')}}">Trang chủ</a></li>
+                <li class="active">Liên lạc</li>
             </ol>
         </div>
     </section>
@@ -18,13 +18,13 @@
     <!-- Booking style-->
     <section class="container clearfix common-pad booknow">
         <div class="sec-header">
-            <h2>Send a message</h2>
-            <h3>Pick a table that best suits your taste and budget</h3>
+            <h2>Gửi 1 tin nhắn</h2>
+            <h3>Chọn một chiếc bàn phù hợp nhất với sở thích và ngân sách của bạn</h3>
         </div>
         <div class="row nasir-contact">
             <div class="col-md-8">
                 <div class="book-left-content input_form">
-                    <form id="contactForm" action="contact_process.php" method="post">
+                    <form id="contactForm" action="" method="post">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 m0 col-xs-12"><span>Tên của bạn</span>
                                 <input id="name" type="text" name="name" placeholder="Tên bạn" class="form-control">
@@ -45,21 +45,21 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button type="submit" value="submit now" class="res-btn">Submit Now</button>
+                                <button type="submit" value="submit now" class="res-btn">Gửi ngay</button>
                             </div>
                         </div>
                     </form>
                     <div id="success">
-                        <p>Your message sent successfully.</p>
+                        <p>Tin nhắn đã được gửi thành công.</p>
                     </div>
                     <div id="error">
-                        <p>Something is wrong. Message cant be sent!</p>
+                        <p>Có gì đó lỗi. Tin nhắn không thể gửi!</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="contact-info">
-                    <h2>Contact Info</h2>
+                    <h2>Thông tin liên lạc</h2>
                     <div class="media-contact clearfix">
                         <div class="media-contact-icon"><i aria-hidden="true" class="fa fa-map-marker"></i></div>
                         <div class="media-contact-info">
@@ -75,7 +75,11 @@
                     <div class="media-contact clearfix">
                         <div class="media-contact-icon"><i aria-hidden="true" class="fa fa-phone"></i></div>
                         <div class="media-contact-info">
-                            <p>Monday to Friday : 8.00am to 5.00 pm<br>                                  Saturday : 8.00am to 3.00 pm<br>                                  Sunday : <span>closed</span></p>
+                            <p>
+                                Thứ 2 đến Thứ 6 : 8.00am to 5.00 pm<br>
+                                Thứ 7 : 8.00am to 3.00 pm<br>
+                                Chủ nhật : <span>closed</span>
+                            </p>
                         </div>
                     </div>
                     <div class="media-contact clearfix">
