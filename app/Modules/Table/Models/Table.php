@@ -16,6 +16,7 @@ class Table extends Model
     protected $primaryKey = 'table_id';
     protected $fillable = [
         'name',
+        'table_type_id',
     ];
     public function orders(): HasMany
     {

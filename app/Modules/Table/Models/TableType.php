@@ -15,6 +15,8 @@ class TableType extends Model
     protected $primaryKey = 'table_type_id';
     protected $fillable = [
         'name',
+        'code',
+        'amount',
         'description',
     ];
     public function tables(): HasMany

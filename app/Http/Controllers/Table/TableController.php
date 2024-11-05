@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Table;
 
-use App\Modules\Reservation\Models\Reservation;
-use App\Modules\Table\Models\Table;
-use App\Modules\Table\Models\TableType;
-use App\Modules\Table\Requests\CreateTableRequest;
 use Exception;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use App\Modules\Table\Models\Table;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use App\Modules\Table\Models\TableType;
+use App\Modules\Reservation\Models\Reservation;
+use Illuminate\Routing\Controller as BaseController;
 
 class TableController extends BaseController
 {
@@ -41,6 +40,12 @@ class TableController extends BaseController
             $table_type = new TableType();
             $table_type->fill($request->all());
             $table_type->save();
+            for ($i = 1; $i <= $request->amount; $i++) {
+                $table = new Table();
+                $table->table_type_id = $table_type->table_type_id;
+                $table->name = $table_type->code . '0' . $i;
+                $table->save();
+            }
             DB::commit();
             return redirect()->route('show_list_table_type.index');
         } catch (Exception $e) {

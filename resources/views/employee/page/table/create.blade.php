@@ -20,18 +20,24 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="addresszipCodeLabel" class="input-label">Tên Bàn <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="You can find your code in a postal address."></i></label>
+                                <label for="addresszipCodeLabel" class="input-label">Tên Loại Bàn <i
+                                        class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="You can find your code in a postal address."></i></label>
 
                                 <input type="text" class="js-masked-input form-control" name="name" id="addresszipCodeLabel" placeholder="Bàn ..." aria-label="Your zip code" data-hs-mask-options='{
                            "template": "AA0 0AA"
                          }'>
                             </div>
                             <div class="form-group">
-                                <label for="addresszipCodeLabel" class="input-label">Mô tả <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="You can find your code in a postal address."></i></label>
+                                <label for="addresszipCodeLabel" class="input-label">Mô tả <i class="tio-help-outlined text-body ml-1"></i></label>
 
-                                <input type="text" class="js-masked-input form-control" name="description" id="addresszipCodeLabel" p aria-label="Your zip code" data-hs-mask-options='{
-                           "template": "AA0 0AA"
-                         }'>
+                                <input type="text" class="js-masked-input form-control" name="description">
+                            </div>
+                            <div class="form-group">
+                                <label for="code" class="input-label">Mã loại bàn <i class="tio-help-outlined text-body ml-1"></i></label>
+
+                                <input type="text" class="js-masked-input form-control" name="code" id="code">
                             </div>
                             <div class="form-group">
                                 <label for="addresszipCodeLabel" class="input-label">Số lượng <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top" title="You can find your code in a postal address."></i></label>
