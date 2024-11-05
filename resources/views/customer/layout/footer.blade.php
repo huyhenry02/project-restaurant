@@ -1,20 +1,3 @@
-<div class="nasir-subscribe-form-row row">
-    <div class="container">
-        <div class="row this-dashed">
-            <div class="this-texts">
-                <h2>LUÔN CẬP NHẬT VỚI CHÚNG TÔI</h2>
-                <h3>Đăng ký ngay để nhận các ưu đãi và sự kiện đặc biệt từ nhà hàng</h3>
-            </div>
-            <form action="#" class="this-form input-group">
-                <input type="email" placeholder="Nhập địa chỉ email của bạn" class="form-control">
-                <span class="input-group-addon">
-                    <button type="submit" class="res-btn">Đăng ký<i class="fa fa-arrow-right"></i></button>
-                </span>
-            </form>
-        </div>
-    </div>
-</div>
-
 <footer>
     <section class="clearfix footer-wrapper">
         <section class="container clearfix footer-pad">
