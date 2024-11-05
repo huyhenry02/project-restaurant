@@ -45,8 +45,8 @@
 {{--                            </ul>--}}
 {{--                        </li>--}}
                         <!-- Customer -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Khách hàng</span>
                             </a>
@@ -62,8 +62,8 @@
                             </ul>
                         </li>
                         <!-- Message -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Tin nhắn phản hồi</span>
                             </a>
@@ -80,7 +80,7 @@
                         </li>
 {{--                        <!-- role -->--}}
 {{--                        <li class="navbar-vertical-aside-has-menu ">--}}
-{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">--}}
+{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">--}}
 {{--                                <i class="tio-pages-outlined nav-icon"></i>--}}
 {{--                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Quyền</span>--}}
 {{--                            </a>--}}
@@ -103,7 +103,7 @@
 {{--                        </li>--}}
 {{--                        <!-- facility -->--}}
 {{--                        <li class="navbar-vertical-aside-has-menu ">--}}
-{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">--}}
+{{--                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">--}}
 {{--                                <i class="tio-pages-outlined nav-icon"></i>--}}
 {{--                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Cơ sở vật chất</span>--}}
 {{--                            </a>--}}
@@ -125,8 +125,8 @@
 {{--                            </ul>--}}
 {{--                        </li>--}}
                         <!-- menu -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Menu</span>
                             </a>
@@ -148,8 +148,8 @@
                             </ul>
                         </li>
                         <!-- order -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Hóa đơn</span>
                             </a>
@@ -171,8 +171,8 @@
                             </ul>
                         </li>
                         <!-- reservation -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Đơn đặt bàn</span>
                             </a>
@@ -188,8 +188,8 @@
                             </ul>
                         </li>
                         <!-- table -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Loại Bàn</span>
                             </a>
@@ -211,8 +211,8 @@
                         </li>
 
                         <!-- table item -->
-                        <li class="navbar-vertical-aside-has-menu ">
-                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Pages">
+                        <li class="navbar-vertical-aside">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle "  title="Pages">
                                 <i class="tio-pages-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Bàn</span>
                             </a>
