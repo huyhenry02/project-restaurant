@@ -1,7 +1,7 @@
 use restaurants;
 -- category_foods
-INSERT INTO `category_foods` 
-VALUES 
+INSERT INTO `category_foods`
+VALUES
   (1, 'Banh my', NULL, NULL),
   (2, 'Pho', NULL, NULL),
   (3, 'Bun', NULL, NULL),
@@ -9,7 +9,7 @@ VALUES
   (5, 'Nuoc', NULL, NULL);
 --  customers
 INSERT INTO `customers` (customer_id, name, phone, email)
-VALUES 
+VALUES
   (1, 'Nguyễn Yến Vy', '0372586032', 'nguyenvy@gmail.com'),
   (2, 'Nguyễn Yến Nhi', '0372503947', 'nguyennhi@gmail.com'),
   (3, 'Nguyễn Quốc Đạt', '0372586999', 'nguyedat@gmail.com'),
@@ -67,8 +67,8 @@ VALUES
   (55, 'Nguyễn Thị Hương', '0372147842', 'nguyenhương23@gmail.com'),
   (56, 'Triệu Minh Anh', '0372582631', 'nguyenanh12@gmail.com');
 --  roles
- INSERT INTO `roles` 
-VALUES 
+ INSERT INTO `roles`
+VALUES
   (1, 'Nv_order', 'Order đồ', NULL, NULL),
   (2, 'Nv_phucvu', 'Phục vụ khách', NULL, NULL),
   (3, 'Lao_Cong', 'Quét dọn', NULL, NULL),
@@ -76,9 +76,9 @@ VALUES
   (5, 'Dau_bep', 'Nấu ăn', NULL, NULL),
   (6, 'Phu_bep', 'Phụ bếp', NULL, NULL);
 --  employees
-INSERT INTO `employees` 
-  (`name`, `address`, `phone`, `email`, `role_id`) 
-VALUES 
+INSERT INTO `employees`
+  (`name`, `address`, `phone`, `email`, `role_id`)
+VALUES
   ('Nguyen Huy', '123 Main Street, Cityville, State 12345', '(123) 456-7890', 'email9@gmail.com', 1),
   ('Ngoc Huy', '456 Elm Avenue, Townsville, State 67890', '(234) 567-8901', 'bogususer10@yahoo.com', 2),
   ('Tran Bao', '789 Oak Road, Villagetown, State 13579', '(345) 678-9012', 'sample11@hotmail.com', 3),
@@ -131,9 +131,9 @@ VALUES
    ('chén', 600),
    ('cốc', 600);
 -- menus
-INSERT INTO `menus` 
-  (item_name , `description`, `price`, `category_id`, `created_at`, `updated_at`) 
-VALUES 
+INSERT INTO `menus`
+  (item_name , `description`, `price`, `category_id`, `created_at`, `updated_at`)
+VALUES
   ('Banh my pate', 'Banh my, pate, do chua', 30000.00, 1, '2023-11-07 03:50:48', '2023-11-07 04:51:48'),
   ('Banh my lap xuong', 'Banh my, lap xuong, do chua', 30000.00, 1, '2023-11-07 03:50:48', '2023-11-07 04:51:48'),
   ('Banh my trung', 'Banh my, trung, do chua', 25000.00, 1, '2023-11-07 03:50:48', '2023-11-07 04:51:48'),
@@ -155,14 +155,14 @@ VALUES
   ('Tra chanh', 'Trà chanh', 20000.00, 5, '2023-11-07 03:50:48', '2023-11-07 04:51:48'),
   ('Tra dao', 'Trà đào', 20000.00, 5, '2023-11-07 03:50:48', '2023-11-07 04:51:48');
 -- table_types
- INSERT INTO `table_types` (`name`, `description`, amount) 
-VALUES 
+ INSERT INTO `table_types` (`name`, `description`, amount)
+VALUES
   ('Bàn đôi', 'Ban doi', 5),
   ('Bàn nhóm', 'Ban nhom', 5),
   ('Phòng riêng', 'Phong rieng', 5),
   ('Đặt tiệc', 'Dat tiec 01', 5);
 -- tables
- INSERT INTO `restaurants`.`tables` (`name`, `table_type_id`) VALUES 
+ INSERT INTO `restaurants`.`tables` (`name`, `table_type_id`) VALUES
   ('BD01', 1),
   ('BD02', 1),
   ('BD03', 1),
@@ -184,36 +184,68 @@ VALUES
   ('DT04', 4),
   ('DT05', 4);
 -- orders
-INSERT INTO `orders` (`name`, `customer_id`, `table_id`, `order_date`, `total_amount`, `time`)
-VALUES 
-  ('DH1', 30, 2, '2023-11-07', 250000.00, 12),
-  ('DH2', 32, 1, '2023-11-07', 260000.00, 20),
-  ('DH3', 36, 3, '2023-11-07', 400000.00, 9),
-  ('DH4', 39, 3, '2023-11-07', 320000.00, 21),
-  ('DH5', 40, 4, '2023-11-07', 260000.00, 14);
--- order_details
-INSERT INTO `order_details` (`order_id`, `menu_id`, `quantity`, `total`)
-VALUES 
-  (1, 1, 2, 250000.00),
-  (1, 2, 1, 250000.00),
-  (1, 3, 2, 250000.00),
-  (2, 1, 2, 260000.00),
-  (2, 2, 3, 250000.00),
-  (2, 3, 2, 250000.00),
-  (3, 4, 5, 400000.00),
-  (3, 6, 4, 250000.00),
-  (3, 5, 1, 250000.00),
-  (4, 1, 2, 320000.00),
-  (4, 2, 4, 250000.00),
-  (4, 3, 5, 250000.00),
-  (5, 1, 3, 260000.00),
-  (5, 2, 1, 250000.00),
-  (5, 3, 2, 250000.00);
- 
+INSERT INTO `orders` (`name`, `customer_id`, `order_date`, `total_amount`, `reservation_id`) VALUES
+                                                                                                 ('HD-01', 1, '2024-10-31', 100000, 1),
+                                                                                                 ('HD-02', 2, '2020-11-17', 200000, 2),
+                                                                                                 ('HD-03', 3, '2019-10-06', 300000, 3),
+                                                                                                 ('HD-04', 4, '2022-05-24', 400000, 4),
+                                                                                                 ('HD-05', 5, '2024-01-11', 500000, 5),
+                                                                                                 ('HD-06', 6, '2019-09-06', 600000, 6),
+                                                                                                 ('HD-07', 7, '2021-10-02', 700000, 7),
+                                                                                                 ('HD-08', 8, '2024-04-08', 800000, 8),
+                                                                                                 ('HD-09', 9, '2024-03-08', 900000, 9),
+                                                                                                 ('HD-10', 10, '2023-04-19', 100000, 10),
+                                                                                                 ('HD-11', 11, '2024-10-15', 110000, 11),
+                                                                                                 ('HD-12', 12, '2020-03-09', 120000, 12),
+                                                                                                 ('HD-13', 13, '2024-07-06', 130000, 13),
+                                                                                                 ('HD-14', 14, '2019-07-14', 140000, 14),
+                                                                                                 ('HD-15', 15, '2020-06-05', 150000, 15),
+                                                                                                 ('HD-16', 16, '2023-10-23', 160000, 16),
+                                                                                                 ('HD-17', 17, '2021-07-15', 170000, 17),
+                                                                                                 ('HD-18', 18, '2023-12-05', 180000, 18),
+                                                                                                 ('HD-19', 19, '2019-08-24', 190000, 19),
+                                                                                                 ('HD-20', 20, '2021-12-18', 200000, 20),
+                                                                                                 ('HD-21', 21, '2022-10-09', 210000, 21),
+                                                                                                 ('HD-22', 22, '2023-01-29', 220000, 22),
+                                                                                                 ('HD-23', 23, '2021-08-03', 230000, 23),
+                                                                                                 ('HD-24', 24, '2019-10-21', 240000, 24),
+                                                                                                 ('HD-25', 25, '2022-09-06', 250000, 25),
+                                                                                                 ('HD-26', 26, '2023-04-05', 260000, 26),
+                                                                                                 ('HD-27', 27, '2020-01-02', 270000, 27),
+                                                                                                 ('HD-28', 28, '2023-02-16', 280000, 28),
+                                                                                                 ('HD-29', 29, '2024-02-07', 290000, 29),
+                                                                                                 ('HD-30', 30, '2020-05-02', 300000, 30),
+                                                                                                 ('HD-31', 31, '2021-11-01', 310000, 31),
+                                                                                                 ('HD-32', 32, '2019-12-10', 320000, 32),
+                                                                                                 ('HD-33', 33, '2023-01-24', 330000, 33),
+                                                                                                 ('HD-34', 34, '2023-06-05', 340000, 34),
+                                                                                                 ('HD-35', 35, '2019-10-01', 350000, 35),
+                                                                                                 ('HD-36', 36, '2022-08-22', 360000, 36),
+                                                                                                 ('HD-37', 37, '2022-12-10', 370000, 37),
+                                                                                                 ('HD-38', 38, '2020-03-18', 380000, 38),
+                                                                                                 ('HD-39', 39, '2024-01-30', 390000, 39),
+                                                                                                 ('HD-40', 40, '2022-10-21', 400000, 40),
+                                                                                                 ('HD-41', 41, '2022-02-26', 410000, 41),
+                                                                                                 ('HD-42', 42, '2021-05-07', 420000, 42),
+                                                                                                 ('HD-43', 43, '2023-07-13', 430000, 43),
+                                                                                                 ('HD-44', 44, '2019-08-27', 440000, 44),
+                                                                                                 ('HD-45', 45, '2019-11-02', 450000, 45),
+                                                                                                 ('HD-46', 46, '2023-03-08', 460000, 46),
+                                                                                                 ('HD-47', 47, '2020-10-17', 470000, 47),
+                                                                                                 ('HD-48', 48, '2021-04-20', 480000, 48),
+                                                                                                 ('HD-49', 49, '2023-03-17', 490000, 49),
+                                                                                                 ('HD-50', 50, '2019-10-04', 500000, 50),
+                                                                                                 ('HD-51', 51, '2024-10-03', 510000, 51),
+                                                                                                 ('HD-52', 52, '2022-03-11', 520000, 52),
+                                                                                                 ('HD-53', 53, '2021-12-19', 530000, 53),
+                                                                                                 ('HD-54', 54, '2023-04-12', 540000, 54),
+                                                                                                 ('HD-55', 55, '2020-12-28', 550000, 55),
+                                                                                                 ('HD-56', 56, '2024-03-05', 560000, 56);
+
 --  reservations
-INSERT INTO `reservations` 
+INSERT INTO `reservations`
 (name, note, status, customer_id, number_of_guests, table_id, reservation_date, time, time_out)
-VALUES 
+VALUES
 ('D01', 'ww', 'completed', 1, 2, 1, '2023-01-10', 18, 22),
 ('D02', 'R', 'approved', 2, 4, 1, '2023-11-13', 16, 19),
 ('D03', 'gg', 'approved', 3, 5, 1, '2023-11-13', 17, 24),
@@ -270,4 +302,9 @@ VALUES
 ('D54', 'jr', 'pending', 54, 9, 2, '2023-05-05', 18, 20),
 ('D55', 'ge', 'pending', 55, 2, 3, '2023-11-22', 7, 17),
 ('D56', 'ưg', 'completed', 56, 10, 4, '2023-11-16', 20, 23);
+
+UPDATE tables_name
+SET
+    created_at = DATE_ADD('2019-01-01', INTERVAL FLOOR(RAND() * TIMESTAMPDIFF(DAY, '2019-01-01', NOW())) DAY),
+    updated_at = created_at + INTERVAL FLOOR(RAND() * 30) DAY;
 

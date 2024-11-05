@@ -82,10 +82,7 @@
                         <th>Tên Hóa đơn</th>
                         <th>Tên Khách hàng</th>
                         <th>Số điện thoại</th>
-                        <th>Loại Bàn</th>
-                        <th>Bàn</th>
                         <th>Ngày</th>
-                        <th>Giờ</th>
                         <th>Tổng tiền</th>
                         <th></th>
                     </tr>
@@ -99,17 +96,14 @@
                                     <input type="checkbox" class="custom-control-input" id="usersDataCheck1">
                                     <label class="custom-control-label" for="usersDataCheck1"></label>
                                 </div>
-                            </td> x
+                            </td>
                             <td>{{ $val ? $val->name : '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->customer->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val->customer->phone ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->table_type_order->name ?? '' }}<span class="text-hide">Code: GB</span></td>
-                            <td>{{ $val->table_order->name ?? '' }}<span class="text-hide">Code: GB</span></td>
                             <td>
                                 {{ $val && $val->created_at ? $val->created_at->setTimezone('Asia/Ho_Chi_Minh')->format('H:i d/m/Y') : '' }}
                                 <span class="text-hide">Code: GB</span>
                             </td>
-                            <td>{{ $val ? $val->time : '' }} giờ<span class="text-hide">Code: GB</span></td>
                             <td>{{ $val ? $val->total_amount : '' }} VNĐ<span class="text-hide">Code: GB</span></td>
                             <td>
                                 <a class="btn btn-sm btn-white" href="{{route('show_update_order.index',$val->order_id)}}" >

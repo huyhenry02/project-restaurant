@@ -50,7 +50,7 @@
                             <td>{{$val->name ?? ''}}</td>
                             <td>{{$val->status ?? ''}}</td>
                             <td>{{$val->table_id ?? ''}}</td>
-                            <td>{{$val->table_type_reservation->name}}</td>
+                            <td>{{$val->table_type_reservation->name ?? ''}}</td>
                             <td>{{$val->reservation_date ?? ''}}</td>
                             <td> {{ $val && $val->created_at ? $val->created_at->setTimezone('Asia/Ho_Chi_Minh')->format('H:i d/m/Y') : '' }}</td>
                         </tr>

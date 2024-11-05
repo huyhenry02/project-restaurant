@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\AuthCustomerController;
 use App\Http\Controllers\Customer\CustomerController;
@@ -73,6 +74,17 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         //action
         Route::post('/create_role', [RoleController::class, 'create_role'])->name('create_role.post');
         Route::get('/delete_role/{role_id}', [RoleController::class, 'destroy'])->name('role.delete');
+    });
+    Route::prefix('report')->group(function (){
+        //show
+        Route::get('/show_report_sales', [ReportController::class, 'show_report_sales'])->name('show_report_sales.index');
+        Route::get('/show_report_customers', [ReportController::class, 'show_report_customers'])->name('show_report_customers.index');
+        Route::get('/show_report_reservations', [ReportController::class, 'show_report_reservations'])->name('show_report_reservations.index');
+
+        //action
+        Route::get('/get_report_customers/{type}', [ReportController::class, 'get_report_customers'])->name('get_report_customers.get');
+        Route::get('/get_report_reservations/{type}', [ReportController::class, 'get_report_reservations'])->name('get_report_reservations.get');
+        Route::get('/get_report_sales/{type}', [ReportController::class, 'get_report_sales'])->name('get_report_sales.get');
     });
     //message
     Route::prefix('message')->group(function (){
