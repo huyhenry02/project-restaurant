@@ -26,7 +26,7 @@ class ReservationController extends BaseController
         $reservationCount = Reservation::count();
         $table_type = TableType::all();
         $table = Table::all();
-        $reservation = Reservation::all();
+        $reservation = Reservation::all()->sortByDesc('created_at');
         return view('employee.page.reservation.list', [
             'reservation' => $reservation,
             'reservationCount' => $reservationCount,
