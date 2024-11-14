@@ -1,6 +1,7 @@
 @extends('employee.layout.main')
 @section('content')
     <!-- Content -->
+    <main id="content" role="main" class="main">
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">
@@ -49,4 +50,5 @@
         <!-- End Row -->
     </div>
     <!-- End Content -->
+    </main>
 @endsection

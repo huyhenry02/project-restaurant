@@ -1,10 +1,21 @@
 @extends('employee.layout.main')
 @section('content')
+    <main id="content" role="main" class="main">
     <!-- Content -->
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">
-            <div class="row align-items-center">
+            <div class="row align-items-end">
+                <div class="col-sm mb-2 mb-sm-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-no-gutter">
+                            <li class="breadcrumb-item"><a class="breadcrumb-link">Trang</a></li>
+                            <li class="breadcrumb-item"><a class="breadcrumb-link">Loại bàn</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
+                        </ol>
+                    </nav>
+                    <h1 class="page-header-title">Thêm mới Loại bàn</h1>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -61,4 +72,5 @@
         <!-- End Row -->
     </div>
     <!-- End Content -->
+    </main>
 @endsection

@@ -39,10 +39,18 @@ class TableItemController extends BaseController
     {
         try {
             DB::beginTransaction();
-            $table = new Table();
-            $table->name = $request['name'];
-            $table->table_type_id = $request['table_type_id'];
-            $table->save();
+            $amountTables = $request['amount'];
+            if (!empty($amountTables)){
+                for ($i = 1; $i <= $amountTables; $i++) {
+                    $table = new Table();
+                    $table->table_type_id = $request['table_type_id'];
+                    $lastTable = Table::where('table_type_id', $request['table_type_id'])->orderBy('table_id', 'desc')->first();
+                    $code = substr($lastTable->name, 0, 2);
+                    $int = (int)substr($lastTable->name, 2, 2);
+                    $table->name = $code . '0' . $int + 1;
+                    $table->save();
+                }
+            }
             DB::commit();
             return redirect()->route('show_list_table.index');
         } catch (Exception $e) {
