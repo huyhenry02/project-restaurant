@@ -56,15 +56,18 @@ class ReportController extends Controller
                 ->orderBy('month')
                 ->get();
 
+            $allMonths = collect(range(1, 12))->mapWithKeys(function ($month) use ($monthlyData) {
+                return [$month => $monthlyData->get($month, (object)['month' => $month, 'total' => 0])];
+            });
             $data = [
-                'monthly' => $monthlyData,
+                'monthly' => $allMonths->values(),
             ];
-
             return response()->json($data);
         }
 
         if ($type === 'week') {
             $currentMonth = date('m');
+            $weeksInMonth = $this->getWeeksInMonth($currentYear, $currentMonth);
             $weeklyData = Order::selectRaw('WEEK(order_date) as week, SUM(total_amount) as total')
                 ->whereYear('order_date', $currentYear)
                 ->whereMonth('order_date', $currentMonth)
@@ -72,8 +75,12 @@ class ReportController extends Controller
                 ->orderBy('week')
                 ->get();
 
+            $allWeeks = collect($weeksInMonth)->mapWithKeys(function ($week) use ($weeklyData) {
+                return [$week => $weeklyData->get($week, (object)['week' => $week, 'total' => 0])];
+            });
+
             $data = [
-                'weekly' => $weeklyData,
+                'weekly' => $allWeeks->values(),
             ];
 
             return response()->json($data);
@@ -81,16 +88,23 @@ class ReportController extends Controller
 
         if ($type === 'day') {
             $currentWeek = date('W');
+            $daysInWeek = $this->getDaysInWeek($currentYear, $currentWeek);
             $dailyData = Order::selectRaw('DATE(order_date) as day, SUM(total_amount) as total')
                 ->whereYear('order_date', $currentYear)
                 ->where(DB::raw('WEEK(order_date)'), $currentWeek)
                 ->groupBy('day')
                 ->orderBy('day')
-                ->get();
+                ->get()
+                ->keyBy('day');
+
+            $allDays = collect($daysInWeek)->mapWithKeys(function ($day) use ($dailyData) {
+                return [$day => $dailyData->get($day, (object)['day' => $day, 'total' => 0])];
+            });
 
             $data = [
-                'daily' => $dailyData,
+                'daily' => $allDays->values(),
             ];
+
 
             return response()->json($data);
         }
@@ -128,14 +142,19 @@ class ReportController extends Controller
                 ->orderBy('month')
                 ->get();
 
+            $allMonths = collect(range(1, 12))->mapWithKeys(function ($month) use ($monthlyData) {
+                return [$month => $monthlyData->get($month, (object)['month' => $month, 'total' => 0])];
+            });
+
             $data = [
-                'monthly' => $monthlyData,
+                'monthly' => $allMonths->values(),
             ];
 
             return response()->json($data);
         }
 
         if ($type === 'week') {
+            $weeksInMonth = $this->getWeeksInMonth($currentYear, $currentMonth);
             $weeklyData = Customer::selectRaw('WEEK(created_at, 1) as week, COUNT(*) as total')
                 ->whereYear('created_at', $currentYear)
                 ->whereMonth('created_at', $currentMonth)
@@ -143,23 +162,34 @@ class ReportController extends Controller
                 ->orderBy('week')
                 ->get();
 
+            $allWeeks = collect($weeksInMonth)->mapWithKeys(function ($week) use ($weeklyData) {
+                return [$week => $weeklyData->get($week, (object)['week' => $week, 'total' => 0])];
+            });
+
             $data = [
-                'weekly' => $weeklyData,
+                'weekly' => $allWeeks->values(),
             ];
 
             return response()->json($data);
         }
 
         if ($type === 'day') {
+            $daysInWeek = $this->getDaysInWeek($currentYear, $currentWeek);
             $dailyData = Customer::selectRaw('DATE(created_at) as day, COUNT(*) as total')
                 ->whereYear('created_at', $currentYear)
                 ->where(DB::raw('WEEK(created_at, 1)'), $currentWeek)
                 ->groupBy('day')
                 ->orderBy('day')
-                ->get();
+                ->get()
+                ->keyBy('day');
+
+
+            $allDays = collect($daysInWeek)->mapWithKeys(function ($day) use ($dailyData) {
+                return [$day => $dailyData->get($day, (object)['day' => $day, 'total' => 0])];
+            });
 
             $data = [
-                'daily' => $dailyData,
+                'daily' => $allDays->values(),
             ];
 
             return response()->json($data);
@@ -197,14 +227,19 @@ class ReportController extends Controller
                 ->orderBy('month')
                 ->get();
 
+            $allMonths = collect(range(1, 12))->mapWithKeys(function ($month) use ($monthlyData) {
+                return [$month => $monthlyData->get($month, (object)['month' => $month, 'total' => 0])];
+            });
+
             $data = [
-                'monthly' => $monthlyData,
+                'monthly' => $allMonths->values(),
             ];
 
             return response()->json($data);
         }
 
         if ($type === 'week') {
+            $weeksInMonth = $this->getWeeksInMonth($currentYear, $currentMonth);
             $weeklyData = Reservation::selectRaw('WEEK(created_at, 1) as week, COUNT(*) as total')
                 ->whereYear('created_at', $currentYear)
                 ->whereMonth('created_at', $currentMonth)
@@ -212,29 +247,65 @@ class ReportController extends Controller
                 ->orderBy('week')
                 ->get();
 
+
+            $allWeeks = collect($weeksInMonth)->mapWithKeys(function ($week) use ($weeklyData) {
+                return [$week => $weeklyData->get($week, (object)['week' => $week, 'total' => 0])];
+            });
+
             $data = [
-                'weekly' => $weeklyData,
+                'weekly' => $allWeeks->values(),
             ];
 
             return response()->json($data);
         }
 
         if ($type === 'day') {
+            $daysInWeek = $this->getDaysInWeek($currentYear, $currentWeek);
             $dailyData = Reservation::selectRaw('DATE(created_at) as day, COUNT(*) as total')
                 ->whereYear('created_at', $currentYear)
                 ->where(DB::raw('WEEK(created_at, 1)'), $currentWeek)
                 ->groupBy('day')
                 ->orderBy('day')
-                ->get();
+                ->get()
+                ->keyBy('day');
+
+            $allDays = collect($daysInWeek)->mapWithKeys(function ($day) use ($dailyData) {
+                return [$day => $dailyData->get($day, (object)['day' => $day, 'total' => 0])];
+            });
 
             $data = [
-                'daily' => $dailyData,
+                'daily' => $allDays->values(),
             ];
 
             return response()->json($data);
         }
 
         return response()->json(['error' => 'Invalid type specified'], 400);
+    }
+    private function getWeeksInMonth($year, $month): array
+    {
+        $start = new \DateTime("$year-$month-01");
+        $end = (clone $start)->modify('last day of this month');
+        $weeks = [];
+
+        while ($start <= $end) {
+            $weeks[] = (int)$start->format('W');
+            $start->modify('next week');
+        }
+
+        return $weeks;
+    }
+
+    private function getDaysInWeek($year, $week): array
+    {
+        $dto = new \DateTime();
+        $dto->setISODate($year, $week);
+        $days = [];
+        for ($i = 0; $i < 7; $i++) {
+            $days[] = $dto->format('Y-m-d');
+            $dto->modify('+1 day');
+        }
+        return $days;
     }
 
 }
