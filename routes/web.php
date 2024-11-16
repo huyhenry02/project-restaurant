@@ -168,7 +168,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         //action
         Route::post('/create_table', [TableItemController::class, 'create_table'])->name('create_table.post');
         Route::post('/check_table', [TableItemController::class, 'check_table'])->name('check_table.post');
-        Route::get('/delete_table/{table_id}', [TableItemController::class, 'destroy'])->name('table_type.delete');
     });
 
 });

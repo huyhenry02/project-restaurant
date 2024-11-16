@@ -74,6 +74,8 @@ class TableController extends BaseController
     public function destroy($id): RedirectResponse
     {
         $table = TableType::find($id);
+        $table->reservations()->delete();
+        $table->tables()->delete();
         $table->delete();
         return redirect()->route('show_list_table_type.index')->with('success', 'Đã được xóa thành công!');
     }
